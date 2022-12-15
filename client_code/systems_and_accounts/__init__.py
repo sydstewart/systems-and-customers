@@ -8,7 +8,8 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
-
+    applicsations = anvil.server.call('listsystems')
+    self.app_multi_select_drop_down.items = anvil.server.call('listsystems')
 
     self.repeating_panel_1.items = anvil.server.call('listsystems')
 
