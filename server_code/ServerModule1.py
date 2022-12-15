@@ -61,8 +61,13 @@ def listsystems():
   'CFApplicationArea':r['CFApplicationArea']}
   for r in cur.fetchall()]
 #     app_tables.projects.add_row(company = row['Company'], projectname= row['Name'],boardname= row['BoardName'], status = row['Status'], startdate = row['StartDate'], enddate = row['EndDate'])
-#   total_rows = len(dicts)
-  return dicts#, total_rows
+  total_rows = len(dicts)
+  for row in dicts:
+  t= app  
+  return dicts, total_rows
+
+
+
 
 @anvil.server.callable
 def applications():
