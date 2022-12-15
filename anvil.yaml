@@ -1,6 +1,16 @@
+services:
+- source: /runtime/services/anvil/secrets.yml
+  client_config: {}
+  server_config: {}
+package_name: Systems_and_Customers
 allow_embedding: false
-package_name: Material_Design_5
-name: Material Design 5
-startup_form: Form1
+name: Systems and Customers
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
-services: []
+metadata: {}
+startup_form: Form1
+db_schema: {}
+secrets:
+  crm pass:
+    value: {? '' : AtST9syC4yNvFXDbvAIW/E194h6TVazhOazfNxwlHqshwf86X3qz4v/r2FMiU0FmvNknYXGz6G5zKZbcGW6ArBUgguvf1593pWYqgS0fpZNatj2awgyk5bdRwykMTHRr2odl4mUPS+G0LQ==}
+    type: secret
+renamed: true
