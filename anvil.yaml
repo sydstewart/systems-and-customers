@@ -7,7 +7,7 @@ allow_embedding: false
 name: Systems and Customers
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
 metadata: {}
-startup_form: Form1
+startup_form: systems_and_accounts
 db_schema: {}
 secrets:
   crm pass:

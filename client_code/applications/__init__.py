@@ -1,14 +1,12 @@
-from ._anvil_designer import Form1Template
+from ._anvil_designer import applicationsTemplate
 from anvil import *
 import anvil.server
 
-class Form1(Form1Template):
-
+class applications(applicationsTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
-
-
-    self.repeating_panel_1.items = anvil.server.call('listsystems')
+    
+    self.repeating_panel_1.items = anvil.server.call('applications')

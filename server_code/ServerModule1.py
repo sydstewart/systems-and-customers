@@ -54,11 +54,31 @@ def listsystems():
               ORDER BY \
                 `account`.`name` ASC"\
               )
-                  
+#     dicts = [{'Date_Entered': r['Date_Entered'],'Measure_Value': r['Measure_Value'],'NoteCol':r['noteCol']}
+#             for r in waitinglist]                  
 #     return cur.fetchall() 
-  dicts = [{'Company': r['account'],'Name': r['name'],'InUseStatus':r['InUseStatus'], 'shipping_address_country':r['shipping_address_country']}]
-#   for row in dicts:
+  dicts = [{'Company': r['account'],'Name': r['name'],'InUseStatus':r['InUseStatus'], 'shipping_address_country':r['account.shipping_address_country'],
+  'CFApplicationArea':r['CFApplicationArea']}
+  for r in cur.fetchall()]
 #     app_tables.projects.add_row(company = row['Company'], projectname= row['Name'],boardname= row['BoardName'], status = row['Status'], startdate = row['StartDate'], enddate = row['EndDate'])
 #   total_rows = len(dicts)
-  return dicts, total_rows
+  return dicts#, total_rows
 
+@anvil.server.callable
+def applications():
+  conn = connect()
+  with conn.cursor() as cur:
+   cur.execute(
+                "SELECT `_cstm`.`CFApplicationArea` `CFApplicationArea`, \
+                 FROM `assets` ` \
+                 ORDER BY \
+                `CFApplicationArea` ASC"\
+              )
+#     dicts = [{'Date_Entered': r['Date_Entered'],'Measure_Value': r['Measure_Value'],'NoteCol':r['noteCol']}
+#             for r in waitinglist]                  
+#     return cur.fetchall() 
+  dictsapps = [{'CFApplicationArea': r['CFApplicationArea']}
+  for r in cur.fetchall()]
+#     app_tables.projects.add_row(company = row['Company'], projectname= row['Name'],boardname= row['BoardName'], status = row['Status'], startdate = row['StartDate'], enddate = row['EndDate'])
+#   total_rows = len(dicts)
+  return dictsapps,
