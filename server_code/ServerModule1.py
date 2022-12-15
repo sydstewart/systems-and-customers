@@ -68,17 +68,25 @@ def listsystems():
 def applications():
   conn = connect()
   with conn.cursor() as cur:
-   cur.execute(
-                "SELECT `_cstm`.`CFApplicationArea` `CFApplicationArea`, \
-                 FROM `assets` ` \
-                 ORDER BY \
+   cur.execute( "SELECT  DISTINCT `_cstm`.`CFApplicationArea` `CFApplicationArea`  FROM \
+                `assets` `t0` \
+                LEFT JOIN `accounts` `account` ON `account`.`id` = `t0`.`account_id` \
+                AND `account`.`deleted` = 0 \
+                LEFT JOIN `accounts_cstm` `account._cstm` ON `account._cstm`.`id_c` = `account`.`id` \
+                LEFT JOIN `assets_cstm` `_cstm` ON `_cstm`.`id_c` = `t0`.`id` \
+              WHERE \
+                `_cstm`.`Supported_Product_Type` = 'System Installation' \
+                AND `t0`.`deleted` = 0 \
+              ORDER BY \
                 `CFApplicationArea` ASC"\
+              
               )
 #     dicts = [{'Date_Entered': r['Date_Entered'],'Measure_Value': r['Measure_Value'],'NoteCol':r['noteCol']}
 #             for r in waitinglist]                  
 #     return cur.fetchall() 
   dictsapps = [{'CFApplicationArea': r['CFApplicationArea']}
   for r in cur.fetchall()]
+  print(dictsapps)
 #     app_tables.projects.add_row(company = row['Company'], projectname= row['Name'],boardname= row['BoardName'], status = row['Status'], startdate = row['StartDate'], enddate = row['EndDate'])
 #   total_rows = len(dicts)
-  return dictsapps,
+  return dictsapps

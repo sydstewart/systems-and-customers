@@ -1,3 +1,6 @@
+dependencies:
+- app_id: C6ZZPAPN4YYF5NVJ
+  version: {dev: false}
 services:
 - source: /runtime/services/anvil/secrets.yml
   client_config: {}
