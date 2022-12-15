@@ -1,5 +1,8 @@
 from ._anvil_designer import systems_and_accountsTemplate
 from anvil import *
+import anvil.tables as tables
+import anvil.tables.query as q
+from anvil.tables import app_tables
 import anvil.server
 
 class systems_and_accounts(systems_and_accountsTemplate):

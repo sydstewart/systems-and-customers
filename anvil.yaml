@@ -5,13 +5,42 @@ services:
 - source: /runtime/services/anvil/secrets.yml
   client_config: {}
   server_config: {}
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {auto_create_missing_columns: false}
 package_name: Systems_and_Customers
 allow_embedding: false
 name: Systems and Customers
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
 metadata: {}
 startup_form: systems_and_accounts
-db_schema: {}
+db_schema:
+  suppported_products:
+    title: Suppported_Products
+    client: none
+    server: full
+    columns:
+    - name: Name
+      admin_ui: {width: 200}
+      type: string
+    - name: Account
+      admin_ui: {width: 200}
+      type: string
+    - name: 4S Country
+      admin_ui: {width: 200}
+      type: string
+    - name: CFApplicationArea
+      admin_ui: {width: 200}
+      type: string
+    - name: InUseStatus
+      admin_ui: {width: 200}
+      type: string
+    - name: Shipping Address Country
+      admin_ui: {width: 200}
+      type: string
+    - name: Location_c
+      admin_ui: {width: 200}
+      type: string
 secrets:
   crm pass:
     value: {? '' : AtST9syC4yNvFXDbvAIW/E194h6TVazhOazfNxwlHqshwf86X3qz4v/r2FMiU0FmvNknYXGz6G5zKZbcGW6ArBUgguvf1593pWYqgS0fpZNatj2awgyk5bdRwykMTHRr2odl4mUPS+G0LQ==}

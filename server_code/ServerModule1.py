@@ -1,6 +1,12 @@
+import anvil.tables as tables
+import anvil.tables.query as q
+from anvil.tables import app_tables
 import anvil.secrets
 import anvil.server
 import pymysql
+import anvil.tables.query as q
+from anvil.tables import app_tables
+from datetime import datetime, time , date , timedelta
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
 #
@@ -57,13 +63,15 @@ def listsystems():
 #     dicts = [{'Date_Entered': r['Date_Entered'],'Measure_Value': r['Measure_Value'],'NoteCol':r['noteCol']}
 #             for r in waitinglist]                  
 #     return cur.fetchall() 
-  dicts = [{'Company': r['account'],'Name': r['name'],'InUseStatus':r['InUseStatus'], 'shipping_address_country':r['account.shipping_address_country'],
+  dicts = [{'Account': r['account'],'Name': r['name'],'InUseStatus':r['InUseStatus'], 'Shipping Address Country':r['account.shipping_address_country'],
   'CFApplicationArea':r['CFApplicationArea']}
   for r in cur.fetchall()]
 #     app_tables.projects.add_row(company = row['Company'], projectname= row['Name'],boardname= row['BoardName'], status = row['Status'], startdate = row['StartDate'], enddate = row['EndDate'])
   total_rows = len(dicts)
   for row in dicts:
-  t= app  
+      t= app_tables.supported_products.search(Account =  row['account'], Name = row['name'],CFApplicationArea= row['CFApplicationArea'],InUseStatus = r['InUseStatus'] )  
+      if not t:
+      
   return dicts, total_rows
 
 
