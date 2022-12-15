@@ -63,14 +63,16 @@ def listsystems():
 #     dicts = [{'Date_Entered': r['Date_Entered'],'Measure_Value': r['Measure_Value'],'NoteCol':r['noteCol']}
 #             for r in waitinglist]                  
 #     return cur.fetchall() 
+# Delete all rows in the table
+  app_tables.suppported_products.delete_all_rows()
   for r in cur.fetchall(): 
-      dicts = [{'Account': r['account'],'Name': r['name'],'InUseStatus':r['InUseStatus'], 'Shipping Address Country':r['account.shipping_address_country'],
-  'CFApplicationArea':r['CFApplicationArea']}]
-  for r in dicts:
-      t= app_tables.suppported_products.get(Account =  r['Account'], Name = r['Name'],CFApplicationArea= r['CFApplicationArea'],InUseStatus = r['InUseStatus'] )  
-      if not t:
-         app_tables.suppported_products.add_row(**r)
-  return dicts
+      dicts = [{'Account': r['account'],'Name': r['name'],'InUseStatus':r['InUseStatus'], 'Shipping_Address_Country':r['account.shipping_address_country'],
+      'CFApplicationArea':r['CFApplicationArea'], '4S_Country':r['account.Dawn_Country'], 'Location_c' : r['account.location_c']}]
+      for d in dicts:
+#           t= app_tables.suppported_products.get(Account =  d['Account'], Name = d['Name'],CFApplicationArea= d['CFApplicationArea'],InUseStatus = d['InUseStatus'] )  
+#           if not t:
+            app_tables.suppported_products.add_row(**d)
+  return 
 
 
 

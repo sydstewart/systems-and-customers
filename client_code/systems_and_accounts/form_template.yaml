@@ -22,9 +22,10 @@ components:
         role: null
         columns:
         - {id: RSESGZ, title: System Name, data_key: Name}
-        - {id: GZEUQJ, title: Account, data_key: Company}
+        - {id: GZEUQJ, title: Account, data_key: Account}
         - {id: VFUFTY, title: Application, data_key: CFApplicationArea}
-        - {id: SBXCVL, title: Shipping_address_country, data_key: shipping_address_country}
+        - {id: SBXCVL, title: Shipping_address_country, data_key: Shipping_Address_Country}
+        - {id: VOYBAW, title: 4S Country, data_key: 4S_Country}
         auto_header: true
         tooltip: ''
         border: ''
@@ -37,7 +38,7 @@ components:
         spacing_below: small
         background: ''
       name: data_grid_1
-      layout_properties: {grid_position: 'HAMSSB,RGAFJD'}
+      layout_properties: {grid_position: 'VFJVOH,OJSPHK'}
       components:
       - type: RepeatingPanel
         properties: {spacing_above: none, spacing_below: none, item_template: systems_and_accounts.RowTemplate1}
