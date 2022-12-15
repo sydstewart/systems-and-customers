@@ -11,5 +11,5 @@ class applications(applicationsTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
-    
-    self.repeating_panel_1.items = anvil.server.call('applications')
+    dicts, total_rows = anvil.server.call('applications')
+    self.repeating_panel_1.items = dicts

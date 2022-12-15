@@ -11,11 +11,13 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
-    applicsations = anvil.server.call('listsystems')
-    self.app_multi_select_drop_down.items = applicsations
+    anvil.server.call('listsystems')
+    self.repeating_panel_1.items = app_tables.suppported_products.search()
 
-    self.repeating_panel_1.items = applicsations
-
+    
+#     self.app_multi_select_drop_down.items = applicsations
+#     dictsapps, total_rows = anvil.server.call('listsystems')
+    
   def applications_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form('applications')

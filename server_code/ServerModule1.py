@@ -63,16 +63,14 @@ def listsystems():
 #     dicts = [{'Date_Entered': r['Date_Entered'],'Measure_Value': r['Measure_Value'],'NoteCol':r['noteCol']}
 #             for r in waitinglist]                  
 #     return cur.fetchall() 
-  dicts = [{'Account': r['account'],'Name': r['name'],'InUseStatus':r['InUseStatus'], 'Shipping Address Country':r['account.shipping_address_country'],
-  'CFApplicationArea':r['CFApplicationArea']}
-  for r in cur.fetchall()]
-#     app_tables.projects.add_row(company = row['Company'], projectname= row['Name'],boardname= row['BoardName'], status = row['Status'], startdate = row['StartDate'], enddate = row['EndDate'])
-  total_rows = len(dicts)
-  for row in dicts:
-      t= app_tables.supported_products.search(Account =  row['account'], Name = row['name'],CFApplicationArea= row['CFApplicationArea'],InUseStatus = r['InUseStatus'] )  
+  for r in cur.fetchall(): 
+      dicts = [{'Account': r['account'],'Name': r['name'],'InUseStatus':r['InUseStatus'], 'Shipping Address Country':r['account.shipping_address_country'],
+  'CFApplicationArea':r['CFApplicationArea']}]
+  for r in dicts:
+      t= app_tables.suppported_products.get(Account =  r['Account'], Name = r['Name'],CFApplicationArea= r['CFApplicationArea'],InUseStatus = r['InUseStatus'] )  
       if not t:
-      
-  return dicts, total_rows
+         app_tables.suppported_products.add_row(**r)
+  return dicts
 
 
 
@@ -101,5 +99,5 @@ def applications():
   for r in cur.fetchall()]
   print(dictsapps)
 #     app_tables.projects.add_row(company = row['Company'], projectname= row['Name'],boardname= row['BoardName'], status = row['Status'], startdate = row['StartDate'], enddate = row['EndDate'])
-#   total_rows = len(dicts)
-  return dictsapps
+  total_rows = len(dicts)
+  return dictsapps, total_rows

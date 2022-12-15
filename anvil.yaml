@@ -16,8 +16,8 @@ metadata: {}
 startup_form: systems_and_accounts
 db_schema:
   suppported_products:
-    title: Suppported_Products
-    client: none
+    title: suppported_products
+    client: full
     server: full
     columns:
     - name: Name
