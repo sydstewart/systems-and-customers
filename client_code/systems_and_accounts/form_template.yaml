@@ -27,7 +27,25 @@ components:
     name: label_3
     layout_properties: {grid_position: 'UFCKSU,OXUTXC'}
   - type: DropDown
-    properties: {}
+    properties:
+      role: null
+      align: full
+      tooltip: ''
+      placeholder: ''
+      border: ''
+      enabled: true
+      foreground: ''
+      items: []
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: true
     name: apparea_dropdown
     layout_properties: {grid_position: 'UFCKSU,OHNYHA'}
     event_bindings: {change: apparea_dropdown_change}
