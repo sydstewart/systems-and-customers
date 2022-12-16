@@ -26,6 +26,8 @@ def connect():
                                password=anvil.secrets.get_secret('crm pass'),
                                database = 'infoathand',
                                cursorclass=pymysql.cursors.DictCursor)
+  if not connection:
+     alert(' Connection down')
   return connection
 
 @anvil.server.callable

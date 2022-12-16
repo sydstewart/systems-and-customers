@@ -57,7 +57,25 @@ components:
     name: label_4
     layout_properties: {grid_position: 'UFCKSU,FBKHKI'}
   - type: DropDown
-    properties: {}
+    properties:
+      role: null
+      align: full
+      tooltip: ''
+      placeholder: ''
+      border: ''
+      enabled: true
+      foreground: ''
+      items: []
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: true
     name: In_Use_Status_dropdown
     layout_properties: {grid_position: 'UFCKSU,XXIYRA'}
     event_bindings: {change: In_Use_Status_dropdown_change}
@@ -126,11 +144,25 @@ components:
   properties: {}
   name: navbar_links
   layout_properties: {slot: nav-right}
-- type: Button
-  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-    foreground: '', visible: true, text: Refresh Data, font_size: null, font: '',
-    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
-    bold: false, underline: false, icon: ''}
-  name: refresh_data_button
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: column_panel_3
   layout_properties: {slot: left-nav}
-  event_bindings: {click: refresh_data_button_click}
+  components:
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Refresh Data, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: refresh_data_button
+    layout_properties: {slot: left-nav, grid_position: 'DUOJUQ,CBXGUP'}
+    event_bindings: {click: refresh_data_button_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: 'ac_button
+
+        ', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+      italic: false, background: '', bold: false, underline: false, icon: ''}
+    name: app_button
+    layout_properties: {grid_position: 'CYRLKO,PFTGWW'}
+    event_bindings: {click: app_button_click}

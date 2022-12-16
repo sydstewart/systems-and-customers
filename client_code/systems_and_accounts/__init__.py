@@ -33,13 +33,14 @@ class systems_and_accounts(systems_and_accountsTemplate):
     """This method is called when the button is clicked"""
     open_form('applications')
     pass
-
+# combinations dropdown search
   def app_multi_select_drop_down_change(self, **event_args):
     """This method is called when the selected values change"""
+    self.apparea_dropdown.selected_value =''
     selectedapps = self.app_multi_select_drop_down.selected 
     self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps))
     pass
-
+# refresh data
   def refresh_data_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     anvil.server.call('listsystems')
@@ -50,8 +51,8 @@ class systems_and_accounts(systems_and_accountsTemplate):
     t = app_tables.last_date_refreshed.get(dateid =1 )
     t['last_date_refreshed'] = str(datetime.today() )
     pass
-
-  def ac_button_click(self, **event_args):
+# AC list
+  def app_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like ('%Anticoagulation%'))
     applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
@@ -60,16 +61,27 @@ class systems_and_accounts(systems_and_accountsTemplate):
     t = app_tables.last_date_refreshed.get(dateid =1 )
     self.last_refresh_date.text= t['last_date_refreshed']
     pass
-
+#single app area search
   def apparea_dropdown_change(self, **event_args):
     """This method is called when an item is selected"""
     selectedapparea = self.apparea_dropdown.selected_value
-    print(selectedapparea['application_area'])
-    selectedapp = ('%' + selectedapparea['application_area'] + '%')
-    self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp))
-    applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
-    self.app_multi_select_drop_down.items = applications
-       
+    selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
+#     print(selectedapparea['application_area'])
+    if selectedapparea and not selecttedinusestatus:
+        selectedapp = ('%' + selectedapparea['application_area'] + '%')
+        self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp))
+        applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+        self.app_multi_select_drop_down.items = applications
+    elif selectedapparea and  selecttedinusestatus:
+        selectedapp = ('%' + selectedapparea['application_area'] + '%')
+        self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp), InUseStatus=selecttedinusestatus)
+        applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+        self.app_multi_select_drop_down.items = applications
+    elif not selectedapparea and  selecttedinusestatus:   
+        self.repeating_panel_1.items = app_tables.suppported_products.search( InUseStatus=selecttedinusestatus)
+    else:
+        self.repeating_panel_1.items = app_tables.suppported_products.search()
+        self.hits_textbox.text = len(app_tables.suppported_products.search())
     t = app_tables.last_date_refreshed.get(dateid =1 )
     self.last_refresh_date.text= t['last_date_refreshed']
     self.hits_textbox.text = len(self.repeating_panel_1.items)
@@ -79,15 +91,33 @@ class systems_and_accounts(systems_and_accountsTemplate):
     """This method is called when an item is selected"""
     selectedapparea = self.apparea_dropdown.selected_value
     selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
-    print(selectedapparea['application_area'])
-    selectedapp = ('%' + selectedapparea['application_area'] + '%')
-    self.repeating_panel_1.items = app_tables.suppported_products.search(q.all_of(CFApplicationArea = q.like(selectedapp), InUseStatus = selecttedinusestatus))
-    applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
-    self.app_multi_select_drop_down.items = applications
+#     print(selectedapparea['application_area'])
+    if selectedapparea and not selecttedinusestatus:
+        selectedapp = ('%' + selectedapparea['application_area'] + '%')
+        self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp))
+        applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+        self.app_multi_select_drop_down.items = applications
+    elif selectedapparea and  selecttedinusestatus:
+        selectedapp = ('%' + selectedapparea['application_area'] + '%')
+        self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp), InUseStatus=selecttedinusestatus)
+        applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+        self.app_multi_select_drop_down.items = applications
+    elif not selectedapparea and  selecttedinusestatus:   
+        self.repeating_panel_1.items = app_tables.suppported_products.search( InUseStatus=selecttedinusestatus)
+    else:
+        self.repeating_panel_1.items = app_tables.suppported_products.search()
+        self.hits_textbox.text = len(app_tables.suppported_products.search())
+    t = app_tables.last_date_refreshed.get(dateid =1 )
+    self.last_refresh_date.text= t['last_date_refreshed']
+    self.hits_textbox.text = len(self.repeating_panel_1.items)
+    pass
        
     t = app_tables.last_date_refreshed.get(dateid =1 )
     self.last_refresh_date.text= t['last_date_refreshed']
     pass
+
+
+
 
 
 
