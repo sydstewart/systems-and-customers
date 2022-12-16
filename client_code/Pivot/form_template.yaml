@@ -14,9 +14,14 @@ components:
     layout_properties: {grid_position: 'PVBPGR,NTATPU'}
     components:
     - type: form:C6ZZPAPN4YYF5NVJ:Pivot
-      properties: {}
+      properties:
+        rows: [Account]
+        columns: [CFApplicationArea, InUseStatus]
+        values: ''
+        aggregator: Count
       name: pivot_1
       layout_properties: {grid_position: 'DXFJPE,KQCAJM'}
+      data_bindings: []
 - type: FlowPanel
   properties: {}
   name: navbar_links
