@@ -16,7 +16,9 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.repeating_panel_1.items = app_tables.suppported_products.search()
     applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
     self.app_multi_select_drop_down.items = applications
-    
+       
+    t = app_tables.last_date_refreshed.get(dateid =1 )
+    self.last_refresh_date.text= t['last_date_refreshed']
 #     self.app_multi_select_drop_down.items = applicsations
 #     dictsapps, total_rows = anvil.server.call('listsystems')
     
@@ -38,7 +40,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
     self.app_multi_select_drop_down.items = applications
     self.last_refresh_date.text= str(datetime.today()) 
-    t = app_tables.last_date_refreshed.get()
+    t = app_tables.last_date_refreshed.get(dateid =1 )
     t['last_date_refreshed'] = str(datetime.today() )
     pass
 
