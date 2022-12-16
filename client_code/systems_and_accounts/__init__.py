@@ -14,9 +14,16 @@ class systems_and_accounts(systems_and_accountsTemplate):
     # Any code you write here will run before the form opens.
 #     anvil.server.call('listsystems')
     self.repeating_panel_1.items = app_tables.suppported_products.search()
+    self.hits_textbox.text = len(app_tables.suppported_products.search())
+    
     applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+    inusestatus = list({(r['InUseStatus']) for r in app_tables.suppported_products.search()})
     self.app_multi_select_drop_down.items = applications
-    self.apparea_dropdown.items = app_tables.application_area.search(tables.order_by('application_area'))   
+    self.In_Use_Status_dropdown.items = inusestatus
+    
+    self.apparea_dropdown.items = [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
+   
+
     t = app_tables.last_date_refreshed.get(dateid =1 )
     self.last_refresh_date.text= t['last_date_refreshed']
 #     self.app_multi_select_drop_down.items = applicsations
@@ -56,14 +63,32 @@ class systems_and_accounts(systems_and_accountsTemplate):
 
   def apparea_dropdown_change(self, **event_args):
     """This method is called when an item is selected"""
-    self.apparea_dropdown.selected
-    self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = self.apparea_dropdown.selected)
+    selectedapparea = self.apparea_dropdown.selected_value
+    print(selectedapparea['application_area'])
+    selectedapp = ('%' + selectedapparea['application_area'] + '%')
+    self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp))
+    applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+    self.app_multi_select_drop_down.items = applications
+       
+    t = app_tables.last_date_refreshed.get(dateid =1 )
+    self.last_refresh_date.text= t['last_date_refreshed']
+    self.hits_textbox.text = len(self.repeating_panel_1.items)
+    pass
+
+  def In_Use_Status_dropdown_change(self, **event_args):
+    """This method is called when an item is selected"""
+    selectedapparea = self.apparea_dropdown.selected_value
+    selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
+    print(selectedapparea['application_area'])
+    selectedapp = ('%' + selectedapparea['application_area'] + '%')
+    self.repeating_panel_1.items = app_tables.suppported_products.search(q.all_of(CFApplicationArea = q.like(selectedapp), InUseStatus = selecttedinusestatus))
     applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
     self.app_multi_select_drop_down.items = applications
        
     t = app_tables.last_date_refreshed.get(dateid =1 )
     self.last_refresh_date.text= t['last_date_refreshed']
     pass
+
 
 
 

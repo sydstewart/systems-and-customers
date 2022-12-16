@@ -54,7 +54,7 @@ db_schema:
       type: number
   application_area:
     title: application_area
-    client: none
+    client: full
     server: full
     columns:
     - name: application_area
