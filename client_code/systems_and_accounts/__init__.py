@@ -11,7 +11,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
-    anvil.server.call('listsystems')
+#     anvil.server.call('listsystems')
     self.repeating_panel_1.items = app_tables.suppported_products.search()
     applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
     self.app_multi_select_drop_down.items = applications
@@ -29,5 +29,15 @@ class systems_and_accounts(systems_and_accountsTemplate):
     selectedapps = self.app_multi_select_drop_down.selected 
     self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps))
     pass
+
+  def refresh_data_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    anvil.server.call('listsystems')
+    self.repeating_panel_1.items = app_tables.suppported_products.search()
+    applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+    self.app_multi_select_drop_down.items = applications
+    self.last_refresh_date.text 
+    pass
+
 
 
