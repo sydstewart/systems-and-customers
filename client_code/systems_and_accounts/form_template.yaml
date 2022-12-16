@@ -4,18 +4,30 @@ container:
   properties: {html: '@theme:standard-page.html'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{}'}
+  properties: {col_widths: '{"DXWOFB":15,"EFULOL":45}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Application Areas, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_1
+    layout_properties: {grid_position: 'GLDWXQ,DXWOFB'}
   - type: form:C6ZZPAPN4YYF5NVJ:MultiSelectDropDown
-    properties: {}
+    properties: {width: '400', align: left, enable_filtering: true, placeholder: None Selected,
+      enabled: true, enable_select_all: true, items: null, visible: true, spacing_above: small,
+      spacing_below: small, multiple: true}
     name: app_multi_select_drop_down
     layout_properties: {grid_position: 'GLDWXQ,EFULOL'}
+    event_bindings: {change: app_multi_select_drop_down_change}
   - type: ColumnPanel
-    properties: {col_widths: '{}'}
+    properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+      spacing_below: small, background: ''}
     name: column_panel_1
-    layout_properties: {grid_position: 'BOBUCX,XYGXCV'}
+    layout_properties: {grid_position: 'BOBUCX,XYGXCV', full_width_row: true}
     components:
     - type: DataGrid
       properties:
@@ -23,8 +35,9 @@ components:
         columns:
         - {id: RSESGZ, title: System Name, data_key: Name}
         - {id: GZEUQJ, title: Account, data_key: Account}
-        - {id: VFUFTY, title: Application, data_key: CFApplicationArea}
-        - {id: SBXCVL, title: Shipping_address_country, data_key: Shipping_Address_Country}
+        - {id: VFUFTY, title: Application/s, data_key: CFApplicationArea, width: 342,
+          expand: false}
+        - {id: SBXCVL, title: Country, data_key: Shipping_Address_Country}
         - {id: VOYBAW, title: 4S Country, data_key: 4S_Country}
         auto_header: true
         tooltip: ''
@@ -38,7 +51,7 @@ components:
         spacing_below: small
         background: ''
       name: data_grid_1
-      layout_properties: {grid_position: 'VFJVOH,OJSPHK'}
+      layout_properties: {grid_position: 'VFJVOH,OJSPHK', full_width_row: true}
       components:
       - type: RepeatingPanel
         properties: {spacing_above: none, spacing_below: none, item_template: systems_and_accounts.RowTemplate1}

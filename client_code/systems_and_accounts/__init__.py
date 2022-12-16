@@ -13,7 +13,8 @@ class systems_and_accounts(systems_and_accountsTemplate):
     # Any code you write here will run before the form opens.
     anvil.server.call('listsystems')
     self.repeating_panel_1.items = app_tables.suppported_products.search()
-
+    applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+    self.app_multi_select_drop_down.items = applications
     
 #     self.app_multi_select_drop_down.items = applicsations
 #     dictsapps, total_rows = anvil.server.call('listsystems')
@@ -22,4 +23,11 @@ class systems_and_accounts(systems_and_accountsTemplate):
     """This method is called when the button is clicked"""
     open_form('applications')
     pass
+
+  def app_multi_select_drop_down_change(self, **event_args):
+    """This method is called when the selected values change"""
+    selectedapps = self.app_multi_select_drop_down.selected 
+    self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps))
+    pass
+
 
