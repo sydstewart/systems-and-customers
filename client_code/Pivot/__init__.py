@@ -9,6 +9,7 @@ class Pivot(PivotTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
+    records = app_tables.suppported_products.search()
+    self.pivot_1.data_items = [dict(list(r)) for r in records]
     # Any code you write here will run before the form opens.
     
