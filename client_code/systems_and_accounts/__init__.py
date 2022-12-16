@@ -16,7 +16,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.repeating_panel_1.items = app_tables.suppported_products.search()
     applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
     self.app_multi_select_drop_down.items = applications
-       
+    self.apparea_dropdown.items = app_tables.application_area.search(tables.order_by('application_area'))   
     t = app_tables.last_date_refreshed.get(dateid =1 )
     self.last_refresh_date.text= t['last_date_refreshed']
 #     self.app_multi_select_drop_down.items = applicsations
@@ -43,6 +43,29 @@ class systems_and_accounts(systems_and_accountsTemplate):
     t = app_tables.last_date_refreshed.get(dateid =1 )
     t['last_date_refreshed'] = str(datetime.today() )
     pass
+
+  def ac_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like ('%Anticoagulation%'))
+    applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+    self.app_multi_select_drop_down.items = applications
+       
+    t = app_tables.last_date_refreshed.get(dateid =1 )
+    self.last_refresh_date.text= t['last_date_refreshed']
+    pass
+
+  def apparea_dropdown_change(self, **event_args):
+    """This method is called when an item is selected"""
+    self.apparea_dropdown.selected
+    self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = self.apparea_dropdown.selected)
+    applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+    self.app_multi_select_drop_down.items = applications
+       
+    t = app_tables.last_date_refreshed.get(dateid =1 )
+    self.last_refresh_date.text= t['last_date_refreshed']
+    pass
+
+
 
 
 

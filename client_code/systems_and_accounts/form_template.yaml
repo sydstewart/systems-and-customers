@@ -10,9 +10,21 @@ components:
   components:
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Application Areas, font_size: null, font: '', spacing_above: small,
+      visible: true, text: Application Area, font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
+    name: label_3
+    layout_properties: {grid_position: 'UFCKSU,OXUTXC'}
+  - type: DropDown
+    properties: {}
+    name: apparea_dropdown
+    layout_properties: {grid_position: 'UFCKSU,OHNYHA'}
+    event_bindings: {change: apparea_dropdown_change}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Application Areas (combinations), font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
     name: label_1
     layout_properties: {grid_position: 'GLDWXQ,DXWOFB'}
   - type: form:C6ZZPAPN4YYF5NVJ:MultiSelectDropDown
