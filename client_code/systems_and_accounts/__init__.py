@@ -116,6 +116,12 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.last_refresh_date.text= t['last_date_refreshed']
     pass
 
+  def pivot_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Pivot')
+    pass
+
+
 
 
 
