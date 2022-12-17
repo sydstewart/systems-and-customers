@@ -20,9 +20,9 @@ class systems_and_accounts(systems_and_accountsTemplate):
     inusestatus = list({(r['InUseStatus']) for r in app_tables.suppported_products.search()})
     self.app_multi_select_drop_down.items = applications
     self.In_Use_Status_dropdown.items = inusestatus
-    
+    self.in_use_2_drop_down.items = inusestatus
     self.apparea_dropdown.items = [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
-   
+
 
     t = app_tables.last_date_refreshed.get(dateid =1 )
     self.last_refresh_date.text= t['last_date_refreshed']
@@ -36,14 +36,18 @@ class systems_and_accounts(systems_and_accountsTemplate):
 # combinations dropdown search
   def app_multi_select_drop_down_change(self, **event_args):
     """This method is called when the selected values change"""
-#     self.apparea_dropdown.enabled = False
+    self.apparea_dropdown.selected_value = None
+    self.In_Use_Status_dropdown.selected_value = None
     selectedapps = self.app_multi_select_drop_down.selected 
-    selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
-    if selecttedinusestatus :
-          self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps), InUseStatus=selecttedinusestatus)
-    else:
+    selecttedinusestatus2 = self.In_Use_Status_dropdown.selected_value
+    if selecttedinusestatus2 and selectedapps  :
+          self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps), InUseStatus=selecttedinusestatus2)
+    elif  not selecttedinusestatus2 and selectedapps  :
           self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps))
+    elif  selecttedinusestatus2 and not selectedapps  :
+          self.repeating_panel_1.items = app_tables.suppported_products.search(InUseStatus=selecttedinusestatus2)
 
+      
     self.hits_textbox.text = len(self.repeating_panel_1.items)
     pass
 # refresh data
@@ -70,8 +74,8 @@ class systems_and_accounts(systems_and_accountsTemplate):
 #single app area search
   def apparea_dropdown_change(self, **event_args):
     """This method is called when an item is selected"""
-#     self.apparea_dropdown.enabled = true
-    
+    self.app_multi_select_drop_down.selected = None
+    self.in_use_2_drop_down.selected_value = None
     selectedapparea = self.apparea_dropdown.selected_value
     selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
 #     print(selectedapparea['application_area'])
@@ -98,6 +102,8 @@ class systems_and_accounts(systems_and_accountsTemplate):
   def In_Use_Status_dropdown_change(self, **event_args):
     """This method is called when an item is selected"""
 #     self.apparea_dropdown.enabled = true
+    self.app_multi_select_drop_down.selected = None
+    self.in_use_2_drop_down.selected_value = None
     selectedapparea = self.apparea_dropdown.selected_value
     selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
 #     print(selectedapparea['application_area'])
@@ -129,6 +135,35 @@ class systems_and_accounts(systems_and_accountsTemplate):
     """This method is called when the button is clicked"""
     open_form('Pivot')
     pass
+
+  def in_use_2_drop_down_change(self, **event_args):
+    """This method is called when an item is selected"""
+    self.apparea_dropdown.selected_value = None
+    self.In_Use_Status_dropdown.selected_value = None
+    selectedapps = self.app_multi_select_drop_down.selected 
+    selecttedinusestatus2 = self.in_use_2_drop_down.selected_value
+    
+    if selecttedinusestatus2 and selectedapps  :
+          self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps), InUseStatus=selecttedinusestatus2)
+    elif  not selecttedinusestatus2 and selectedapps  :
+          self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps))
+    elif  selecttedinusestatus2 and not selectedapps  :
+          self.repeating_panel_1.items = app_tables.suppported_products.search(InUseStatus=selecttedinusestatus2)
+
+    
+    
+    
+    
+    
+    
+#     if selecttedinusestatus :
+#           self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps), InUseStatus=selecttedinusestatus)
+#     else:
+#           self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps))
+
+    self.hits_textbox.text = len(self.repeating_panel_1.items)
+    pass
+
 
 
 

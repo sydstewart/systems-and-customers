@@ -4,7 +4,7 @@ container:
   properties: {html: '@theme:standard-page.html'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"MZZWNT":8,"RWRRBF":8,"WRVOOW":22,"KVDNKG":22}'}
+  properties: {col_widths: '{"MZZWNT":8,"RWRRBF":8,"WRVOOW":9,"KVDNKG":25,"VQSPNL":22}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
@@ -104,9 +104,28 @@ components:
       name: label_6
       layout_properties: {grid_position: 'SDRXWK,YWOJAQ'}
     - type: DropDown
-      properties: {}
+      properties:
+        role: null
+        align: full
+        tooltip: ''
+        placeholder: ''
+        border: ''
+        enabled: true
+        foreground: ''
+        items: []
+        visible: true
+        font_size: null
+        font: ''
+        spacing_above: small
+        spacing_below: small
+        italic: false
+        background: ''
+        bold: false
+        underline: false
+        include_placeholder: true
       name: in_use_2_drop_down
       layout_properties: {grid_position: 'SDRXWK,JXAMLC'}
+      event_bindings: {change: in_use_2_drop_down_change}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: Hits, font_size: null, font: '', spacing_above: small,
@@ -129,6 +148,10 @@ components:
     properties: {}
     name: last_refresh_date
     layout_properties: {grid_position: 'UFCKSU,KVDNKG'}
+  - type: Label
+    properties: {}
+    name: label_7
+    layout_properties: {grid_position: 'UFCKSU,VQSPNL'}
   - type: ColumnPanel
     properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
       wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
