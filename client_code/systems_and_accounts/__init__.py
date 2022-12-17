@@ -39,7 +39,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.apparea_dropdown.selected_value = None
     self.In_Use_Status_dropdown.selected_value = None
     selectedapps = self.app_multi_select_drop_down.selected 
-    selecttedinusestatus2 = self.In_Use_Status_dropdown.selected_value
+    selecttedinusestatus2 = self.in_use_2_drop_down.selected_value
     if selecttedinusestatus2 and selectedapps  :
           self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps), InUseStatus=selecttedinusestatus2)
     elif  not selecttedinusestatus2 and selectedapps  :
