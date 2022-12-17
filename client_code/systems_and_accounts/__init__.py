@@ -38,7 +38,13 @@ class systems_and_accounts(systems_and_accountsTemplate):
     """This method is called when the selected values change"""
     self.apparea_dropdown.selected_value =''
     selectedapps = self.app_multi_select_drop_down.selected 
-    self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps))
+    selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
+    if selecttedinusestatus :
+          self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps), InUseStatus=selecttedinusestatus)
+    else:
+          self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps))
+
+    self.hits_textbox.text = len(self.repeating_panel_1.items)
     pass
 # refresh data
   def refresh_data_button_click(self, **event_args):
