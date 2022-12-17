@@ -36,7 +36,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
 # combinations dropdown search
   def app_multi_select_drop_down_change(self, **event_args):
     """This method is called when the selected values change"""
-    self.apparea_dropdown.selected_value =''
+#     self.apparea_dropdown.enabled = False
     selectedapps = self.app_multi_select_drop_down.selected 
     selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
     if selecttedinusestatus :
@@ -70,6 +70,8 @@ class systems_and_accounts(systems_and_accountsTemplate):
 #single app area search
   def apparea_dropdown_change(self, **event_args):
     """This method is called when an item is selected"""
+#     self.apparea_dropdown.enabled = true
+    
     selectedapparea = self.apparea_dropdown.selected_value
     selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
 #     print(selectedapparea['application_area'])
@@ -95,6 +97,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
 
   def In_Use_Status_dropdown_change(self, **event_args):
     """This method is called when an item is selected"""
+#     self.apparea_dropdown.enabled = true
     selectedapparea = self.apparea_dropdown.selected_value
     selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
 #     print(selectedapparea['application_area'])

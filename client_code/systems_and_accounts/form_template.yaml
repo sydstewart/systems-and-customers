@@ -4,10 +4,109 @@ container:
   properties: {html: '@theme:standard-page.html'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"DXWOFB":10,"EFULOL":30,"FIBERW":10,"IJARHX":10,"MZZWNT":5,"RWRRBF":5,"OXUTXC":10,"OHNYHA":20,"FBKHKI":10,"XXIYRA":10}'}
+  properties: {col_widths: '{"MZZWNT":8,"RWRRBF":8,"WRVOOW":22,"KVDNKG":22}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
+  - type: ColumnPanel
+    properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
+      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+      spacing_below: small, background: ''}
+    name: card_1
+    layout_properties: {grid_position: 'BGHOVD,GFRERT', full_width_row: true}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Application Area, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_3
+      layout_properties: {grid_position: 'GTPCRM,AUJXJC'}
+    - type: DropDown
+      properties:
+        role: null
+        align: full
+        tooltip: ''
+        placeholder: ''
+        border: ''
+        enabled: true
+        foreground: ''
+        items: []
+        visible: true
+        font_size: null
+        font: ''
+        spacing_above: small
+        spacing_below: small
+        italic: false
+        background: ''
+        bold: false
+        underline: false
+        include_placeholder: true
+      name: apparea_dropdown
+      layout_properties: {grid_position: 'GTPCRM,LLDXZG'}
+      event_bindings: {change: apparea_dropdown_change}
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: In Use Status, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_4
+      layout_properties: {grid_position: 'GTPCRM,BFMNXS'}
+    - type: DropDown
+      properties:
+        role: null
+        align: full
+        tooltip: ''
+        placeholder: ''
+        border: ''
+        enabled: true
+        foreground: ''
+        items: []
+        visible: true
+        font_size: null
+        font: ''
+        spacing_above: small
+        spacing_below: small
+        italic: false
+        background: ''
+        bold: false
+        underline: false
+        include_placeholder: true
+      name: In_Use_Status_dropdown
+      layout_properties: {grid_position: 'GTPCRM,CDCWEL'}
+      event_bindings: {change: In_Use_Status_dropdown_change}
+  - type: ColumnPanel
+    properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
+      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+      spacing_below: small, background: ''}
+    name: card_2
+    layout_properties: {grid_position: 'ZWLXDZ,NWWHAB', full_width_row: true}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Application Areas (combinations), font_size: null, font: '',
+        spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false, icon: ''}
+      name: label_1
+      layout_properties: {grid_position: 'SDRXWK,PFHQZO'}
+    - type: form:C6ZZPAPN4YYF5NVJ:MultiSelectDropDown
+      properties: {width: '400', align: left, enable_filtering: true, placeholder: None Selected,
+        enabled: true, enable_select_all: true, items: null, visible: true, spacing_above: small,
+        spacing_below: small, multiple: true}
+      name: app_multi_select_drop_down
+      layout_properties: {grid_position: 'SDRXWK,UXTYXS'}
+      event_bindings: {change: app_multi_select_drop_down_change}
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: In Use Status, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_6
+      layout_properties: {grid_position: 'SDRXWK,YWOJAQ'}
+    - type: DropDown
+      properties: {}
+      name: in_use_2_drop_down
+      layout_properties: {grid_position: 'SDRXWK,JXAMLC'}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: Hits, font_size: null, font: '', spacing_above: small,
@@ -21,89 +120,15 @@ components:
     layout_properties: {grid_position: 'UFCKSU,RWRRBF'}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Application Area, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_3
-    layout_properties: {grid_position: 'UFCKSU,OXUTXC'}
-  - type: DropDown
-    properties:
-      role: null
-      align: full
-      tooltip: ''
-      placeholder: ''
-      border: ''
-      enabled: true
-      foreground: ''
-      items: []
-      visible: true
-      font_size: null
-      font: ''
-      spacing_above: small
-      spacing_below: small
-      italic: false
-      background: ''
-      bold: false
-      underline: false
-      include_placeholder: true
-    name: apparea_dropdown
-    layout_properties: {grid_position: 'UFCKSU,OHNYHA'}
-    event_bindings: {change: apparea_dropdown_change}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: In Use Status, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_4
-    layout_properties: {grid_position: 'UFCKSU,FBKHKI'}
-  - type: DropDown
-    properties:
-      role: null
-      align: full
-      tooltip: ''
-      placeholder: ''
-      border: ''
-      enabled: true
-      foreground: ''
-      items: []
-      visible: true
-      font_size: null
-      font: ''
-      spacing_above: small
-      spacing_below: small
-      italic: false
-      background: ''
-      bold: false
-      underline: false
-      include_placeholder: true
-    name: In_Use_Status_dropdown
-    layout_properties: {grid_position: 'UFCKSU,XXIYRA'}
-    event_bindings: {change: In_Use_Status_dropdown_change}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Application Areas (combinations), font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: label_1
-    layout_properties: {grid_position: 'GLDWXQ,DXWOFB'}
-  - type: form:C6ZZPAPN4YYF5NVJ:MultiSelectDropDown
-    properties: {width: '400', align: left, enable_filtering: true, placeholder: None Selected,
-      enabled: true, enable_select_all: true, items: null, visible: true, spacing_above: small,
-      spacing_below: small, multiple: true}
-    name: app_multi_select_drop_down
-    layout_properties: {grid_position: 'GLDWXQ,EFULOL'}
-    event_bindings: {change: app_multi_select_drop_down_change}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: Last Refreshed, font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
     name: label_2
-    layout_properties: {grid_position: 'GLDWXQ,FIBERW'}
+    layout_properties: {grid_position: 'UFCKSU,WRVOOW'}
   - type: TextBox
     properties: {}
     name: last_refresh_date
-    layout_properties: {grid_position: 'GLDWXQ,IJARHX'}
+    layout_properties: {grid_position: 'UFCKSU,KVDNKG'}
   - type: ColumnPanel
     properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
       wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
