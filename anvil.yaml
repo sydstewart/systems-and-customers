@@ -8,7 +8,7 @@ services:
 - source: /runtime/services/tables.yml
   client_config: {}
   server_config: {auto_create_missing_columns: false}
-startup: {type: form, module: systems_and_accounts}
+startup: {type: form, module: Application_Area_Summary}
 package_name: Systems_and_Customers
 allow_embedding: false
 name: Systems and Customers

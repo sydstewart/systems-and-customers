@@ -12,6 +12,7 @@ unique_ids:
   modules: {}
   server_modules:
     ServerModule1: IAAQYXFJZOFSDTYJTD6O5WIKKN3GOGCN
+    Stats: 4OCA56NBGO74I4S6PWN6GKKSETZAPZFI
   assets:
     jqueryUI.js: VOI4YHF7JXVMR3UQKGRI5SRRULMMLLCT
     standard-page.html: NXTMVKOL7H72PBJU5TW246DNPAYJFT2O
