@@ -17,9 +17,9 @@ components:
       properties:
         role: null
         columns:
-        - {id: AWYBNW, title: Region, data_key: Region}
-        - {id: RSGAWZ, title: Count, data_key: count}
-        - {id: HNJGVJ, title: '%', data_key: '%'}
+        - {id: AWYBNW, title: Region, data_key: Region, width: 179, expand: false}
+        - {id: RSGAWZ, title: Count, data_key: count, width: 67, expand: false}
+        - {id: HNJGVJ, title: '%', data_key: '%', width: '40'}
         auto_header: true
         tooltip: ''
         border: ''
