@@ -40,9 +40,7 @@ def groupareas():
     df['%'] =(df['count'] * 100)/df['sumsystems']
     df['%'] = df['%'].map('{:,.0f}'.format)    
     df['%'] = df['%'].astype(int)
-#     df.loc['Column_Total']= df.sum(numeric_only=True, axis=0)
-#     df.append(pd.Series(df.sum(),name='Total'))
-#     df.loc['Total', :] = df.sum().values
+
     df.loc['Total', 'count']= df['count'].sum()
     df.loc['Total', '%']= df['%'].sum()
     df = df.fillna("")
