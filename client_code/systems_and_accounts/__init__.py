@@ -164,6 +164,12 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.hits_textbox.text = len(self.repeating_panel_1.items)
     pass
 
+  def stats_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Application_Area_Summary')
+    pass
+
+
 
 
 

@@ -9,10 +9,17 @@ components:
   layout_properties: {slot: default}
   components:
   - type: ColumnPanel
-    properties: {col_widths: '{}'}
-    name: column_panel_1
-    layout_properties: {grid_position: 'ZBMJVO,HIKDXY'}
+    properties: {role: card, col_widths: '{}'}
+    name: card_1
+    layout_properties: {grid_position: 'ZBMJVO,FEOSEX'}
     components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Regional Breakdown, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+        underline: false, icon: ''}
+      name: label_1
+      layout_properties: {grid_position: 'ZEIZYG,YOHTWN'}
     - type: DataGrid
       properties:
         role: null
@@ -32,13 +39,63 @@ components:
         spacing_below: small
         background: ''
       name: data_grid_1
-      layout_properties: {grid_position: 'TSJOTB,BOFMBP', full_width_row: true}
+      layout_properties: {grid_position: 'BGFNZK,BYJQAF', full_width_row: true}
       components:
       - type: RepeatingPanel
         properties: {spacing_above: none, spacing_below: none, item_template: Application_Area_Summary.RowTemplate3}
         name: repeating_panel_1
         layout_properties: {}
+  - type: ColumnPanel
+    properties: {role: card, col_widths: '{}'}
+    name: card_2
+    layout_properties: {grid_position: 'ZBMJVO,AOQGWA'}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: In Use Status Breakdown, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+        underline: false, icon: ''}
+      name: label_2
+      layout_properties: {grid_position: 'CNXDNZ,AZASAY'}
+    - type: DataGrid
+      properties:
+        role: null
+        columns:
+        - {id: PXBKDR, title: In Use Status, data_key: InUse, width: 206, expand: false}
+        - {id: YJUWED, title: Count, data_key: count, width: 56, expand: false}
+        - {id: QJVUZK, title: '%', data_key: '%', width: 40, expand: false}
+        auto_header: true
+        tooltip: ''
+        border: ''
+        foreground: ''
+        rows_per_page: 20
+        visible: true
+        wrap_on: never
+        show_page_controls: true
+        spacing_above: small
+        spacing_below: small
+        background: ''
+      name: data_grid_2
+      layout_properties: {grid_position: 'WLFZBO,VLTVIC'}
+      components:
+      - type: RepeatingPanel
+        properties: {spacing_above: none, spacing_below: none, item_template: Application_Area_Summary.RowTemplate5}
+        name: repeating_panel_2
+        layout_properties: {}
 - type: FlowPanel
   properties: {}
   name: navbar_links
   layout_properties: {slot: nav-right}
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: column_panel_1
+  layout_properties: {slot: left-nav}
+  components:
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Return to Search, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: return_to_search_button
+    layout_properties: {grid_position: 'ZYSHDG,CCQYPR'}
+    event_bindings: {click: return_to_search_button_click}

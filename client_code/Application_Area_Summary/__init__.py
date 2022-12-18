@@ -11,6 +11,16 @@ class Application_Area_Summary(Application_Area_SummaryTemplate):
     self.init_components(**properties)
 #     self.repeating_panel_1.items = app_tables.application_area.search(tables.order_by('application_area'))
     # Any code you write here will run before the form opens.
-    df =anvil.server.call('groupareas')
+    dfgroups =anvil.server.call('groupareas')
     
-    self.repeating_panel_1.items = df
+    self.repeating_panel_1.items = dfgroups
+    
+    dfinuse = anvil.server.call('groupinuse')
+   
+    self.repeating_panel_2.items = dfinuse
+
+  def return_to_search_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('systems_and_accounts')
+    pass
+
