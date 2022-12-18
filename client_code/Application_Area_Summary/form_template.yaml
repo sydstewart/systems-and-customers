@@ -17,7 +17,8 @@ components:
       properties:
         role: null
         columns:
-        - {id: AWYBNW, title: Application Area, data_key: application_area}
+        - {id: AWYBNW, title: Region, data_key: Region}
+        - {id: RSGAWZ, title: Count, data_key: count}
         auto_header: true
         tooltip: ''
         border: ''

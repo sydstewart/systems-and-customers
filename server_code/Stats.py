@@ -34,6 +34,6 @@ def groupareas():
     df = df.groupby('Region')['Name'].count() \
                              .reset_index(name='count') \
                              .sort_values(['count'], ascending=False) 
-    dictsregions = pandas.DataFrame.to_dict(df)
+    dictsregions = df.to_dict(orient='records')
     
-    return df
+    return dictsregions
