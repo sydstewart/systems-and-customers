@@ -31,9 +31,13 @@ def groupareas():
 #     group_by_region = df.groupby('Region')['Name'].count()
 #     group_by_region = group_by_region.sort_values(['Region'], ascending=False)['Name']
 #     print(group_by_region) 
+
+
     df = df.groupby('Region')['Name'].count() \
                              .reset_index(name='count') \
-                             .sort_values(['count'], ascending=False) 
+                             .sort_values(['count'], ascending=False)
+    df['%'] = df['count'] / df.groupby('Region')['Name'].transform('sum')
+    
     dictsregions = df.to_dict(orient='records')
     
     return dictsregions

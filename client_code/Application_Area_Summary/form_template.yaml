@@ -19,6 +19,7 @@ components:
         columns:
         - {id: AWYBNW, title: Region, data_key: Region}
         - {id: RSGAWZ, title: Count, data_key: count}
+        - {id: HNJGVJ, title: '%', data_key: '%'}
         auto_header: true
         tooltip: ''
         border: ''
