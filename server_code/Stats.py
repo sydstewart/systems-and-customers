@@ -81,3 +81,12 @@ def groupinuse():
     dictsinuse = df1.to_dict(orient='records')
     
     return dictsinuse
+  
+@anvil.server.callable
+def groupinsinleapparea():  
+#   singleapps = [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
+  singleapps = app_tables.application_area.search()
+  for r  in singleapps:
+     print((r['application_area']))
+    apparea = 
+     self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like ('%Anticoagulation%'))

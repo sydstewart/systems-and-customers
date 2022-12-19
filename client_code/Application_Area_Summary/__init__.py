@@ -18,6 +18,7 @@ class Application_Area_Summary(Application_Area_SummaryTemplate):
     dfinuse = anvil.server.call('groupinuse')
    
     self.repeating_panel_2.items = dfinuse
+    anvil.server.call('groupinsinleapparea')
 
   def return_to_search_button_click(self, **event_args):
     """This method is called when the button is clicked"""

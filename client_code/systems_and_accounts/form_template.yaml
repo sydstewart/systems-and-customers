@@ -220,5 +220,5 @@ components:
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
     name: stats_button
-    layout_properties: {grid_position: 'WZTOLS,ZVPTHS'}
+    layout_properties: {grid_position: 'SYPYBL,HKJIRJ'}
     event_bindings: {click: stats_button_click}
