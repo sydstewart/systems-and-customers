@@ -8,6 +8,9 @@ services:
 - source: /runtime/services/tables.yml
   client_config: {}
   server_config: {auto_create_missing_columns: false}
+- source: /runtime/services/google.yml
+  client_config: {}
+  server_config: {enc_delegation_refresh_token: m9p0l7IxXfOizm75u+k+jczE+TJEYO6B73wvmY+ia7UpGY86+XIFglz1kSqWPzeoQlOL2OU914gJ0rOnDipb852bX4khhcVGoLvnvwubDGglhvgN9/2anW6CanoPeh6NgpJqnTwZTyIzgw9pV1YTW44AOiVERPBj8eHQHhEuUsAit2h+wpD1s4gyoaYtOCLSVB3KR02CjpPIkJ3OLaELMO0UbRgay47heS8rNbtXnv4fNRg0CBSNe9wrZS2I/Ptt/z4n1cHCscRyNkXyacS6jAVhSuPp1YX9/rE10Jd5rMIYZ9oSG64XqfsefusfMQ==}
 startup: {type: form, module: systems_and_accounts}
 package_name: Systems_and_Customers
 allow_embedding: false

@@ -1,5 +1,8 @@
 from ._anvil_designer import MapTemplate
 from anvil import *
+import plotly.graph_objects as go
+import anvil.google.auth, anvil.google.drive
+from anvil.google.drive import app_files
 import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
@@ -11,8 +14,4 @@ class Map(MapTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
-    results = GoogleMap.geocode(address="Cambridge, UK")
-
-    m = Marker(position=results[0].geometry.location)
-    map.add_component(m)
-  
+    self.plot_1.figure = anvil.server.call('get_maps')

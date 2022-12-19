@@ -236,5 +236,5 @@ components:
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
     name: map_button
-    layout_properties: {grid_position: 'NVUBMY,SFILZS'}
+    layout_properties: {grid_position: 'NPNCVW,LOPSLE'}
     event_bindings: {click: map_button_click}
