@@ -87,6 +87,18 @@ def groupinsinleapparea():
 #   singleapps = [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
   singleapps = app_tables.application_area.search()
   for r  in singleapps:
-     print((r['application_area']))
-    apparea = 
-     self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like ('%Anticoagulation%'))
+#      print((r['application_area']))
+     apparea1 = r['application_area']
+     apparea2 = ('%' + apparea1 + '%')
+#      print(apparea1)
+     supported_products = app_tables.suppported_products.search(CFApplicationArea = q.like (apparea2))
+     no_of_systems = len(supported_products)
+     df3 = pd.DataFrame()
+     new_row = {'Application_Area': apparea1, 'Count':no_of_systems}
+     print(new_row)
+     df3 = df3.append(new_row, ignore_index=True)
+#      dicts = [{'CFApplicationArea': r['CFApplicationArea'], 'Name': r['Name'], 'Account': r['Account'], 'InUse':r['InUseStatus'], 'Region':r['Location_c']}
+#             for r in supported_products ]
+ 
+  print(df3)  
+  dictssingleapp = df3.to_dict(orient='records')

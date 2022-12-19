@@ -82,6 +82,36 @@ components:
         properties: {spacing_above: none, spacing_below: none, item_template: Application_Area_Summary.RowTemplate5}
         name: repeating_panel_2
         layout_properties: {}
+  - type: ColumnPanel
+    properties: {role: card, col_widths: '{}'}
+    name: card_3
+    layout_properties: {grid_position: 'EWZYRK,XOGHAZ'}
+    components:
+    - type: DataGrid
+      properties:
+        role: null
+        columns:
+        - {id: OGTAGF, title: Aplication Area, data_key: Application_Area, width: 178,
+          expand: false}
+        - {id: VWJYSY, title: Count, data_key: Count, width: 70, expand: false}
+        auto_header: true
+        tooltip: ''
+        border: ''
+        foreground: ''
+        rows_per_page: 20
+        visible: true
+        wrap_on: never
+        show_page_controls: true
+        spacing_above: small
+        spacing_below: small
+        background: ''
+      name: data_grid_3
+      layout_properties: {grid_position: 'DHIRQO,VGIHTM'}
+      components:
+      - type: RepeatingPanel
+        properties: {spacing_above: none, spacing_below: none, item_template: Application_Area_Summary.RowTemplate6}
+        name: repeating_panel_3
+        layout_properties: {}
 - type: FlowPanel
   properties: {}
   name: navbar_links
