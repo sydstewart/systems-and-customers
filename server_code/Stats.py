@@ -21,7 +21,7 @@ import pandas as pd
 @anvil.server.callable
 def groupareas():
 # Get an iterable object with all the rows in my_table
-    all_records = app_tables.suppported_products.search()
+    all_records = app_tables.suppported_products.search(InUseStatus='Live')
     # For each row, pull out only the data we want to put into pandas
     dicts = [{'CFApplicationArea': r['CFApplicationArea'], 'Name': r['Name'], 'Account': r['Account'], 'InUse':r['InUseStatus'], 'Region':r['Location_c']}
             for r in all_records]
@@ -86,19 +86,30 @@ def groupinuse():
 def groupinsinleapparea():  
 #   singleapps = [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
   singleapps = app_tables.application_area.search()
+  df3 = pd.DataFrame() 
   for r  in singleapps:
 #      print((r['application_area']))
      apparea1 = r['application_area']
      apparea2 = ('%' + apparea1 + '%')
 #      print(apparea1)
-     supported_products = app_tables.suppported_products.search(CFApplicationArea = q.like (apparea2))
+     supported_products = app_tables.suppported_products.search(CFApplicationArea = q.like (apparea2),InUseStatus='Live')
      no_of_systems = len(supported_products)
-     df3 = pd.DataFrame()
+     
      new_row = {'Application_Area': apparea1, 'Count':no_of_systems}
-     print(new_row)
+   
      df3 = df3.append(new_row, ignore_index=True)
-#      dicts = [{'CFApplicationArea': r['CFApplicationArea'], 'Name': r['Name'], 'Account': r['Account'], 'InUse':r['InUseStatus'], 'Region':r['Location_c']}
-#             for r in supported_products ]
- 
-  print(df3)  
+     
+  print(df3)
+  df3.sort_values(by=['Count'], ascending=False,inplace = True)
+  df3['sumsystems'] = df3['Count'].sum()
+  df3['%'] =(df3['Count'] * 100)/df3['sumsystems']
+  df3['%'] = df3['%'].map('{:,.1f}'.format)    
+  df3['%'] = df3['%'].astype(float)
+  df3['Count'] = df3['Count'].astype(int)
+  df3.loc['Total', 'Count']= df3['Count'].sum()
+  df3.loc['Total', '%']= df3['%'].sum()
+  df3 = df3.fillna("")
+  
   dictssingleapp = df3.to_dict(orient='records')
+  print(dictssingleapp)
+  return dictssingleapp

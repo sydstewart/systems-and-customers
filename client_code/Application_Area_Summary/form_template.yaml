@@ -15,9 +15,9 @@ components:
     components:
     - type: Label
       properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-        visible: true, text: Regional Breakdown, font_size: null, font: '', spacing_above: small,
-        icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
-        underline: false, icon: ''}
+        visible: true, text: Regional Breakdown (Live), font_size: null, font: '',
+        spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '', bold: true, underline: false, icon: ''}
       name: label_1
       layout_properties: {grid_position: 'ZEIZYG,YOHTWN'}
     - type: DataGrid
@@ -62,8 +62,8 @@ components:
         role: null
         columns:
         - {id: PXBKDR, title: In Use Status, data_key: InUse, width: 206, expand: false}
-        - {id: YJUWED, title: Count, data_key: count, width: 56, expand: false}
-        - {id: QJVUZK, title: '%', data_key: '%', width: 40, expand: false}
+        - {id: YJUWED, title: Count, data_key: count, width: 64, expand: false}
+        - {id: QJVUZK, title: '%', data_key: '%', width: 41, expand: false}
         auto_header: true
         tooltip: ''
         border: ''
@@ -76,7 +76,7 @@ components:
         spacing_below: small
         background: ''
       name: data_grid_2
-      layout_properties: {grid_position: 'WLFZBO,VLTVIC'}
+      layout_properties: {grid_position: 'TCUJTA,HPERQI'}
       components:
       - type: RepeatingPanel
         properties: {spacing_above: none, spacing_below: none, item_template: Application_Area_Summary.RowTemplate5}
@@ -85,8 +85,15 @@ components:
   - type: ColumnPanel
     properties: {role: card, col_widths: '{}'}
     name: card_3
-    layout_properties: {grid_position: 'EWZYRK,XOGHAZ'}
+    layout_properties: {grid_position: 'IAKUTX,TLDLGI'}
     components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Application Breakdown (Live), font_size: null, font: '',
+        spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '', bold: true, underline: false, icon: ''}
+      name: label_3
+      layout_properties: {grid_position: 'VDPOXA,QQJBVX'}
     - type: DataGrid
       properties:
         role: null
@@ -94,6 +101,7 @@ components:
         - {id: OGTAGF, title: Aplication Area, data_key: Application_Area, width: 178,
           expand: false}
         - {id: VWJYSY, title: Count, data_key: Count, width: 70, expand: false}
+        - {id: YMJZXB, title: '%', data_key: '%'}
         auto_header: true
         tooltip: ''
         border: ''
@@ -106,7 +114,7 @@ components:
         spacing_below: small
         background: ''
       name: data_grid_3
-      layout_properties: {grid_position: 'DHIRQO,VGIHTM'}
+      layout_properties: {grid_position: 'YQIRMA,BILGNF'}
       components:
       - type: RepeatingPanel
         properties: {spacing_above: none, spacing_below: none, item_template: Application_Area_Summary.RowTemplate6}
