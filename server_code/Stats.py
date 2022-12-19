@@ -113,3 +113,72 @@ def groupinsinleapparea():
   dictssingleapp = df3.to_dict(orient='records')
   print(dictssingleapp)
   return dictssingleapp
+
+@anvil.server.callable
+def appgrouptype():  
+  app_group = list(set([(r['app_group']) for r in app_tables.application_area.search()]))
+  print(app_group)
+  df3 = pd.DataFrame()
+  for r in app_group:
+     print (r)
+     appareas = app_tables.application_area.search(app_group = r)
+     
+     for row in appareas:
+            apparea1 = row['application_area']
+            print(apparea1)
+            apparea2 = ('%' + apparea1 + '%')
+            supported_products = app_tables.suppported_products.search(CFApplicationArea = q.like (apparea2),InUseStatus='Live')
+            no_of_systems = len(supported_products)
+            new_row = {'App_Group': row['app_group'], 'Count':no_of_systems}
+            df3 = df3.append(new_row, ignore_index=True)
+     
+  print(df3)
+  df3 = df3.groupby('App_Group')['Count'].sum() \
+                             .reset_index(name='Count') \
+                             .sort_values(['Count'], ascending=False)
+  print(df3)
+#   df3.sort_values(by=['Count'], ascending=False,inplace = True)
+  df3['sumsystems'] = df3['Count'].sum()
+  df3['%'] =(df3['Count'] * 100)/df3['sumsystems']
+  df3['%'] = df3['%'].map('{:,.1f}'.format)    
+  df3['%'] = df3['%'].astype(float)
+  df3['Count'] = df3['Count'].astype(int)
+  df3.loc['Total', 'Count']= df3['Count'].sum()
+  df3.loc['Total', '%']= df3['%'].sum()
+  df3 = df3.fillna("")
+  print(df3)
+  dictssingleapp_group = df3.to_dict(orient='records')
+  print(dictssingleapp_group)
+  return dictssingleapp_group
+#   dictssingleapp = df3.to_dict(orient='records')
+#   print(dictssingleapp)
+#   return dictssingleapp
+#   app_group_type = 
+#   singleapps = app_tables.application_area.search()
+#   df3 = pd.DataFrame() 
+#   for r  in singleapps:
+# #      print((r['application_area']))
+#      apparea1 = r['application_area']
+#      apparea2 = ('%' + apparea1 + '%')
+# #      print(apparea1)
+#      supported_products = app_tables.suppported_products.search(CFApplicationArea = q.like (apparea2),InUseStatus='Live')
+#      no_of_systems = len(supported_products)
+     
+#      new_row = {'Application_Area': apparea1, 'Count':no_of_systems}
+   
+#      df3 = df3.append(new_row, ignore_index=True)
+     
+#   print(df3)
+#   df3.sort_values(by=['Count'], ascending=False,inplace = True)
+#   df3['sumsystems'] = df3['Count'].sum()
+#   df3['%'] =(df3['Count'] * 100)/df3['sumsystems']
+#   df3['%'] = df3['%'].map('{:,.1f}'.format)    
+#   df3['%'] = df3['%'].astype(float)
+#   df3['Count'] = df3['Count'].astype(int)
+#   df3.loc['Total', 'Count']= df3['Count'].sum()
+#   df3.loc['Total', '%']= df3['%'].sum()
+#   df3 = df3.fillna("")
+  
+#   dictssingleapp = df3.to_dict(orient='records')
+#   print(dictssingleapp)
+#   return dictssingleapp

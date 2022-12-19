@@ -1,0 +1,23 @@
+is_package: true
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - type: ColumnPanel
+    properties: {col_widths: '{}'}
+    name: column_panel_1
+    layout_properties: {grid_position: 'YYWFFK,AMOEVZ'}
+    components:
+    - type: GoogleMap
+      properties: {height: 599}
+      name: map_1
+      layout_properties: {grid_position: 'TJIMOG,HEGMYP'}
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}

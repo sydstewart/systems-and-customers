@@ -169,6 +169,19 @@ class systems_and_accounts(systems_and_accountsTemplate):
     open_form('Application_Area_Summary')
     pass
 
+  def app_group_type_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+     
+    anvil.server.call('appgrouptype')
+    pass
+
+  def map_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Map')
+    pass
+
+
+
 
 
 

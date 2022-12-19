@@ -60,6 +60,9 @@ db_schema:
     - name: application_area
       admin_ui: {width: 200}
       type: string
+    - name: app_group
+      admin_ui: {width: 200}
+      type: string
 secrets:
   crm pass:
     value: {? '' : AtST9syC4yNvFXDbvAIW/E194h6TVazhOazfNxwlHqshwf86X3qz4v/r2FMiU0FmvNknYXGz6G5zKZbcGW6ArBUgguvf1593pWYqgS0fpZNatj2awgyk5bdRwykMTHRr2odl4mUPS+G0LQ==}

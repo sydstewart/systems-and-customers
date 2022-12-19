@@ -34,7 +34,7 @@ components:
         rows_per_page: 20
         visible: true
         wrap_on: never
-        show_page_controls: true
+        show_page_controls: false
         spacing_above: small
         spacing_below: small
         background: ''
@@ -71,7 +71,7 @@ components:
         rows_per_page: 20
         visible: true
         wrap_on: never
-        show_page_controls: true
+        show_page_controls: false
         spacing_above: small
         spacing_below: small
         background: ''
@@ -109,7 +109,7 @@ components:
         rows_per_page: 20
         visible: true
         wrap_on: never
-        show_page_controls: true
+        show_page_controls: false
         spacing_above: small
         spacing_below: small
         background: ''
@@ -119,6 +119,43 @@ components:
       - type: RepeatingPanel
         properties: {spacing_above: none, spacing_below: none, item_template: Application_Area_Summary.RowTemplate6}
         name: repeating_panel_3
+        layout_properties: {}
+  - type: ColumnPanel
+    properties: {role: card, col_widths: '{}'}
+    name: card_4
+    layout_properties: {grid_position: 'IAKUTX,OHUSCE'}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: App Group Breakdown (Live), font_size: null, font: '',
+        spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '', bold: true, underline: false, icon: ''}
+      name: label_4
+      layout_properties: {grid_position: 'KVZEGP,GCGLSS'}
+    - type: DataGrid
+      properties:
+        role: null
+        columns:
+        - {id: RGHZJC, title: App Group, data_key: App_Group}
+        - {id: MTVVQC, title: Count, data_key: Count}
+        - {id: EIVQGP, title: '%', data_key: '%'}
+        auto_header: true
+        tooltip: ''
+        border: ''
+        foreground: ''
+        rows_per_page: 20
+        visible: true
+        wrap_on: never
+        show_page_controls: false
+        spacing_above: small
+        spacing_below: small
+        background: ''
+      name: data_grid_4
+      layout_properties: {grid_position: 'RRUUDF,EKGDNT'}
+      components:
+      - type: RepeatingPanel
+        properties: {spacing_above: none, spacing_below: none, item_template: Application_Area_Summary.RowTemplate7}
+        name: repeating_panel_4
         layout_properties: {}
 - type: FlowPanel
   properties: {}

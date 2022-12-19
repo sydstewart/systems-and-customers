@@ -19,7 +19,10 @@ class Application_Area_Summary(Application_Area_SummaryTemplate):
     self.repeating_panel_2.items = dfinuse
     
     dictssingleapp  = anvil.server.call('groupinsinleapparea')
-    self.repeating_panel_3.items = dictssingleapp 
+    self.repeating_panel_3.items = dictssingleapp
+    
+    dictssingleapp_group  = anvil.server.call('appgrouptype')
+    self.repeating_panel_4.items = dictssingleapp_group
     
   def return_to_search_button_click(self, **event_args):
     """This method is called when the button is clicked"""
