@@ -13,7 +13,8 @@ class Map_Location_Search(Map_Location_SearchTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
-
+    self.search_name.text = 'London'
+    self.location_name.text = 'London'
 
   def enable_search_btn(self, **event_args):
     """This method is called when the button is clicked"""
@@ -21,9 +22,14 @@ class Map_Location_Search(Map_Location_SearchTemplate):
     pass
 
   def search_for_location(self, **event_args):
-    results = GoogleMap.geocode(address=self.search_name.text)
-    result = results[0].geometry.location
-    print(result)
-    pass
+#     results = GoogleMap.geocode(address=self.search_name.text)
+#     print(results)
+#     result = results[0].geometry.location
+#     print(result)
+      results = GoogleMap.geocode(address="Cambridge, UK")
+      
+      m = Marker(position=results[0].geometry.location)
+      map.add_component(m)
+         
 
 
