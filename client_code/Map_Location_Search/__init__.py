@@ -13,4 +13,15 @@ class Map_Location_Search(Map_Location_SearchTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
-    
+
+
+  def enable_search_btn(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.search_btn.enabled = self.search_name.text != "" and self.location_name.text != ""
+    pass
+
+  def search_for_location(self, **event_args):
+    results = GoogleMap()
+    pass
+
+
