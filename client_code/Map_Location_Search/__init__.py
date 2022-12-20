@@ -21,7 +21,9 @@ class Map_Location_Search(Map_Location_SearchTemplate):
     pass
 
   def search_for_location(self, **event_args):
-    results = GoogleMap()
+    results = GoogleMap.geocode(address=self.search_name.text)
+    result = results[0].geometry.location
+    print(result)
     pass
 
 
