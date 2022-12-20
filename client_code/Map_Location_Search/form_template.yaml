@@ -1,0 +1,79 @@
+is_package: true
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{"UUBZXA":15,"KNNABJ":35,"LOQCZS":10}'}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - type: ColumnPanel
+    properties: {col_widths: '{"VCQUPP":15,"GIDRVB":45}'}
+    name: column_panel_1
+    layout_properties: {grid_position: 'BZWSVV,QYVWZP'}
+    components:
+    - type: Label
+      properties: {role: subheading, align: right, tooltip: '', border: '', foreground: '',
+        visible: true, text: Location Name, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_1
+      layout_properties: {grid_position: 'XMNCIG,VCQUPP', full_width_row: true}
+    - type: TextBox
+      properties: {}
+      name: text_box_1
+      layout_properties: {grid_position: 'XMNCIG,GIDRVB', full_width_row: true}
+  - type: Label
+    properties: {role: subheading, align: right, tooltip: '', border: '', foreground: '',
+      visible: true, text: Search Name, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2
+    layout_properties: {grid_position: 'TTVTXT,UUBZXA', full_width_row: true}
+  - type: TextBox
+    properties: {}
+    name: text_box_2
+    layout_properties: {grid_position: 'TTVTXT,KNNABJ', full_width_row: true}
+  - type: Button
+    properties: {role: secondary-color, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Search, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: 'fa:search'}
+    name: button_1
+    layout_properties: {grid_position: 'TTVTXT,LOQCZS', full_width_row: true}
+  - type: GoogleMap
+    properties: {scale_control: true, draggable_cursor: auto, heading: 0, fullscreen_control: true,
+      dragging_cursor: auto, disable_double_click_zoom: false, height: 664, zoom: 2,
+      map_type_control: true, gesture_handling: auto, street_view_control: true, visible: true,
+      scroll_wheel: true, max_zoom: 18, draggable: true, min_zoom: 0, spacing_above: small,
+      keyboard_shortcuts: true, spacing_below: small, background_color: '', rotate_control: true,
+      zoom_control: true, disable_default_ui: false, clickable_icons: true}
+    name: map_1
+    layout_properties: {grid_position: 'XPOQIE,RTLXXZ', full_width_row: true}
+  - type: Button
+    properties: {role: primary-color, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Add Location, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: button_2
+    layout_properties: {grid_position: 'UTHOVY,YZTMOP'}
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}
+  components:
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Go to Map, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: 'fa:map'}
+    name: label_3
+    layout_properties: {}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: Location Search, font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_4
+  layout_properties: {slot: title}

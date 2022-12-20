@@ -8,16 +8,26 @@ components:
   name: content_panel
   layout_properties: {slot: default}
   components:
-  - type: ColumnPanel
-    properties: {col_widths: '{}'}
-    name: column_panel_1
-    layout_properties: {grid_position: 'YYWFFK,AMOEVZ'}
-    components: []
-  - type: Plot
-    properties: {}
-    name: plot_1
-    layout_properties: {grid_position: 'DTBGKM,QDTCAF'}
+  - type: GoogleMap
+    properties: {height: 519}
+    name: map_1
+    layout_properties: {grid_position: 'YCYHEA,ALBERS'}
 - type: FlowPanel
   properties: {}
   name: navbar_links
   layout_properties: {slot: nav-right}
+  components:
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Add Locations, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: 'fa:plus'}
+    name: label_2
+    layout_properties: {}
+- type: Label
+  properties: {role: headline, align: left, tooltip: '', border: '', foreground: '',
+    visible: true, text: Map of Systems, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: label_1
+  layout_properties: {slot: title}
