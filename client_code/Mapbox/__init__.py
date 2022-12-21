@@ -38,7 +38,7 @@ class Mapbox(MapboxTemplate):
                                     'marker': False}) #we've already added a marker
     self.mapbox.addControl(self.geocoder)
 #         #when the 'result' event is triggered, call self.move_marker
-    self.geocoder.on('result', self.move_marker)
+    self.geocoder.on(result, self.move_marker)
     self.marker = mapboxgl.Marker({'color': '#5a3fc0', 'draggable': True})
     self.marker.setLngLat([result]).addTo(self.mapbox)
 
