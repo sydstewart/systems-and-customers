@@ -16,7 +16,10 @@ import geopandas as gpd
 # Here is an example - you can replace it with your own:
 #
 @anvil.server.callable
-def get_maps():
+def save_geo(placename, coordinates):
+    app_tables.geography.add_row(placename = placename, coordinates=str(coordinates))
 
-#
-
+@anvil.server.callable
+def get_markers():
+    locations = app_tables.geography.search()
+    return  locations
