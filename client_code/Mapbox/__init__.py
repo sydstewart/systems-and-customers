@@ -39,7 +39,7 @@ class Mapbox(MapboxTemplate):
     self.geocoder = MapboxGeocoder({'accessToken': mapboxgl.accessToken,
                                     'marker': False}) #we've already added a marker
     self.mapbox.addControl(self.geocoder)
-
+     
 #     self.mapbox.addControl(self.)
  
     self.geocoder.on('result', self.move_marker)
