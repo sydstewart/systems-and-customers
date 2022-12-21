@@ -43,10 +43,11 @@ class Mapbox(MapboxTemplate):
 #     self.mapbox.addControl(self.)
  
     self.geocoder.on('result', self.move_marker)
-
+   
   def move_marker(self, result):
     #get the [longitude, latitude] coordinates from the JS object returned from 'result'
     lnglat = result['result']['geometry']['coordinates']
+    print(lnglat)
     self.marker.setLngLat(lnglat)
 
 

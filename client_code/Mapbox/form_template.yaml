@@ -8,6 +8,14 @@ components:
   name: content_panel
   layout_properties: {slot: default}
   components:
+  - type: Label
+    properties: {}
+    name: label_1
+    layout_properties: {grid_position: 'UFVQXD,VHSVRF'}
+  - type: TextBox
+    properties: {}
+    name: text_box_1
+    layout_properties: {grid_position: 'UFVQXD,XLXWMP'}
   - type: Spacer
     properties: {visible: true, spacing_above: small, spacing_below: small, height: 584,
       tooltip: ''}
