@@ -9,9 +9,10 @@ components:
   layout_properties: {slot: default}
   components:
   - type: Spacer
-    properties: {height: 486}
+    properties: {visible: true, spacing_above: small, spacing_below: small, height: 584,
+      tooltip: ''}
     name: mapbox_1
-    layout_properties: {grid_position: 'QDSDEY,WVHEWZ'}
+    layout_properties: {grid_position: 'QDSDEY,WVHEWZ', full_width_row: true}
     event_bindings: {show: mapbox_1_show}
 - type: FlowPanel
   properties: {}
