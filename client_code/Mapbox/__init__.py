@@ -31,7 +31,7 @@ class Mapbox(MapboxTemplate):
                                 'style': 'mapbox://styles/mapbox/streets-v11', #use the standard Mapbox style
                                 'center': [0.1218, 52.2053], #center on Cambridge
                                 'zoom': 11})
-    
+    self.mapbox.addControl(mapboxgl.NavigationControl());
     self.marker = mapboxgl.Marker({'color': '#5a3fc0', 'draggable': True})
     self.marker.setLngLat([0.1218, 52.2053]).addTo(self.mapbox)
     locations = anvil.server.call('get_markers')
