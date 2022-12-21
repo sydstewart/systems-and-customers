@@ -17,7 +17,7 @@ class Mapbox(MapboxTemplate):
     self.init_components(**properties)
     self.token  = "pk.eyJ1Ijoic3lkbmV5c3Rld2FydCIsImEiOiJjbGJ4aW10YzIwbjRsM3FwMzFtbmhrZ2I5In0.VOstRTDf2WwCOsCoB_VpxA"
     # Any code you write here will run before the form opens.
-    anvil.server.call('get_markers')
+#     anvil.server.call('get_markers')
 
   def mapbox_1_show(self, **event_args):
     """This method is called when the Spacer is shown on the screen"""
@@ -34,13 +34,16 @@ class Mapbox(MapboxTemplate):
     self.mapbox.addControl(mapboxgl.NavigationControl());
     self.marker = mapboxgl.Marker({'color': '#5a3fc0', 'draggable': True})
     self.marker.setLngLat([0.1218, 52.2053]).addTo(self.mapbox)
+    
     locations = anvil.server.call('get_markers')
     for location in locations:
         print(location['coordinates'])
         print(location['placename'])
-        lnglat = str(location['coordinates'])
+        lnglat = location['coordinates']
         print(lnglat)
+#         lnglat = [-0.969651, 51.456659]
         self.marker.setLngLat(lnglat).addTo(self.mapbox)
+   
         
     self.geocoder = MapboxGeocoder({'accessToken': mapboxgl.accessToken,
                                     'marker': False}) #we've already added a marker
