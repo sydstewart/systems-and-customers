@@ -40,7 +40,7 @@ class Mapbox(MapboxTemplate):
                                     'marker': False}) #we've already added a marker
     self.mapbox.addControl(self.geocoder)
 
-    self.mapbox.addControl(self.)
+#     self.mapbox.addControl(self.)
  
     self.geocoder.on('result', self.move_marker)
 
