@@ -31,27 +31,23 @@ class Mapbox(MapboxTemplate):
                                 'style': 'mapbox://styles/mapbox/streets-v11', #use the standard Mapbox style
                                 'center': [0.1218, 52.2053], #center on Cambridge
                                 'zoom': 11})
+    
     self.marker = mapboxgl.Marker({'color': '#5a3fc0', 'draggable': True})
     self.marker.setLngLat([0.1218, 52.2053]).addTo(self.mapbox)
     
+        
     self.geocoder = MapboxGeocoder({'accessToken': mapboxgl.accessToken,
                                     'marker': False}) #we've already added a marker
     self.mapbox.addControl(self.geocoder)
-#         #when the 'result' event is triggered, call self.move_marker
-    self.geocoder.on(result, self.move_marker)
-    self.marker = mapboxgl.Marker({'color': '#5a3fc0', 'draggable': True})
-    self.marker.setLngLat([result]).addTo(self.mapbox)
 
-#     def move_marker(self, result):
-#         #get the [longitude, latitude] coordinates from the JS object returned from 'result'
-#         lnglat = result['result']['geometry']['coordinates']
-#         self.marker.setLngLat(lnglat)
-#         pass
-      
-#     self.geocoder.on('result', self.move_marker)
-
+    self.mapbox.addControl(self.)
  
+    self.geocoder.on('result', self.move_marker)
 
+  def move_marker(self, result):
+    #get the [longitude, latitude] coordinates from the JS object returned from 'result'
+    lnglat = result['result']['geometry']['coordinates']
+    self.marker.setLngLat(lnglat)
 
 
 
