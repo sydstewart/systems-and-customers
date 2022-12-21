@@ -1,0 +1,19 @@
+is_package: true
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - type: Spacer
+    properties: {height: 486}
+    name: mapbox_1
+    layout_properties: {grid_position: 'QDSDEY,WVHEWZ'}
+    event_bindings: {show: mapbox_1_show}
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}
