@@ -9,18 +9,11 @@ import pymysql
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from datetime import datetime, time , date , timedelta
-# This is a server module. It runs on the Anvil server,
-# rather than in the user's browser.
-#
-# To allow anvil.server.call() to call functions here, we mark
-# them with @anvil.server.callable.
-# Here is an example - you can replace it with your own:
-#
-# @anvil.server.callable
-# def say_hello(name):
-#   print("Hello, " + name + "!")
-#   return 42
-#
+
+
+
+
+
 def connect():
   connection = pymysql.connect(host='51.141.236.29',
                                port=3306,

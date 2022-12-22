@@ -35,17 +35,13 @@ class Map_Location_Search(Map_Location_SearchTemplate):
     self.add_location_btn.enabled = True
     self.latitude = result.lat(marker)
     self.longitude = result.lng(result)
-#       results = GoogleMap.geocode(address="Cambridge, UK")
-#     map = GoogleMap()
-#       self.map_1.
-#     map.center = GoogleMap.LatLng(52.2053, 0.1218)
-#     map.zoom = 13
-#     marker = GoogleMap.Marker(
-#       animation=GoogleMap.Animation.DROP,
-#       position=GoogleMap.LatLng(52.2053, 0.1218)
-#     )
-    
-#     map.add_component(marker)
+
          
+
+  def add_location_btn_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    anvil.server.call('add_location',self.location_name.text.self.latitude ,self.longitude)
+    pass
+
 
 

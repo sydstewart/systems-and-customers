@@ -78,6 +78,20 @@ db_schema:
     - name: coordinates
       admin_ui: {width: 386.011364}
       type: string
+  location:
+    title: Location
+    client: none
+    server: full
+    columns:
+    - name: location_name
+      admin_ui: {width: 200}
+      type: string
+    - name: latitude
+      admin_ui: {width: 200}
+      type: number
+    - name: longitude
+      admin_ui: {width: 200}
+      type: number
 secrets:
   crm pass:
     value: {? '' : AtST9syC4yNvFXDbvAIW/E194h6TVazhOazfNxwlHqshwf86X3qz4v/r2FMiU0FmvNknYXGz6G5zKZbcGW6ArBUgguvf1593pWYqgS0fpZNatj2awgyk5bdRwykMTHRr2odl4mUPS+G0LQ==}

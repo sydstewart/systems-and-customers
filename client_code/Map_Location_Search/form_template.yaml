@@ -71,6 +71,7 @@ components:
       background: '', bold: false, underline: false, icon: ''}
     name: add_location_btn
     layout_properties: {grid_position: 'UTHOVY,YZTMOP'}
+    event_bindings: {click: add_location_btn_click}
 - type: FlowPanel
   properties: {}
   name: navbar_links
