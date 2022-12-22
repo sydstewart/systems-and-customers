@@ -77,13 +77,14 @@ components:
   name: navbar_links
   layout_properties: {slot: nav-right}
   components:
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Go to Map, font_size: null, font: '', spacing_above: small,
+  - type: Button
+    properties: {role: primary-color, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Go To map, font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: 'fa:map'}
-    name: label_3
+    name: go_to_map_btn
     layout_properties: {}
+    event_bindings: {click: go_to_map_btn_click}
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
     text: Location Search, font_size: null, font: '', spacing_above: small, icon_align: left,

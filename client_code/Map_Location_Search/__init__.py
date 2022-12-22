@@ -40,8 +40,15 @@ class Map_Location_Search(Map_Location_SearchTemplate):
 
   def add_location_btn_click(self, **event_args):
     """This method is called when the button is clicked"""
-    anvil.server.call('add_location',self.location_name.text.self.latitude ,self.longitude)
+    anvil.server.call('add_location',self.location_name.text,self.latitude ,self.longitude)
+    open_form('Map')
     pass
+
+  def go_to_map_btn_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Map')
+    pass
+
 
 
 
