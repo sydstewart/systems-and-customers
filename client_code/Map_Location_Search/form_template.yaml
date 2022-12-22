@@ -57,19 +57,19 @@ components:
       event_bindings: {click: search_for_location}
   - type: GoogleMap
     properties: {scale_control: true, draggable_cursor: auto, heading: 0, fullscreen_control: true,
-      dragging_cursor: auto, disable_double_click_zoom: false, height: 664, zoom: 2,
+      dragging_cursor: auto, disable_double_click_zoom: false, height: 488, zoom: 2,
       map_type_control: true, gesture_handling: auto, street_view_control: true, visible: true,
       scroll_wheel: true, max_zoom: 18, draggable: true, min_zoom: 0, spacing_above: small,
       keyboard_shortcuts: true, spacing_below: small, background_color: '', rotate_control: true,
       zoom_control: true, disable_default_ui: false, clickable_icons: true}
-    name: map_1
-    layout_properties: {grid_position: 'XPOQIE,XFQLYA', full_width_row: true}
+    name: map
+    layout_properties: {grid_position: 'TPAPBW,TQPAFE', full_width_row: true}
   - type: Button
-    properties: {role: primary-color, align: center, tooltip: '', border: '', enabled: true,
+    properties: {role: primary-color, align: center, tooltip: '', border: '', enabled: false,
       foreground: '', visible: true, text: Add Location, font_size: null, font: '',
       spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '', bold: false, underline: false, icon: ''}
-    name: button_2
+    name: add_location_btn
     layout_properties: {grid_position: 'UTHOVY,YZTMOP'}
 - type: FlowPanel
   properties: {}
