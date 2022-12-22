@@ -25,6 +25,8 @@ class Map_Location_Search(Map_Location_SearchTemplate):
   def search_for_location(self, **event_args):
     results = GoogleMap.geocode(address=self.search_name.text)
 #     print(results)
+    if not results:
+        Alert(' No Location found - Edit Search Text')
     result = results[0].geometry.location
 #     print(result)
     marker = GoogleMap.Marker(position=result)
