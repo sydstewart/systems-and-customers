@@ -26,10 +26,17 @@ class Map_Location_Search(Map_Location_SearchTemplate):
 #     print(results)
 #     result = results[0].geometry.location
 #     print(result)
-      results = GoogleMap.geocode(address="Cambridge, UK")
+#       results = GoogleMap.geocode(address="Cambridge, UK")
+      map = GoogleMap()
+#       self.map_1.
+      map.center = GoogleMap.LatLng(52.2053, 0.1218)
+      map.zoom = 13
+      marker = GoogleMap.Marker(
+        animation=GoogleMap.Animation.DROP,
+        position=GoogleMap.LatLng(52.2053, 0.1218)
+      )
       
-      m = Marker(position=results[0].geometry.location)
-      map.add_component(m)
+      map.add_component(marker)
          
 
 
