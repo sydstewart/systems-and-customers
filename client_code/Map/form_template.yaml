@@ -4,14 +4,70 @@ container:
   properties: {html: '@theme:standard-page.html'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{}'}
+  properties: {col_widths: '{"ZPVGIS":10,"HHLXDX":20,"YRXORZ":10,"KGVMYQ":20}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Application Area, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2
+    layout_properties: {grid_position: 'CGSTZY,ZPVGIS'}
+  - type: DropDown
+    properties:
+      role: null
+      align: full
+      tooltip: ''
+      placeholder: ''
+      border: ''
+      enabled: true
+      foreground: ''
+      items: []
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: true
+    name: app_area_dropdown
+    layout_properties: {grid_position: 'CGSTZY,HHLXDX'}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: In Use Status, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_3
+    layout_properties: {grid_position: 'CGSTZY,YRXORZ'}
+  - type: DropDown
+    properties: {}
+    name: In_Use_Status_dropdown
+    layout_properties: {grid_position: 'CGSTZY,KGVMYQ'}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Hits, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_4
+    layout_properties: {grid_position: 'FZXPNQ,CUETZE'}
+  - type: TextBox
+    properties: {}
+    name: hits_textbox
+    layout_properties: {grid_position: 'FZXPNQ,NQYCNR'}
   - type: GoogleMap
-    properties: {height: 519}
+    properties: {scale_control: true, draggable_cursor: auto, heading: 0, fullscreen_control: true,
+      dragging_cursor: auto, disable_double_click_zoom: false, height: 519, zoom: 5,
+      map_type_control: true, gesture_handling: auto, street_view_control: true, visible: true,
+      scroll_wheel: true, max_zoom: 18, draggable: true, min_zoom: 0, spacing_above: small,
+      keyboard_shortcuts: true, spacing_below: small, background_color: '', rotate_control: true,
+      zoom_control: true, disable_default_ui: false, clickable_icons: true}
     name: map
-    layout_properties: {grid_position: 'YCYHEA,ALBERS'}
+    layout_properties: {grid_position: 'RTOTFS,SJWAZC'}
 - type: FlowPanel
   properties: {}
   name: navbar_links

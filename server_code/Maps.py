@@ -23,5 +23,5 @@ def update_location(location_name, latitude, longitude):
 #   app_tables.suppported_products.add_row(Name=location_name,latitude=latitude,longitude=longitude)
   
 @anvil.server.callable
-def get_locations():
-  return app_tables.suppported_products.search()
+def get_locations(apparea):
+  return app_tables.suppported_products.search(CFApplicationArea=q.like(apparea))
