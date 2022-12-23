@@ -41,7 +41,7 @@ class Map(MapTemplate):
     """This method is called when an item is selected"""
 #     self.app_multi_select_drop_down.selected = None
 #     self.in_use_2_drop_down.selected_value = None
-    self.map = GoogleMap
+#     self.map = GoogleMap
     selectedapparea = self.app_area_dropdown.selected_value
     selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
 #     print(selectedapparea['application_area'])
