@@ -11,7 +11,7 @@ services:
 - source: /runtime/services/google.yml
   client_config: {api_key: AIzaSyCdOui-6dVdehOtABUzyQc84yEfb8JqNKM}
   server_config: {enc_delegation_refresh_token: m9p0l7IxXfOizm75u+k+jczE+TJEYO6B73wvmY+ia7UpGY86+XIFglz1kSqWPzeoQlOL2OU914gJ0rOnDipb852bX4khhcVGoLvnvwubDGglhvgN9/2anW6CanoPeh6NgpJqnTwZTyIzgw9pV1YTW44AOiVERPBj8eHQHhEuUsAit2h+wpD1s4gyoaYtOCLSVB3KR02CjpPIkJ3OLaELMO0UbRgay47heS8rNbtXnv4fNRg0CBSNe9wrZS2I/Ptt/z4n1cHCscRyNkXyacS6jAVhSuPp1YX9/rE10Jd5rMIYZ9oSG64XqfsefusfMQ==}
-startup: {type: form, module: Map}
+startup: {type: form, module: Map_Location_Search}
 package_name: Systems_and_Customers
 allow_embedding: false
 name: Systems and Customers
@@ -45,6 +45,12 @@ db_schema:
     - name: Location_c
       admin_ui: {width: 200}
       type: string
+    - name: longitude
+      admin_ui: {width: 200}
+      type: number
+    - name: latitude
+      admin_ui: {width: 200}
+      type: number
   last_date_refreshed:
     title: Last_Date_Refreshed
     client: full

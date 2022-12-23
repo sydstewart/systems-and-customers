@@ -21,7 +21,7 @@ class Map(MapTemplate):
       self.map.add_component(marker)
       
       marker.add_event_handler("click", self.marker_click)
-      self.markers[marker] = location['location_name']
+      self.markers[marker] = location['Name']
   print( 'got db entries')  
   def marker_click(self, sender, **event_args):
       i = GoogleMap.InfoWindow(content=Label(text=self.markers[sender]))

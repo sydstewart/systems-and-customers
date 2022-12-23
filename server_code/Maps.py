@@ -16,9 +16,12 @@ import geopandas as gpd
 # Here is an example - you can replace it with your own:
 #
 @anvil.server.callable
-def add_location(location_name, latitude, longitude):
-  app_tables.location.add_row(location_name=location_name,latitude=latitude,longitude=longitude)
+def update_location(location_name, latitude, longitude):
+  location = app_tables.suppported_products.get(Name= location_name)
+  location['latitude'] = latitude
+  location['longitude'] = longitude
+#   app_tables.suppported_products.add_row(Name=location_name,latitude=latitude,longitude=longitude)
   
 @anvil.server.callable
 def get_locations():
-  return app_tables.location.search()
+  return app_tables.suppported_products.search()

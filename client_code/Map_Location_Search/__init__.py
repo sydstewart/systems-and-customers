@@ -13,9 +13,11 @@ class Map_Location_Search(Map_Location_SearchTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
-    self.search_name.text = 'London'
-    self.location_name.text = 'London'
+#     self.search_name.text = 'London'
+#     self.location_name.text = 'London'
     self.latitude  = self.longitude = None
+    self.drop_down_1.items = applications =list({(r['Name']) for r in app_tables.suppported_products.search()})
+    
     
   def enable_search_btn(self, **event_args):
     """This method is called when the button is clicked"""
@@ -23,7 +25,8 @@ class Map_Location_Search(Map_Location_SearchTemplate):
     pass
 
   def search_for_location(self, **event_args):
-    results = GoogleMap.geocode(address=self.search_name.text)
+    
+    results = GoogleMap.geocode(address=self.location_name.text)
 #     print(results)
     if not results:
         Alert(' No Location found - Edit Search Text')
@@ -42,7 +45,7 @@ class Map_Location_Search(Map_Location_SearchTemplate):
 
   def add_location_btn_click(self, **event_args):
     """This method is called when the button is clicked"""
-    anvil.server.call('add_location',self.location_name.text,self.latitude ,self.longitude)
+    anvil.server.call('update_location',self.drop_down_1.selected_value,self.latitude ,self.longitude)
     open_form('Map')
     pass
 
@@ -50,6 +53,11 @@ class Map_Location_Search(Map_Location_SearchTemplate):
     """This method is called when the button is clicked"""
     open_form('Map')
     pass
+
+  def drop_down_1_change(self, **event_args):
+    self.location_name.text = self.drop_down_1.selected_value
+    pass
+
 
 
 
