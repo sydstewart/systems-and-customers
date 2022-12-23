@@ -16,7 +16,7 @@ class Map_Location_Search(Map_Location_SearchTemplate):
 #     self.search_name.text = 'London'
 #     self.location_name.text = 'London'
     self.latitude  = self.longitude = None
-    self.drop_down_1.items = applications =list({(r['Name']) for r in app_tables.suppported_products.search()})
+    self.drop_down_1.items = applications =list({(r['Name']) for r in app_tables.suppported_products.search(latitude = None)})
     
     
   def enable_search_btn(self, **event_args):
