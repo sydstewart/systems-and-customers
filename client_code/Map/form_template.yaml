@@ -4,7 +4,7 @@ container:
   properties: {html: '@theme:standard-page.html'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"ZPVGIS":10,"HHLXDX":20,"YRXORZ":10,"KGVMYQ":20}'}
+  properties: {col_widths: '{"ZPVGIS":10,"YRXORZ":10,"KGVMYQ":20}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
@@ -36,7 +36,8 @@ components:
       underline: false
       include_placeholder: true
     name: app_area_dropdown
-    layout_properties: {grid_position: 'CGSTZY,HHLXDX'}
+    layout_properties: {grid_position: 'CGSTZY,IYOLAZ'}
+    event_bindings: {change: app_area_dropdown_change}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: In Use Status, font_size: null, font: '', spacing_above: small,
