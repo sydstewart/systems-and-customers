@@ -21,6 +21,7 @@ components:
         - {id: SVPKIY, title: System, data_key: Name}
         - {id: DAQABA, title: Latitude, data_key: latitude}
         - {id: XDKBQD, title: Longitude, data_key: longitude}
+        - {id: FTDNAZ, title: In Use Status, data_key: InUseStatus}
         auto_header: true
         tooltip: ''
         border: ''

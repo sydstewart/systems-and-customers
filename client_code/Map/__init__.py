@@ -52,6 +52,7 @@ class Map(MapTemplate):
     if selectedapp is not None:
         selectedapp = ('%' + selectedapp['application_area']  + '%')
         locations = anvil.server.call('get_locations',selectedapp)
+   
     else:
         locations = anvil.server.call('get_all_locations')
     for location in locations:
@@ -149,5 +150,29 @@ class Map(MapTemplate):
     """This method is called when the button is clicked"""
     open_form('latLong')
     pass
+
+  def search_btn_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.map.clear()
+    selectedapp = self.app_area_dropdown.selected_value
+    selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
+    if selectedapp is not None:
+        selectedapp = ('%' + selectedapp['application_area']  + '%')
+        search_criteria = selectedapp
+        print(selectedapp)
+        
+    else:
+       search_criteria = None
+      
+    locations = anvil.server.call('get_locations',search_criteria)    
+    for location in locations:
+      position = GoogleMap.LatLng(location['latitude'], location['longitude'])
+      marker = GoogleMap.Marker(position=position)
+      self.map.add_component(marker)
+     
+      marker.add_event_handler("click", self.marker_click)
+      self.markers[marker] = location['Name']
+    pass
+
 
 
