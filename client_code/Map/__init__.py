@@ -24,14 +24,14 @@ class Map(MapTemplate):
 #     selectedapp = ('%' + 'Anticoagulation'  + '%')
 #     # Any code you write here will run before the form opens.
     locations = anvil.server.call('get_all_locations' )
-    
+    self.hits_textbox.text = len(locations) 
     for location in locations:
       position = GoogleMap.LatLng(location['latitude'], location['longitude'])
       marker = GoogleMap.Marker(position=position)
       self.map.add_component(marker)
      
       marker.add_event_handler("click", self.marker_click)
-      self.markers[marker] = location['Name']
+      self.markers[marker] = location['Name'] + ' ' + location['InUseStatus']
       
       
   print( 'got db entries')  
@@ -48,13 +48,14 @@ class Map(MapTemplate):
     
     self.map.clear()
     selectedapp = self.app_area_dropdown.selected_value
-   
+    selectedInUse = self.In_Use_Status_dropdown.selected_value
+    print(selectedInUse)
     if selectedapp is not None:
         selectedapp = ('%' + selectedapp['application_area']  + '%')
-        search_criteria = 'CFApplicationArea=q.like' + '(' +selectedapp + ')'
-        print (search_criteria)
-        locations = anvil.server.call('get_locations',search_criteria)
-   
+        print(selectedapp)
+        locations = anvil.server.call('get_locations',selectedapp)
+    elif selectedInUse is not None and selectedapp is not None:
+        locations = anvil.server.call('get_InUse_locations',selectedapp, selectedInUse)
     else:
         locations = anvil.server.call('get_all_locations')
     for location in locations:
@@ -63,8 +64,8 @@ class Map(MapTemplate):
       self.map.add_component(marker)
      
       marker.add_event_handler("click", self.marker_click)
-      self.markers[marker] = location['Name']
-      
+      self.markers[marker] = location['Name'] + ' ' + location['InUseStatus']
+    self.hits_textbox.text = len(locations) 
       
   print( 'got db entries')  
   def marker_click(self, sender, **event_args):
@@ -156,17 +157,20 @@ class Map(MapTemplate):
   def search_btn_click(self, **event_args):
     """This method is called when the button is clicked"""
     self.map.clear()
+    
     selectedapp = self.app_area_dropdown.selected_value
     selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
     if selectedapp is not None:
         selectedapp = ('%' + selectedapp['application_area']  + '%')
-        search_criteria = CFApplicationArea=q.like(selectedapp)
-        print(selectedapp)
+        locations = anvil.server.call('get_locations',selectedapp)
+    
+    else:
+        locations = anvil.server.call('get_all_locations')
         
-    elif selecttedinusestatus is not None:
-       search_criteria = CFApplicationArea=q.like(selectedapp)+ ',' +selecttedinusestatus
-       print(search_criteria)
-    locations = anvil.server.call('get_locations',search_criteria)    
+#     elif selecttedinusestatus is not None:
+#        search_criteria = CFApplicationArea=q.like(selectedapp)+ ',' +selecttedinusestatus
+#        print(search_criteria)
+#     locations = anvil.server.call('get_locations',search_criteria)    
     for location in locations:
       position = GoogleMap.LatLng(location['latitude'], location['longitude'])
       marker = GoogleMap.Marker(position=position)

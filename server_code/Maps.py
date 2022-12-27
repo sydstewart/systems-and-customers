@@ -23,9 +23,14 @@ def update_location(location_name, latitude, longitude):
 #   app_tables.suppported_products.add_row(Name=location_name,latitude=latitude,longitude=longitude)
   
 @anvil.server.callable
-def get_locations(search_criteria):
-  print(search_criteria)
-  return app_tables.suppported_products.search(search_criteria)
+def get_locations(selectedapp):
+   
+  return app_tables.suppported_products.search(CFApplicationArea=q.like(selectedapp))
+
+@anvil.server.callable
+def get_InUse_locations(selectedapp,selectedInUse):
+   
+  return app_tables.suppported_products.search(q.all_of(CFApplicationArea=q.like(selectedapp), InUseStatus= (selectedInUse)))
 
 @anvil.server.callable
 def get_all_locations():
