@@ -51,7 +51,9 @@ class Map(MapTemplate):
    
     if selectedapp is not None:
         selectedapp = ('%' + selectedapp['application_area']  + '%')
-        locations = anvil.server.call('get_locations',selectedapp)
+        search_criteria = 'CFApplicationArea=q.like' + '(' +selectedapp + ')'
+        print (search_criteria)
+        locations = anvil.server.call('get_locations',search_criteria)
    
     else:
         locations = anvil.server.call('get_all_locations')
@@ -158,12 +160,12 @@ class Map(MapTemplate):
     selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
     if selectedapp is not None:
         selectedapp = ('%' + selectedapp['application_area']  + '%')
-        search_criteria = selectedapp
+        search_criteria = CFApplicationArea=q.like(selectedapp)
         print(selectedapp)
         
-    else:
-       search_criteria = None
-      
+    elif selecttedinusestatus is not None:
+       search_criteria = CFApplicationArea=q.like(selectedapp)+ ',' +selecttedinusestatus
+       print(search_criteria)
     locations = anvil.server.call('get_locations',search_criteria)    
     for location in locations:
       position = GoogleMap.LatLng(location['latitude'], location['longitude'])
