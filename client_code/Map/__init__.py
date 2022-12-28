@@ -37,7 +37,7 @@ class Map(MapTemplate):
       self.markers[marker] = location['Name'] + ' ' + location['InUseStatus']
       
       
-  print( 'got db entries')  
+#   print( 'got db entries')  
   def marker_click(self, sender, **event_args):
       i = GoogleMap.InfoWindow(content=Label(text=self.markers[sender]))
       i.open(self.map, sender)
@@ -77,7 +77,7 @@ class Map(MapTemplate):
       marker.add_event_handler("click", self.marker_click)
       self.markers[marker] = location['Name'] + ' ' + location['InUseStatus']
       
-    print( 'got db entries')  
+#     print( 'got db entries')  
     def marker_click(self, sender, **event_args):
       i = GoogleMap.InfoWindow(content=Label(text=self.markers[sender]))
       i.open(self.map, sender)  
@@ -120,7 +120,7 @@ class Map(MapTemplate):
           marker.add_event_handler("click", self.marker_click)
           self.markers[marker] = location['Name'] + ' ' + location['InUseStatus']
           
-        print( 'got db entries')  
+#         print( 'got db entries')  
         def marker_click(self, sender, **event_args):
           i = GoogleMap.InfoWindow(content=Label(text=self.markers[sender]))
           i.open(self.map, sender)  
@@ -153,7 +153,7 @@ class Map(MapTemplate):
             marker.add_event_handler("click", self.marker_click)
             self.markers[marker] = location['Name'] + ' ' + location['InUseStatus']
             
-          print( 'got db entries')  
+#           print( 'got db entries')  
           def marker_click(self, sender, **event_args):
             i = GoogleMap.InfoWindow(content=Label(text=self.markers[sender]))
             i.open(self.map, sender)  
@@ -187,7 +187,7 @@ class Map(MapTemplate):
             marker.add_event_handler("click", self.marker_click)
             self.markers[marker] = location['Name'] + ' ' + location['InUseStatus']
             
-          print( 'got db entries')  
+#           print( 'got db entries')  
           def marker_click(self, sender, **event_args):
             i = GoogleMap.InfoWindow(content=Label(text=self.markers[sender]))
             i.open(self.map, sender)  
