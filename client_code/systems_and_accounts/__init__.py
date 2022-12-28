@@ -182,6 +182,12 @@ class systems_and_accounts(systems_and_accountsTemplate):
     open_form('Map')
     pass
 
+  def button_1_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Map')
+    pass
+
+
 
 
 
