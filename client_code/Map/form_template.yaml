@@ -4,7 +4,7 @@ container:
   properties: {html: '@theme:standard-page.html'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"DTFCKF":15,"XVLQSE":45}'}
+  properties: {col_widths: '{"SZVOMY":15,"RXSRQQ":45}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
@@ -13,7 +13,7 @@ components:
       wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"JJOYYN":25,"YJINTE":35}',
       spacing_below: small, background: ''}
     name: card_1
-    layout_properties: {grid_position: 'HVEKHC,DTFCKF BYFWCH,XELPOP', full_width_row: true}
+    layout_properties: {grid_position: 'KDAFFS,SZVOMY BYFWCH,XELPOP', full_width_row: true}
     components:
     - type: Label
       properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
@@ -78,7 +78,7 @@ components:
   - type: ColumnPanel
     properties: {role: card, col_widths: '{}'}
     name: card_2
-    layout_properties: {grid_position: 'HVEKHC,DTFCKF BMHLVC,YWXQEU'}
+    layout_properties: {grid_position: 'KDAFFS,SZVOMY BMHLVC,YWXQEU'}
     components:
     - type: Label
       properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
@@ -130,23 +130,23 @@ components:
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
     name: label_4
-    layout_properties: {grid_position: 'HVEKHC,DTFCKF GWWAEI,NSQJNG', full_width_row: true}
+    layout_properties: {grid_position: 'KDAFFS,SZVOMY GWWAEI,NSQJNG', full_width_row: true}
   - type: TextBox
     properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
       border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
       font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
       background: '', bold: true, underline: false}
     name: hits_textbox
-    layout_properties: {grid_position: 'HVEKHC,DTFCKF GWWAEI,BPPGQM', full_width_row: true}
+    layout_properties: {grid_position: 'KDAFFS,SZVOMY GWWAEI,BPPGQM', full_width_row: true}
   - type: GoogleMap
     properties: {scale_control: true, draggable_cursor: auto, heading: 0, fullscreen_control: true,
-      dragging_cursor: auto, disable_double_click_zoom: false, height: 570, zoom: 2,
+      dragging_cursor: auto, disable_double_click_zoom: false, height: 752, zoom: 2,
       map_type_control: true, gesture_handling: auto, street_view_control: true, visible: true,
       scroll_wheel: true, max_zoom: 18, draggable: true, min_zoom: 0, spacing_above: small,
       keyboard_shortcuts: true, spacing_below: small, background_color: '', rotate_control: true,
       zoom_control: true, disable_default_ui: false, clickable_icons: true}
     name: map
-    layout_properties: {grid_position: 'HVEKHC,XVLQSE', full_width_row: true}
+    layout_properties: {grid_position: 'KDAFFS,RXSRQQ', full_width_row: true}
 - type: FlowPanel
   properties: {}
   name: navbar_links
