@@ -4,10 +4,140 @@ container:
   properties: {html: '@theme:standard-page.html'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"HOCHDQ":60,"KMBPND":10,"UZKGBC":10}'}
+  properties: {col_widths: '{"DTFCKF":15,"XVLQSE":45}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
+  - type: ColumnPanel
+    properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
+      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"JJOYYN":25,"YJINTE":35}',
+      spacing_below: small, background: ''}
+    name: card_1
+    layout_properties: {grid_position: 'HVEKHC,DTFCKF BYFWCH,XELPOP', full_width_row: true}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Application Area, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_2
+      layout_properties: {grid_position: 'RLKOAR,JJOYYN IZAIGI,YLSOQQ', full_width_row: true}
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: In Use Status, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_3
+      layout_properties: {grid_position: 'RLKOAR,JJOYYN DRHLGA,VPIFBV', full_width_row: true}
+    - type: DropDown
+      properties:
+        role: null
+        align: full
+        tooltip: ''
+        placeholder: ''
+        border: ''
+        enabled: true
+        foreground: ''
+        items: []
+        visible: true
+        font_size: null
+        font: ''
+        spacing_above: small
+        spacing_below: small
+        italic: false
+        background: ''
+        bold: false
+        underline: false
+        include_placeholder: true
+      name: app_area_dropdown
+      layout_properties: {grid_position: 'RLKOAR,YJINTE XXKFEQ,LBPRLS', full_width_row: true}
+      event_bindings: {change: app_area_dropdown_change}
+    - type: DropDown
+      properties:
+        role: null
+        align: full
+        tooltip: ''
+        placeholder: ''
+        border: ''
+        enabled: true
+        foreground: ''
+        items: []
+        visible: true
+        font_size: null
+        font: ''
+        spacing_above: small
+        spacing_below: small
+        italic: false
+        background: ''
+        bold: false
+        underline: false
+        include_placeholder: true
+      name: In_Use_Status_dropdown
+      layout_properties: {grid_position: 'RLKOAR,YJINTE DTZBVM,EOLZEI', full_width_row: true}
+      event_bindings: {change: In_Use_Status_dropdown_change}
+  - type: ColumnPanel
+    properties: {role: card, col_widths: '{}'}
+    name: card_2
+    layout_properties: {grid_position: 'HVEKHC,DTFCKF BMHLVC,YWXQEU'}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Application Areas (combinations), font_size: null, font: '',
+        spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false, icon: ''}
+      name: label_5
+      layout_properties: {grid_position: 'UYFNLH,TWRPQL', full_width_row: true}
+    - type: form:C6ZZPAPN4YYF5NVJ:MultiSelectDropDown
+      properties: {width: '', align: left, enable_filtering: true, placeholder: None Selected,
+        enabled: true, enable_select_all: true, items: null, visible: true, spacing_above: small,
+        spacing_below: small, multiple: true}
+      name: app_multi_select_drop_down_1
+      layout_properties: {grid_position: 'UYFNLH,HOUJAT', full_width_row: true}
+      event_bindings: {change: app_multi_select_drop_down_1_change}
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: In Use Status, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_6
+      layout_properties: {grid_position: 'VZHPQG,PJHHZU', full_width_row: true}
+    - type: DropDown
+      properties:
+        role: null
+        align: full
+        tooltip: ''
+        placeholder: ''
+        border: ''
+        enabled: true
+        foreground: ''
+        items: []
+        visible: true
+        font_size: null
+        font: ''
+        spacing_above: small
+        spacing_below: small
+        italic: false
+        background: ''
+        bold: false
+        underline: false
+        include_placeholder: true
+      name: in_use_2_dropdown
+      layout_properties: {grid_position: 'VZHPQG,TRLUSD', full_width_row: true}
+      event_bindings: {change: in_use_2_dropdown_change}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Hits, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_4
+    layout_properties: {grid_position: 'HVEKHC,DTFCKF GWWAEI,NSQJNG', full_width_row: true}
+  - type: TextBox
+    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+      font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+      background: '', bold: true, underline: false}
+    name: hits_textbox
+    layout_properties: {grid_position: 'HVEKHC,DTFCKF GWWAEI,BPPGQM', full_width_row: true}
   - type: GoogleMap
     properties: {scale_control: true, draggable_cursor: auto, heading: 0, fullscreen_control: true,
       dragging_cursor: auto, disable_double_click_zoom: false, height: 570, zoom: 2,
@@ -16,85 +146,7 @@ components:
       keyboard_shortcuts: true, spacing_below: small, background_color: '', rotate_control: true,
       zoom_control: true, disable_default_ui: false, clickable_icons: true}
     name: map
-    layout_properties: {grid_position: 'HVEKHC,HOCHDQ', full_width_row: true}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Application Area, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_2
-    layout_properties: {grid_position: 'HVEKHC,UZKGBC CDDVIM,GVBFOM', full_width_row: true}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: In Use Status, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_3
-    layout_properties: {grid_position: 'HVEKHC,UZKGBC AHASDO,EEZARX', full_width_row: true}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Hits, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_4
-    layout_properties: {grid_position: 'HVEKHC,UZKGBC QLHBYS,ZWDNYC', full_width_row: true}
-  - type: DropDown
-    properties:
-      role: null
-      align: full
-      tooltip: ''
-      placeholder: ''
-      border: ''
-      enabled: true
-      foreground: ''
-      items: []
-      visible: true
-      font_size: null
-      font: ''
-      spacing_above: small
-      spacing_below: small
-      italic: false
-      background: ''
-      bold: false
-      underline: false
-      include_placeholder: true
-    name: app_area_dropdown
-    layout_properties: {grid_position: 'HVEKHC,KMBPND OTOKXN,NPSCRB', full_width_row: true}
-    event_bindings: {change: app_area_dropdown_change}
-  - type: DropDown
-    properties:
-      role: null
-      align: full
-      tooltip: ''
-      placeholder: ''
-      border: ''
-      enabled: true
-      foreground: ''
-      items: []
-      visible: true
-      font_size: null
-      font: ''
-      spacing_above: small
-      spacing_below: small
-      italic: false
-      background: ''
-      bold: false
-      underline: false
-      include_placeholder: true
-    name: In_Use_Status_dropdown
-    layout_properties: {grid_position: 'HVEKHC,KMBPND OTYDPC,UXEWTW', full_width_row: true}
-  - type: TextBox
-    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
-      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-      font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-      background: '', bold: true, underline: false}
-    name: hits_textbox
-    layout_properties: {grid_position: 'HVEKHC,KMBPND DAZWGA,PCILCH', full_width_row: true}
-  - type: Button
-    properties: {text: button_2}
-    name: search_btn
-    layout_properties: {grid_position: 'HVEKHC,KMBPND WLTABH,WAVNXJ', full_width_row: true}
-    event_bindings: {click: search_btn_click}
+    layout_properties: {grid_position: 'HVEKHC,XVLQSE', full_width_row: true}
 - type: FlowPanel
   properties: {}
   name: navbar_links
