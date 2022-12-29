@@ -35,3 +35,16 @@ def get_InUse_locations(selectedapp,selectedInUse):
 @anvil.server.callable
 def get_all_locations():
   return app_tables.suppported_products.search()
+
+@anvil.server.callable
+def get_all_locations_with_two(selectedapps, selecttedinusestatus2 ):
+
+ return app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps), InUseStatus=selecttedinusestatus2)
+
+@anvil.server.callable
+def get_all_locations_with_selectedapps_alone(selectedapps):
+    return app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps))
+
+@anvil.server.callable
+def get_all_locations_with_In_Use_alone(selecttedinusestatus2):
+  return app_tables.suppported_products.search(InUseStatus=selecttedinusestatus2)

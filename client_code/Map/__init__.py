@@ -7,6 +7,8 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from ..apparea_search import apparea_search
+from ..multi_search import multi_search
 
 class Map(MapTemplate):
   def __init__(self, **properties):
@@ -51,36 +53,8 @@ class Map(MapTemplate):
     selectedapparea = self.app_area_dropdown.selected_value
     selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
 #     print(selectedapparea['application_area'])
-    if selectedapparea and not selecttedinusestatus:
-        selectedapp = ('%' + selectedapparea['application_area'] + '%')
-        locations = app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp))
-#         applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
-#         self.app_multi_select_drop_down.items = applications
-    elif selectedapparea and  selecttedinusestatus:
-        selectedapp = ('%' + selectedapparea['application_area'] + '%')
-        locations = app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp), InUseStatus=selecttedinusestatus)
-#         applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
-#         self.app_multi_select_drop_down.items = applications
-    elif not selectedapparea and  selecttedinusestatus:   
-        locations = app_tables.suppported_products.search( InUseStatus=selecttedinusestatus)
-    else:
-        locations = app_tables.suppported_products.search()
-        self.hits_textbox.text = len(app_tables.suppported_products.search())
-#     t = app_tables.last_date_refreshed.get(dateid =1 )
-#     self.last_refresh_date.text= t['last_date_refreshed']
-    self.hits_textbox.text = len(locations)
-    for location in locations:
-      position = GoogleMap.LatLng(location['latitude'], location['longitude'])
-      marker = GoogleMap.Marker(position=position)
-      self.map.add_component(marker)
-     
-      marker.add_event_handler("click", self.marker_click)
-      self.markers[marker] = location['Name'] + ' ' + location['InUseStatus']
-      
-#     print( 'got db entries')  
-    def marker_click(self, sender, **event_args):
-      i = GoogleMap.InfoWindow(content=Label(text=self.markers[sender]))
-      i.open(self.map, sender)  
+#     selectedapparea  = ('%' + selectedapparea['application_area'] + '%')
+    apparea_search(self, selectedapparea,selecttedinusestatus)
       
       
   def In_Use_Status_dropdown_change(self, **event_args):
@@ -91,39 +65,40 @@ class Map(MapTemplate):
     selectedapparea = self.app_area_dropdown.selected_value
     selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
     self.map.clear()
+    apparea_search(self, selectedapparea,selecttedinusestatus)
 #     print(selectedapparea['application_area'])
-    if selectedapparea and not selecttedinusestatus:
-        selectedapp = ('%' + selectedapparea['application_area'] + '%')
-        locations= app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp))
-#         applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
-#         self.app_multi_select_drop_down.items = applications
-    elif selectedapparea and  selecttedinusestatus:
-        selectedapp = ('%' + selectedapparea['application_area'] + '%')
-        locations = app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp), InUseStatus=selecttedinusestatus)
-#         applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
-#         self.app_multi_select_drop_down.items = applications
-    elif not selectedapparea and  selecttedinusestatus:   
-        locations = app_tables.suppported_products.search( InUseStatus=selecttedinusestatus)
+#     if selectedapparea and not selecttedinusestatus:
+#         selectedapp = ('%' + selectedapparea['application_area'] + '%')
+#         locations= app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp))
+# #         applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+# #         self.app_multi_select_drop_down.items = applications
+#     elif selectedapparea and  selecttedinusestatus:
+#         selectedapp = ('%' + selectedapparea['application_area'] + '%')
+#         locations = app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp), InUseStatus=selecttedinusestatus)
+# #         applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+# #         self.app_multi_select_drop_down.items = applications
+#     elif not selectedapparea and  selecttedinusestatus:   
+#         locations = app_tables.suppported_products.search( InUseStatus=selecttedinusestatus)
     
-    elif not selectedapparea and  not selecttedinusestatus:
-        locations = app_tables.suppported_products.search()
-    if locations:
-        self.hits_textbox.text = len(locations)
-#     t = app_tables.last_date_refreshed.get(dateid =1 )
-#     self.last_refresh_date.text= t['last_date_refreshed']
-        self.hits_textbox.text = len(locations)
-        for location in locations:
-          position = GoogleMap.LatLng(location['latitude'], location['longitude'])
-          marker = GoogleMap.Marker(position=position)
-          self.map.add_component(marker)
+#     elif not selectedapparea and  not selecttedinusestatus:
+#         locations = app_tables.suppported_products.search()
+#     if locations:
+#         self.hits_textbox.text = len(locations)
+# #     t = app_tables.last_date_refreshed.get(dateid =1 )
+# #     self.last_refresh_date.text= t['last_date_refreshed']
+#         self.hits_textbox.text = len(locations)
+#         for location in locations:
+#           position = GoogleMap.LatLng(location['latitude'], location['longitude'])
+#           marker = GoogleMap.Marker(position=position)
+#           self.map.add_component(marker)
         
-          marker.add_event_handler("click", self.marker_click)
-          self.markers[marker] = location['Name'] + ' ' + location['InUseStatus']
+#           marker.add_event_handler("click", self.marker_click)
+#           self.markers[marker] = location['Name'] + ' ' + location['InUseStatus']
           
-#         print( 'got db entries')  
-        def marker_click(self, sender, **event_args):
-          i = GoogleMap.InfoWindow(content=Label(text=self.markers[sender]))
-          i.open(self.map, sender)  
+# #         print( 'got db entries')  
+#         def marker_click(self, sender, **event_args):
+#           i = GoogleMap.InfoWindow(content=Label(text=self.markers[sender]))
+#           i.open(self.map, sender)  
       
       
    # combinations dropdown search
@@ -134,30 +109,34 @@ class Map(MapTemplate):
     selectedapps = self.app_multi_select_drop_down_1.selected 
     selecttedinusestatus2 = self.in_use_2_dropdown.selected_value
     self.map.clear()
-    if selecttedinusestatus2 and selectedapps  :
-          locations = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps), InUseStatus=selecttedinusestatus2)
-    elif  not selecttedinusestatus2 and selectedapps  :
-          locations = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps))
-    elif  selecttedinusestatus2 and not selectedapps  :
-          locations = app_tables.suppported_products.search(InUseStatus=selecttedinusestatus2)
-    elif  not selecttedinusestatus2 and not selectedapps: 
-            locations = app_tables.suppported_products.search()
+    multi_search(self, selecttedinusestatus2, selectedapps)
+#     if selecttedinusestatus2 and selectedapps  :
+#           locations= anvil.server.call('get_all_locations_with_two',selectedapps, selecttedinusestatus2 )
+      
+#     elif  not selecttedinusestatus2 and selectedapps  :
+#           locations = anvil.server.call('get_all_locations_with_selectedapps_alone', selectedapps)
+# #       
+#     elif  selecttedinusestatus2 and not selectedapps  :
+#           locations = anvil.server.call('get_all_locations_with_selecttedinusestatus2_alone', selecttedinusestatus2)
+# #       
+#     elif  not selecttedinusestatus2 and not selectedapps: 
+#             locations = anvil.server.call('get_all_locations')
     
-    if locations:  
-          self.hits_textbox.text = len(locations)
-          for location in locations:
-            position = GoogleMap.LatLng(location['latitude'], location['longitude'])
-            marker = GoogleMap.Marker(position=position)
-            self.map.add_component(marker)
+#     if locations:  
+#           self.hits_textbox.text = len(locations)
+#           for location in locations:
+#             position = GoogleMap.LatLng(location['latitude'], location['longitude'])
+#             marker = GoogleMap.Marker(position=position)
+#             self.map.add_component(marker)
           
-            marker.add_event_handler("click", self.marker_click)
-            self.markers[marker] = location['Name'] + ' ' + location['InUseStatus']
+#             marker.add_event_handler("click", self.marker_click)
+#             self.markers[marker] = location['Name'] + ' ' + location['InUseStatus']
             
-#           print( 'got db entries')  
-          def marker_click(self, sender, **event_args):
-            i = GoogleMap.InfoWindow(content=Label(text=self.markers[sender]))
-            i.open(self.map, sender)  
-    pass
+# #           print( 'got db entries')  
+#           def marker_click(self, sender, **event_args):
+#             i = GoogleMap.InfoWindow(content=Label(text=self.markers[sender]))
+#             i.open(self.map, sender)  
+#     pass
  
       
    
@@ -168,30 +147,34 @@ class Map(MapTemplate):
     selectedapps = self.app_multi_select_drop_down_1.selected 
     selecttedinusestatus2 = self.in_use_2_dropdown.selected_value
     self.map.clear()
-    if selecttedinusestatus2 and selectedapps  :
-          locations = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps), InUseStatus=selecttedinusestatus2)
-    elif  not selecttedinusestatus2 and selectedapps  :
-          locations = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps))
-    elif  selecttedinusestatus2 and not selectedapps  :
-          locations = app_tables.suppported_products.search(InUseStatus=selecttedinusestatus2)
-    elif  not selecttedinusestatus2 and not selectedapps: 
-            locations = app_tables.suppported_products.search()
-    
-    if locations:
-          self.hits_textbox.text = len(locations)
-          for location in locations:
-            position = GoogleMap.LatLng(location['latitude'], location['longitude'])
-            marker = GoogleMap.Marker(position=position)
-            self.map.add_component(marker)
+    multi_search(self, selecttedinusestatus2, selectedapps)
+#     if selecttedinusestatus2 and selectedapps  :
+#         locations= anvil.server.call('get_all_locations_with_two',selectedapps, selecttedinusestatus2 )  
+              
+#     elif  not selecttedinusestatus2 and selectedapps  :
+#           locations = anvil.server.call('get_all_locations_with_selectedapps_alone', selectedapps)
+        
+#     elif  selecttedinusestatus2 and not selectedapps  :
+#           locations = anvil.server.call('get_all_locations_with_selecttedinusestatus2_alone', selecttedinusestatus2)
           
-            marker.add_event_handler("click", self.marker_click)
-            self.markers[marker] = location['Name'] + ' ' + location['InUseStatus']
+#     elif  not selecttedinusestatus2 and not selectedapps: 
+#             locations = anvil.server.call('get_all_locations')
+    
+#     if locations:
+#           self.hits_textbox.text = len(locations)
+#           for location in locations:
+#             position = GoogleMap.LatLng(location['latitude'], location['longitude'])
+#             marker = GoogleMap.Marker(position=position)
+#             self.map.add_component(marker)
+          
+#             marker.add_event_handler("click", self.marker_click)
+#             self.markers[marker] = location['Name'] + ' ' + location['InUseStatus']
             
-#           print( 'got db entries')  
-          def marker_click(self, sender, **event_args):
-            i = GoogleMap.InfoWindow(content=Label(text=self.markers[sender]))
-            i.open(self.map, sender)  
-          pass
+# #           print( 'got db entries')  
+#           def marker_click(self, sender, **event_args):
+#             i = GoogleMap.InfoWindow(content=Label(text=self.markers[sender]))
+#             i.open(self.map, sender)  
+#           pass
        
       
       
