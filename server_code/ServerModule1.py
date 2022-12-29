@@ -24,6 +24,29 @@ def connect():
   if not connection:
      alert(' Connection down')
   return connection
+# Select t0.name, t0.id, account.name account, t0.account_id,
+#   `account._cstm`.Dawn_Country `account.Dawn_Country`, _cstm.CFApplicationArea
+#   CFApplicationArea, _cstm.InUseStatus InUseStatus,
+#   account.shipping_address_country `account.shipping_address_country`,
+#   `account._cstm`.location_c `account.location_c`, _cstm.Interface_Inbound_INR
+#   Interface_Inbound_INR, _cstm.Interface_Bidirectional_SystmOne
+#   Interface_Bidirectional_SystmOne, _cstm.Interface_Inbound_ADT
+#   Interface_Inbound_ADT, _cstm.Interface_Inbound_Demographics
+#   Interface_Inbound_Demographics, _cstm.Interface_Inbound_Medications
+#   Interface_Inbound_Medications, _cstm.Outbound_Billing_Interface
+#   Outbound_Billing_Interface, _cstm.Interface_Outbound_Dosing
+#   Interface_Outbound_Dosing, _cstm.Interface_Outbound_PDF
+#   Interface_Outbound_PDF, _cstm.Interface_Outbound_Query
+#   Interface_Outbound_Query, _cstm.Interface_Inbound_TestResults
+#   Interface_Inbound_TestResults, `account._cstm`.latitude_c,
+#   `account._cstm`.longtitude_c, _cstm.Installed_Version_Num
+# From assets t0 Left Join
+#   accounts account On account.id = t0.account_id And account.deleted = 0
+#   Left Join
+#   accounts_cstm `account._cstm` On `account._cstm`.id_c = account.id Left Join
+#   assets_cstm _cstm On _cstm.id_c = t0.id
+# Where _cstm.Supported_Product_Type = 'System Installation' And t0.deleted = 0
+# Order By account.name
 
 @anvil.server.callable
 def listsystems():
