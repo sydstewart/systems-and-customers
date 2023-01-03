@@ -51,6 +51,15 @@ db_schema:
     - name: latitude
       admin_ui: {width: 200}
       type: number
+    - name: Account_id
+      admin_ui: {width: 200}
+      type: string
+    - name: System_id
+      admin_ui: {width: 200}
+      type: string
+    - name: Live_version_no
+      admin_ui: {width: 200}
+      type: string
   last_date_refreshed:
     title: Last_Date_Refreshed
     client: full
