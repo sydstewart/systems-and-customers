@@ -170,6 +170,9 @@ components:
         - {id: ECMERJ, title: InUseStatus, data_key: InUseStatus}
         - {id: SBXCVL, title: Country, data_key: Shipping_Address_Country}
         - {id: VOYBAW, title: 4S Country, data_key: 4S_Country}
+        - {id: QGWUYS, title: latitude, data_key: latitude}
+        - {id: QNWQWV, title: longitude, data_key: longitude}
+        - {id: WOPIKV, title: Live_version_no, data_key: Live_version_no}
         auto_header: true
         tooltip: ''
         border: ''
@@ -212,7 +215,7 @@ components:
       spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '', bold: false, underline: false, icon: ''}
     name: refresh_data_button
-    layout_properties: {slot: left-nav, grid_position: 'DUOJUQ,CBXGUP'}
+    layout_properties: {slot: left-nav, grid_position: 'EQSYDV,GBRNEH'}
     event_bindings: {click: refresh_data_button_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,

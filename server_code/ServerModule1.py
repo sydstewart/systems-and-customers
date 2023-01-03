@@ -56,18 +56,20 @@ def listsystems():
      "Select t0.name , t0.id, account.name account, t0.account_id, `account._cstm`.Dawn_Country `account.Dawn_Country`, _cstm.CFApplicationArea ,\
       CFApplicationArea, _cstm.InUseStatus InUseStatus,\
       account.shipping_address_country `account.shipping_address_country`, \
-      `account._cstm`.location_c `account.location_c`, _cstm.Interface_Inbound_INR ,\
-      Interface_Inbound_INR, _cstm.Interface_Bidirectional_SystmOne,\
-      Interface_Bidirectional_SystmOne, _cstm.Interface_Inbound_ADT, \
-      Interface_Inbound_ADT, _cstm.Interface_Inbound_Demographics, \
-      Interface_Inbound_Demographics, _cstm.Interface_Inbound_Medications, \
-      Interface_Inbound_Medications, _cstm.Outbound_Billing_Interface, \
-      Outbound_Billing_Interface, _cstm.Interface_Outbound_Dosing ,\
-      Interface_Outbound_Dosing, _cstm.Interface_Outbound_PDF,\
-      Interface_Outbound_PDF, _cstm.Interface_Outbound_Query \
-      Interface_Outbound_Query, _cstm.Interface_Inbound_TestResults \
-      Interface_Inbound_TestResults, `account._cstm`.latitude_c as latitude, \
-      `account._cstm`.longtitude_c as longitude, _cstm.Installed_Version_Num  as Live_Version_no\
+      `account._cstm`.location_c `account.location_c`, \
+      _cstm.Interface_Inbound_INR  Interface_Inbound_INR,\
+      _cstm.Interface_Bidirectional_SystmOne  Interface_Bidirectional_SystmOne, \
+      _cstm.Interface_Inbound_ADT  Interface_Inbound_ADT,\
+      _cstm.Interface_Inbound_Demographics Interface_Inbound_Demographics,\
+      _cstm.Interface_Inbound_Medications  Interface_Inbound_Medications, \
+      _cstm.Outbound_Billing_Interface Outbound_Billing_Interface, \
+      _cstm.Interface_Outbound_Dosing Interface_Outbound_Dosing,\
+      _cstm.Interface_Outbound_PDF Interface_Outbound_PDF, \
+      _cstm.Interface_Outbound_Query Interface_Outbound_Query, \
+      _cstm.Interface_Inbound_TestResults  Interface_Inbound_TestResults,\
+      `account._cstm`.latitude_c as latitude, \
+      `account._cstm`.longtitude_c as longitude, \
+      _cstm.Installed_Version_Num  as Live_Version_no\
     From assets t0 Left Join \
       accounts account On account.id = t0.account_id And account.deleted = 0 \
       Left Join \
@@ -111,7 +113,7 @@ def listsystems():
   app_tables.suppported_products.delete_all_rows()
   for r in cur.fetchall(): 
       dicts = [{'Account': r['account'],'Name': r['name'],'InUseStatus':r['InUseStatus'], 'Shipping_Address_Country':r['account.shipping_address_country'],
-      'CFApplicationArea':r['CFApplicationArea'], '4S_Country':r['account.Dawn_Country'], 'Location_c' : r['account.location_c'], latitude : r['latitude'],
+      'CFApplicationArea':r['CFApplicationArea'], '4S_Country':r['account.Dawn_Country'], 'Location_c' : r['account.location_c'], 'latitude' : r['latitude'],
        'longitude' :r['longitude'], 'Account_id' : r['account_id'], 'System_id' : r['id'] , 'Live_version_no': r['Live_Version_no']    }]
       for d in dicts:
 #           t= app_tables.suppported_products.get(Account =  d['Account'], Name = d['Name'],CFApplicationArea= d['CFApplicationArea'],InUseStatus = d['InUseStatus'] )  

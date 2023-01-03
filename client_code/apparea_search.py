@@ -40,7 +40,7 @@ def apparea_search(self, selectedapparea,selecttedinusestatus):
       self.map.add_component(marker)
      
       marker.add_event_handler("click", self.marker_click)
-      self.markers[marker] = location['Name'] + ' ' + location['InUseStatus']
+      self.markers[marker] = location['Name'] + ' ' + location['InUseStatus'] + ' ' + location['Live_version_no']
       
 #     print( 'got db entries')  
     def marker_click(self, sender, **event_args):
