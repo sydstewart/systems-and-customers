@@ -26,6 +26,9 @@ class Application_Area_Summary(Application_Area_SummaryTemplate):
     dictssingleapp_group  = anvil.server.call('appgrouptype')
     self.repeating_panel_4.items = dictssingleapp_group
     
+    dict_versions_group = anvil.server.call('versions')
+    self.repeating_panel_5.items = dict_versions_group
+    
   def return_to_search_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form('systems_and_accounts')

@@ -184,3 +184,36 @@ def appgrouptype():
 #   dictssingleapp = df3.to_dict(orient='records')
 #   print(dictssingleapp)
 #   return dictssingleapp
+
+
+@anvil.server.callable
+def versions():  
+    all_records = app_tables.suppported_products.search(InUseStatus='Live')
+    # For each row, pull out only the data we want to put into pandas
+    dicts = [{'CFApplicationArea': r['CFApplicationArea'], 'Name': r['Name'], 'Account': r['Account'], 'InUse':r['InUseStatus'], 'Region':r['Location_c'], 'Version' : r['Live_version_no']}
+            for r in all_records]
+    
+    df = pd.DataFrame.from_dict(dicts)
+#     print(df)
+#     group_by_region = df.groupby('Region')['Name'].count()
+#     group_by_region = group_by_region.sort_values(['Region'], ascending=False)['Name']
+#     print(group_by_region) 
+    print(df)
+
+    df = df.groupby('Version')['Name'].count() \
+                             .reset_index(name='count') \
+                             .sort_values(['Version'], ascending=False)
+    print(df['Version'])
+    print(df['count'])
+    df['sumsystems'] = df['count'].sum()
+    df['%'] =(df['count'] * 100)/df['sumsystems']
+    df['%'] = df['%'].map('{:,.0f}'.format)    
+    df['%'] = df['%'].astype(int)
+
+    df.loc['Total', 'count']= df['count'].sum()
+    df.loc['Total', '%']= df['%'].sum()
+    df = df.fillna("")
+    
+    dict_versions = df.to_dict(orient='records')
+    
+    return dict_versions

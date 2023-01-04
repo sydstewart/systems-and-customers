@@ -157,6 +157,43 @@ components:
         properties: {spacing_above: none, spacing_below: none, item_template: Application_Area_Summary.RowTemplate7}
         name: repeating_panel_4
         layout_properties: {}
+  - type: ColumnPanel
+    properties: {role: card, col_widths: '{}'}
+    name: card_5
+    layout_properties: {grid_position: 'DSMGZX,CUOXYJ'}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Version Status, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+        underline: false, icon: ''}
+      name: label_5
+      layout_properties: {grid_position: 'OXEDLC,MSGFCV'}
+  - type: DataGrid
+    properties:
+      role: null
+      columns:
+      - {id: GOBNWC, title: Version, data_key: Version}
+      - {id: UHOEHW, title: Count, data_key: count}
+      - {id: EGFIYL, title: '%', data_key: '%'}
+      auto_header: true
+      tooltip: ''
+      border: ''
+      foreground: ''
+      rows_per_page: 20
+      visible: true
+      wrap_on: never
+      show_page_controls: true
+      spacing_above: small
+      spacing_below: small
+      background: ''
+    name: data_grid_5
+    layout_properties: {grid_position: 'VPCOIU,EDPZYW'}
+    components:
+    - type: RepeatingPanel
+      properties: {spacing_above: none, spacing_below: none, item_template: Application_Area_Summary.RowTemplate9}
+      name: repeating_panel_5
+      layout_properties: {}
 - type: FlowPanel
   properties: {}
   name: navbar_links

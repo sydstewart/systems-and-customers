@@ -187,6 +187,14 @@ class systems_and_accounts(systems_and_accountsTemplate):
     open_form('Map')
     pass
 
+  def button_2_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Version_Summary')
+    dict_versions_group = anvil.server.call('versions')
+#     self.repeating_panel_1.items = dict_versions_group
+    pass
+
+
 
 
 

@@ -118,7 +118,16 @@ def listsystems():
       for d in dicts:
 #           t= app_tables.suppported_products.get(Account =  d['Account'], Name = d['Name'],CFApplicationArea= d['CFApplicationArea'],InUseStatus = d['InUseStatus'] )  
 #           if not t:
+            fullstring = d['Live_version_no']
+            substring = "CF 8"
+
+            if substring in fullstring:
+                  Version_Level = '8'
+            else:
+                  Version_Level= '7'
+                
             app_tables.suppported_products.add_row(**d)
+
   return 
 
 
