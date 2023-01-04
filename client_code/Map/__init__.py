@@ -21,6 +21,7 @@ class Map(MapTemplate):
     self.in_use_2_dropdown.items = inusestatus
     self.app_multi_select_drop_down_1.items = applications
     self.markers = {}
+    self.hits_textbox.text = 0
 #     markersyd = []
 #     if self.app_area_dropdown.selected_value:
 #         selectedapparea =self.app_area_dropdown.selected_value
@@ -37,7 +38,7 @@ class Map(MapTemplate):
      
       marker.add_event_handler("click", self.marker_click)
       self.markers[marker] = location['Name'] + ' ' + location['InUseStatus'] + ' ' + location['Live_version_no']
-      
+    self.hits_textbox.text = len(locations)   
       
 #   print( 'got db entries')  
   def marker_click(self, sender, **event_args):
@@ -50,6 +51,7 @@ class Map(MapTemplate):
     self.app_multi_select_drop_down_1.selected = None
     self.in_use_2_dropdown.selected_value = None
     self.map.clear()
+    self.hits_textbox.text = 0
     selectedapparea = self.app_area_dropdown.selected_value
     selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
 #     print(selectedapparea['application_area'])
@@ -65,6 +67,7 @@ class Map(MapTemplate):
     selectedapparea = self.app_area_dropdown.selected_value
     selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
     self.map.clear()
+    self.hits_textbox.text = 0
     apparea_search(self, selectedapparea,selecttedinusestatus)
 #     print(selectedapparea['application_area'])
 #     if selectedapparea and not selecttedinusestatus:
@@ -109,6 +112,7 @@ class Map(MapTemplate):
     selectedapps = self.app_multi_select_drop_down_1.selected 
     selecttedinusestatus2 = self.in_use_2_dropdown.selected_value
     self.map.clear()
+    self.hits_textbox.text = 0
     multi_search(self, selecttedinusestatus2, selectedapps)
 #     if selecttedinusestatus2 and selectedapps  :
 #           locations= anvil.server.call('get_all_locations_with_two',selectedapps, selecttedinusestatus2 )
@@ -147,6 +151,7 @@ class Map(MapTemplate):
     selectedapps = self.app_multi_select_drop_down_1.selected 
     selecttedinusestatus2 = self.in_use_2_dropdown.selected_value
     self.map.clear()
+    self.hits_textbox.text = 0
     multi_search(self, selecttedinusestatus2, selectedapps)
 #     if selecttedinusestatus2 and selectedapps  :
 #         locations= anvil.server.call('get_all_locations_with_two',selectedapps, selecttedinusestatus2 )  
