@@ -126,7 +126,7 @@ def listsystems():
             else:
                   Version_Level= '7'
                 
-            app_tables.suppported_products.add_row(**d)
+            app_tables.suppported_products.add_row(Version_Level = Version_Level,**d)
 
   return 
 

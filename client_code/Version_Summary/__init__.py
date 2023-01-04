@@ -13,6 +13,14 @@ class Version_Summary(Version_SummaryTemplate):
     self.init_components(**properties)
     dict_versions_group = anvil.server.call('versions')
     self.repeating_panel_1.items = dict_versions_group
-
+    
+    dict_versions_summary = anvil.server.call('versions_summary')
+    self.repeating_panel_2.items = dict_versions_summary
     # Any code you write here will run before the form opens.
     
+
+  def button_1_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('systems_and_accounts')
+    pass
+
