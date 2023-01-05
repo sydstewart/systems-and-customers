@@ -83,7 +83,7 @@ def groupinuse():
     dictsinuse = df1.to_dict(orient='records')
     
     return dictsinuse
-  
+# App area groups  
 @anvil.server.callable
 def groupinsinleapparea():  
 #   singleapps = [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
@@ -209,7 +209,7 @@ def versions():
     df['%'] =(df['count'] * 100)/df['sumsystems']
     df['%'] = df['%'].map('{:,.2f}'.format)    
     df['%'] = df['%'].astype(float)
-
+    df['count'] = df['count'].astype(int)
     df.loc['Total', 'count']= df['count'].sum()
     df.loc['Total', '%']= df['%'].sum()
     df = df.fillna("")
