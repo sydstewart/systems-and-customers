@@ -207,8 +207,8 @@ def versions():
     print(df['count'])
     df['sumsystems'] = df['count'].sum()
     df['%'] =(df['count'] * 100)/df['sumsystems']
-    df['%'] = df['%'].map('{:,.0f}'.format)    
-    df['%'] = df['%'].astype(int)
+    df['%'] = df['%'].map('{:,.2f}'.format)    
+    df['%'] = df['%'].astype(float)
 
     df.loc['Total', 'count']= df['count'].sum()
     df.loc['Total', '%']= df['%'].sum()
@@ -216,7 +216,9 @@ def versions():
     
     dict_versions = df.to_dict(orient='records')
     
-    return dict_versions
+    version_count = df['Version'].count()
+    
+    return dict_versions, version_count
   
   
 @anvil.server.callable
@@ -234,7 +236,8 @@ def versions_summary():
                            index = 'Region',
                            aggfunc={'Region' : 'count', },
                            columns= 'Version_Level',
-                           margins = True)
+                         #  margins = True)
+                          )
     print('Pivot',pivot)
 #     print(df)
 #     group_by_region = df.groupby('Region')['Name'].count()
@@ -249,7 +252,7 @@ def versions_summary():
     df['sumsystems'] = df['count'].sum()
     df['%'] =(df['count'] * 100)/df['sumsystems']
     df['%'] = df['%'].map('{:,.0f}'.format)    
-    df['%'] = df['%'].astype(int)
+    df['%'] = df['%'].astype(float)
 
     df.loc['Total', 'count']= df['count'].sum()
     df.loc['Total', '%']= df['%'].sum()

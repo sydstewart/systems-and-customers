@@ -11,9 +11,9 @@ class Version_Summary(Version_SummaryTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    dict_versions_group = anvil.server.call('versions')
+    dict_versions_group, version_count = anvil.server.call('versions')
     self.repeating_panel_1.items = dict_versions_group
-    
+    self.text_box_1.text = version_count
     dict_versions_summary = anvil.server.call('versions_summary')
     self.repeating_panel_2.items = dict_versions_summary
     # Any code you write here will run before the form opens.

@@ -46,6 +46,29 @@ components:
         name: repeating_panel_2
         layout_properties: {}
   - type: ColumnPanel
+    properties: {role: card, col_widths: '{"AEVBBO":20,"RWOQTK":5,"BGOYQH":35}'}
+    name: card_2
+    layout_properties: {grid_position: 'GYKTTV,BOEUBL'}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: No of Different Versions deployed, font_size: null, font: '',
+        spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '', bold: true, underline: false, icon: ''}
+      name: label_3
+      layout_properties: {grid_position: 'QGGXFW,AEVBBO'}
+    - type: TextBox
+      properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+        border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+        font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+        background: '', bold: true, underline: false}
+      name: text_box_1
+      layout_properties: {grid_position: 'QGGXFW,RWOQTK'}
+    - type: Label
+      properties: {}
+      name: label_4
+      layout_properties: {grid_position: 'QGGXFW,BGOYQH'}
+  - type: ColumnPanel
     properties: {col_widths: '{}'}
     name: column_panel_1
     layout_properties: {grid_position: 'UHTAPC,ZLLAXX'}
@@ -73,7 +96,7 @@ components:
           tooltip: ''
           border: ''
           foreground: ''
-          rows_per_page: 20
+          rows_per_page: 100
           visible: true
           wrap_on: never
           show_page_controls: true
