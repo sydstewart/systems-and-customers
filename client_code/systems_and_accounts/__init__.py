@@ -21,12 +21,16 @@ class systems_and_accounts(systems_and_accountsTemplate):
     applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
     inusestatus = list({(r['InUseStatus']) for r in app_tables.suppported_products.search()})
     customertype = list({(r['Customer_Type']) for r in app_tables.suppported_products.search()})
+    regions= list({(r['Location_c']) for r in app_tables.suppported_products.search()})
+    print(regions)
+    print(customertype)
     self.app_multi_select_drop_down.items = applications
     self.In_Use_Status_dropdown.items = inusestatus
     self.in_use_2_drop_down.items = inusestatus
+    self.region_dropdown.items = regions
     self.customer_type_dropdown.items = customertype
     self.apparea_dropdown.items = [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
-
+#     self.region_multi_select_drop_down.items = regions
 
     t = app_tables.last_date_refreshed.get(dateid =1 )
     self.last_refresh_date.text= t['last_date_refreshed']
@@ -42,7 +46,8 @@ class systems_and_accounts(systems_and_accountsTemplate):
     """This method is called when the selected values change"""
     self.apparea_dropdown.selected_value = None
     self.In_Use_Status_dropdown.selected_value = None
-    selectedapps = self.app_multi_select_drop_down.selected 
+    
+    selectedapps = self.app_multi_select_drop_down.selected
     selecttedinusestatus2 = self.in_use_2_drop_down.selected_value
     if selecttedinusestatus2 and selectedapps  :
           self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps), InUseStatus=selecttedinusestatus2)
@@ -205,10 +210,52 @@ class systems_and_accounts(systems_and_accountsTemplate):
   def customer_type_dropdown_change(self, **event_args):
     """This method is called when an item is selected"""
     selectedcustomertype = self.customer_type_dropdown.selected_value
-    self.repeating_panel_1.items = app_tables.suppported_products.search(Customer_Type=selectedcustomertype, InUseStatus='Live')
+    self.region_dropdown.selected_value = None
+    self.repeating_panel_1.items = app_tables.suppported_products.search(Customer_Type=selectedcustomertype,InUseStatus='Live' )
     self.hits_textbox.text = len(self.repeating_panel_1.items)
     pass
 
+  def region_dropdown_change(self, **event_args):
+    """This method is called when an item is selected"""
+    selectedcustomertype = self.customer_type_dropdown.selected_value
+    print(selectedcustomertype)
+    self.customer_type_dropdown.selected_value = None
+    selectedregion = self.region_dropdown.selected_value
+    print(selectedregion)
+    self.repeating_panel_1.items = app_tables.suppported_products.search(Location_c = selectedregion,InUseStatus='Live')
+    self.hits_textbox.text = len(self.repeating_panel_1.items)
+    pass
+
+
+#     self.repeating_panel_1.items=app_tables.suppported_products.search(
+#       q.any_of(
+#         Location_c.q.any_of(*selectedregion),
+#         Customer_Typeq.any_of(*selectedcustomertype),
+#         InUseStatus='Live'
+#       )
+#     )
+#     self.hits_textbox.text = len(self.repeating_panel_1.items)
+
+#   def region_multi_select_drop_down_change(self, **event_args):
+#     """This method is called when the selected values change"""
+#     selectedcustomertype = self.customer_type_dropdown.selected_value
+#     print(selectedcustomertype)
+    
+#     selectedregion = self.region_dropdown.selected_value
+#     print(selectedregion)
+#     self.repeating_panel_1.items = app_tables.suppported_products.search(Location_c = selectedregion,Customer_Type=selectedcustomertype)
+#     self.hits_textbox.text = len(self.repeating_panel_1.items)
+#     pass
+
+
+#     self.repeating_panel_1.items=app_tables.suppported_products.search(
+#       q.any_of(
+#         Location_c = q.any_of(*selectedregion),
+# #         Customer_Type = q.any_of(*selectedcustomertype),
+#         InUseStatus='Live'
+#       )
+#     )
+#     self.hits_textbox.text = len(self.repeating_panel_1.items)
 
 
 
