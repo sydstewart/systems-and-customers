@@ -69,14 +69,17 @@ def listsystems():
       _cstm.Interface_Inbound_TestResults  Interface_Inbound_TestResults,\
       `account._cstm`.latitude_c as latitude, \
       `account._cstm`.longtitude_c as longitude, \
-      _cstm.Installed_Version_Num  as Live_Version_no\
+      _cstm.Installed_Version_Num  as Live_Version_no,\
+      `account._cstm`.customertype_c' as Customer_Type\
     From assets t0 Left Join \
       accounts account On account.id = t0.account_id And account.deleted = 0 \
       Left Join \
       accounts_cstm `account._cstm` On `account._cstm`.id_c = account.id Left Join \
       assets_cstm _cstm On _cstm.id_c = t0.id \
-    Where _cstm.Supported_Product_Type = 'System Installation' And t0.deleted = 0 \
-    Order By account.name ASC"
+    Where _cstm.Supported_Product_Type = 'System Installation' \
+     AND t0.deleted = 0 \
+    Order By\
+    account.name ASC"\
      
    )
 #                 "SELECT `t0`.`name`,   `t0`.`id`,   `account`.`name` `account`,   `t0`.`account_id`, `account._cstm`.`Dawn_Country` `account.Dawn_Country`, \

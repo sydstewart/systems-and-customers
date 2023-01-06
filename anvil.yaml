@@ -63,6 +63,9 @@ db_schema:
     - name: Version_Level
       admin_ui: {width: 200}
       type: string
+    - name: Customer_Type
+      admin_ui: {width: 200}
+      type: string
   last_date_refreshed:
     title: Last_Date_Refreshed
     client: full
