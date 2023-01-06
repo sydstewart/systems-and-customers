@@ -80,6 +80,7 @@ Where _cstm.Supported_Product_Type = 'System Installation' And t0.deleted = 0 \
 Order By account.name"
      
    )
+  `account._cstm`.customertype_c \
 #                 "SELECT `t0`.`name`,   `t0`.`id`,   `account`.`name` `account`,   `t0`.`account_id`, `account._cstm`.`Dawn_Country` `account.Dawn_Country`, \
 #                 `_cstm`.`CFApplicationArea` `CFApplicationArea`, \
 #                 `_cstm`.`InUseStatus` `InUseStatus`, \
