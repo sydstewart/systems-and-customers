@@ -194,6 +194,13 @@ class systems_and_accounts(systems_and_accountsTemplate):
 #     self.repeating_panel_1.items = dict_versions_group
     pass
 
+  def button_3_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Customer_Types')
+    dict_customer_type_summary = anvil.server.call('customer_type__summary')
+    pass
+
+
 
 
 

@@ -174,6 +174,7 @@ components:
         - {id: QNWQWV, title: longitude, data_key: longitude}
         - {id: WOPIKV, title: Live_version_no, data_key: Live_version_no}
         - {id: JZKZVM, title: Version Level, data_key: Version_Level}
+        - {id: VXZDPK, title: Customer Type, data_key: Customer_Type}
         auto_header: true
         tooltip: ''
         border: ''
@@ -226,6 +227,14 @@ components:
     name: button_2
     layout_properties: {grid_position: 'KGKNRF,PFMJVU'}
     event_bindings: {click: button_2_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Customer Types, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: button_3
+    layout_properties: {grid_position: 'POWZOA,KWLZKC'}
+    event_bindings: {click: button_3_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: 'ac_button
