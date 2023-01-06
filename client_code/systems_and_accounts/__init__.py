@@ -20,9 +20,11 @@ class systems_and_accounts(systems_and_accountsTemplate):
     
     applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
     inusestatus = list({(r['InUseStatus']) for r in app_tables.suppported_products.search()})
+    customertype = list({(r['Customer_Type']) for r in app_tables.suppported_products.search()})
     self.app_multi_select_drop_down.items = applications
     self.In_Use_Status_dropdown.items = inusestatus
     self.in_use_2_drop_down.items = inusestatus
+    self.customer_type_dropdown.items = customertype
     self.apparea_dropdown.items = [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
 
 
@@ -199,6 +201,14 @@ class systems_and_accounts(systems_and_accountsTemplate):
     open_form('Customer_Types')
     dict_customer_type_summary = anvil.server.call('customer_type__summary')
     pass
+
+  def customer_type_dropdown_change(self, **event_args):
+    """This method is called when an item is selected"""
+    selectedcustomertype = self.customer_type_dropdown.selected_value
+    self.repeating_panel_1.items = app_tables.suppported_products.search(Customer_Type=selectedcustomertype, InUseStatus='Live')
+    self.hits_textbox.text = len(self.repeating_panel_1.items)
+    pass
+
 
 
 

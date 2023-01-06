@@ -126,6 +126,63 @@ components:
       name: in_use_2_drop_down
       layout_properties: {grid_position: 'SDRXWK,JXAMLC'}
       event_bindings: {change: in_use_2_drop_down_change}
+  - type: ColumnPanel
+    properties: {role: card, col_widths: '{}'}
+    name: card_3
+    layout_properties: {grid_position: 'HEKXNQ,WHNESW'}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Customer Type (live), font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_8
+      layout_properties: {grid_position: 'UYINTX,EOXFXJ'}
+    - type: DropDown
+      properties:
+        role: null
+        align: full
+        tooltip: ''
+        placeholder: ''
+        border: ''
+        enabled: true
+        foreground: ''
+        items: []
+        visible: true
+        font_size: null
+        font: ''
+        spacing_above: small
+        spacing_below: small
+        italic: false
+        background: ''
+        bold: false
+        underline: false
+        include_placeholder: true
+      name: customer_type_dropdown
+      layout_properties: {grid_position: 'UYINTX,HFZVEA'}
+      event_bindings: {change: customer_type_dropdown_change}
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Region, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_9
+      layout_properties: {grid_position: 'UYINTX,OVEZTY'}
+    - type: DropDown
+      properties: {}
+      name: drop_down_2
+      layout_properties: {grid_position: 'UYINTX,OFZJJV'}
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Version Level, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_10
+      layout_properties: {grid_position: 'UYINTX,TYBVKD'}
+    - type: DropDown
+      properties: {}
+      name: drop_down_3
+      layout_properties: {grid_position: 'UYINTX,ZDZNGZ'}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: Hits, font_size: null, font: '', spacing_above: small,
