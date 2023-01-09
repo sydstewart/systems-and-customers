@@ -306,7 +306,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     
     
     elif   V and X and Y and not Z:
-       results = app_tables.suppported_products.search(CFApplicationArea = q.like(V ), Version_Level= Y, InUseStatus= 'Live')
+       results = app_tables.suppported_products.search(CFApplicationArea = q.like(V ), Location_c = X, Version_Level= Y, InUseStatus= 'Live')
     elif  not  V and X and Y and Z:
        results = app_tables.suppported_products.search(Location_c = X, Version_Level= Y,Customer_Type = Z, InUseStatus= 'Live')
     elif  V and not X and Y and Z:
