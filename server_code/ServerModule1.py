@@ -131,3 +131,16 @@ def applications():
 #     app_tables.projects.add_row(company = row['Company'], projectname= row['Name'],boardname= row['BoardName'], status = row['Status'], startdate = row['StartDate'], enddate = row['EndDate'])
   total_rows = len(dicts)
   return dictsapps, total_rows
+
+@anvil.server.callable
+def four_way_search(V, X, Y, Z):
+#     V = selectedapp
+#     X = selectedregion
+#     Y = selectedversion
+#     Z = selectedcustomertype
+    if V and X and Y and X:
+       results = app_tables.suppported_products.search(CFApplicationArea = q.like(V ),Location_c = X,Version_Level= Y, Customer_Type = Z, InUseStatus= 'Live')
+        
+    else:
+       results = app_tables.suppported_products.search()
+    return results

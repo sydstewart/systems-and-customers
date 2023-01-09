@@ -8,6 +8,8 @@ from anvil.tables import app_tables
 import anvil.server
 from datetime import datetime, time , date , timedelta
 
+
+
 class systems_and_accounts(systems_and_accountsTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
@@ -22,6 +24,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     inusestatus = list({(r['InUseStatus']) for r in app_tables.suppported_products.search()})
     customertype = list({(r['Customer_Type']) for r in app_tables.suppported_products.search()})
     regions= list({(r['Location_c']) for r in app_tables.suppported_products.search()})
+    version_level = list({(r['Version_Level']) for r in app_tables.suppported_products.search()})
     print(regions)
     print(customertype)
     self.app_multi_select_drop_down.items = applications
@@ -30,7 +33,9 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.region_dropdown.items = regions
     self.customer_type_dropdown.items = customertype
     self.apparea_dropdown.items = [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
-#     self.region_multi_select_drop_down.items = regions
+    self.apparea_1_dropdown.items = [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
+    self.version_level_dropdown.items = version_level
+    #     self.region_multi_select_drop_down.items = regions
 
     t = app_tables.last_date_refreshed.get(dateid =1 )
     self.last_refresh_date.text= t['last_date_refreshed']
@@ -210,7 +215,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
   def customer_type_dropdown_change(self, **event_args):
     """This method is called when an item is selected"""
     selectedcustomertype = self.customer_type_dropdown.selected_value
-    self.region_dropdown.selected_value = None
+#     self.region_dropdown.selected_value = None
     self.repeating_panel_1.items = app_tables.suppported_products.search(Customer_Type=selectedcustomertype,InUseStatus='Live' )
     self.hits_textbox.text = len(self.repeating_panel_1.items)
     pass
@@ -256,6 +261,35 @@ class systems_and_accounts(systems_and_accountsTemplate):
 #       )
 #     )
 #     self.hits_textbox.text = len(self.repeating_panel_1.items)
+
+  def button_4_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    selectedcustomertype = self.customer_type_dropdown.selected_value
+    selectedregion = self.region_dropdown.selected_value
+    selectedapparea_1 = self.apparea_1_dropdown.selected_value
+    if  selectedapparea_1:
+          selectedapp = ('%' + selectedapparea_1['application_area'] + '%')
+    else:
+          selectedapp = selectedapparea_1
+    selected_version_level= self.version_level_dropdown.selected_value
+    V = selectedapp
+    X = selectedregion
+    Y = selected_version_level
+    Z = selectedcustomertype
+    print(V, X, Y ,Z)
+#     results = anvil.server.call('four_way_search',selectedapp, selectedregion, selected_version_level, selectedcustomertype)
+    
+    if V and X and Y and Z:
+       results = app_tables.suppported_products.search(CFApplicationArea = q.like(V ),Location_c = X,Version_Level= Y, Customer_Type = Z, InUseStatus= 'Live')
+        
+    else:
+       results = app_tables.suppported_products.search()
+ 
+    
+    self.repeating_panel_1.items = results
+    self.hits_textbox.text = len(self.repeating_panel_1.items)
+    pass
+
 
 
 

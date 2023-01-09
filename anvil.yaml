@@ -117,4 +117,10 @@ secrets:
   crm pass:
     value: {? '' : AtST9syC4yNvFXDbvAIW/E194h6TVazhOazfNxwlHqshwf86X3qz4v/r2FMiU0FmvNknYXGz6G5zKZbcGW6ArBUgguvf1593pWYqgS0fpZNatj2awgyk5bdRwykMTHRr2odl4mUPS+G0LQ==}
     type: secret
+  ? results = app_tables.suppported_products.search(CFApplicationArea = q.like(V ),Location_c = X,Version_Level= Y, Customer_Type = Z, InUseStatus= 'Live')
+  : value: {? '' : ULpDddYc6YyV0tVyplQZYNyHplhyDSC0ZJSji46nPrSocfzv3W5w7CN+ASvGVopc1+QPjGD1lytF1FL+1jp3zQdwYWj0tCx2+//vXQ3FDEgnsyLY5JfLBEBZ9Vm4rPqxYvTbMn7JFzRk+yycUJ5ttuFJbyrGicI=}
+    type: key
+  new_secret:
+    value: {? '' : Yhj3MG2icwSSyhHc8Otck4iBxWLLsXLu4W8F9mgsRDWmlALQvvbboCBAsABB097fBjFvFjoajQKwSDJrZZMDbXmAtYlhsZTV3Dq5j8zr2XRBXmQT+AmvdcLzLjvTuBsK7bDslfzNr8vpdjc1EKFmhorNA+lJoc9OZM1LIznGF8PQwd2sFkc2np+EzVASaBRC0TGxdi61/4SeRoBbtdvqXOHXKg5ECFlxzqwQ/Mj0C1c6tpBeraE9CGWEQXGOUG+J8WMn/h69uSWohIRC14iiGMCNJSdeg5AQzd8mV904pUeiSnsiYNkB7YphioF9GMfCds0zPWAF}
+    type: secret
 renamed: true
