@@ -282,8 +282,42 @@ class systems_and_accounts(systems_and_accountsTemplate):
     if V and X and Y and Z:
        results = app_tables.suppported_products.search(CFApplicationArea = q.like(V ),Location_c = X,Version_Level= Y, Customer_Type = Z, InUseStatus= 'Live')
         
-    else:
-       results = app_tables.suppported_products.search()
+    elif   V and not X and not Y and not Z:
+       results = app_tables.suppported_products.search(CFApplicationArea = q.like(V ), InUseStatus= 'Live')
+    elif  not  V and X and not Y and not Z:    
+        results = app_tables.suppported_products.search( Location_c = X,  InUseStatus= 'Live')
+    elif  not  V and not X and Y and not Z:    
+        results = app_tables.suppported_products.search(Version_Level= Y,  InUseStatus= 'Live')
+    elif  not  V and not X and not Y and  Z:    
+        results = app_tables.suppported_products.search(Customer_Type = Z,  InUseStatus= 'Live')
+    
+    elif   V and X and not Y and not Z:
+       results = app_tables.suppported_products.search(CFApplicationArea = q.like(V ), Location_c = X, InUseStatus= 'Live')
+    elif   V and not X and Y and not Z:
+       results = app_tables.suppported_products.search(CFApplicationArea = q.like(V ), Version_Level= Y, InUseStatus= 'Live')
+    elif   V and not X and not Y and  Z:
+       results = app_tables.suppported_products.search(CFApplicationArea = q.like(V ), Customer_Type = Z, InUseStatus= 'Live')
+    elif   not V and X and  Y and not Z:
+       results = app_tables.suppported_products.search( Location_c = X, Version_Level= Y, InUseStatus= 'Live')
+    elif   not V and not X and  Y and Z:
+       results = app_tables.suppported_products.search(Version_Level= Y, Customer_Type = Z, InUseStatus= 'Live')
+    elif   not V and X and not Y and  Z:
+       results = app_tables.suppported_products.search(Location_c = X,Customer_Type = Z, InUseStatus= 'Live')
+    
+    
+    elif   V and X and Y and not Z:
+       results = app_tables.suppported_products.search(CFApplicationArea = q.like(V ), Version_Level= Y, InUseStatus= 'Live')
+    elif  not  V and X and Y and Z:
+       results = app_tables.suppported_products.search(Location_c = X, Version_Level= Y,Customer_Type = Z, InUseStatus= 'Live')
+    elif  V and not X and Y and Z:
+       results = app_tables.suppported_products.search(CFApplicationArea = q.like(V ),Version_Level= Y ,Customer_Type = Z,  InUseStatus= 'Live')
+    elif  V and  X and not Y and Z:
+       results = app_tables.suppported_products.search(CFApplicationArea = q.like(V ),Location_c = X ,Customer_Type = Z,  InUseStatus= 'Live')
+    
+    
+    
+    else:   
+        results = app_tables.suppported_products.search()
  
     
     self.repeating_panel_1.items = results
