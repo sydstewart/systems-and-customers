@@ -1,5 +1,6 @@
 from ._anvil_designer import Regional_SummaryTemplate
 from anvil import *
+import anvil.users
 import anvil.server
 import anvil.google.auth, anvil.google.drive
 from anvil.google.drive import app_files

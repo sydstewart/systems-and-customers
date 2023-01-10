@@ -1,5 +1,6 @@
 from ._anvil_designer import MapTemplate
 from anvil import *
+import anvil.users
 import plotly.graph_objects as go
 import anvil.google.auth, anvil.google.drive
 from anvil.google.drive import app_files
