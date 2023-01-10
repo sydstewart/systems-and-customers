@@ -21,7 +21,8 @@ class systems_and_accounts(systems_and_accountsTemplate):
     anvil.users.login_with_form()
 #     mfa_login_with_form()
     loggedinuser =  anvil.users.get_user()['email']
-    self.loggedinuser.text = loggedinuser
+#     self.loggedinuser.text = loggedinuser
+    user_type = anvil.users.get_user()['user_type']
 #     user_type = anvil.users.get_user()['user_type']
     # Any code you write here will run before the form opens.
 #     anvil.server.call('listsystems')
@@ -395,6 +396,13 @@ class systems_and_accounts(systems_and_accountsTemplate):
     """This method is called when the button is clicked"""
     open_form('Stats_Tables.In_Use_Summary')
     pass
+
+  def logout_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('systems_and_accounts')
+    anvil.users.logout()
+    pass
+
 
 
 
