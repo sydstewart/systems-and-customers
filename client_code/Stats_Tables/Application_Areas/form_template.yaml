@@ -10,7 +10,7 @@ components:
   components:
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Application Areas, font_size: null, font: '', spacing_above: small,
+      visible: true, text: Application Areas (Live), font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
       underline: false, icon: ''}
     name: label_1
@@ -29,7 +29,7 @@ components:
         properties:
           role: null
           columns:
-          - {id: DSVAIY, title: App Area, data_key: App_Group}
+          - {id: DSVAIY, title: App Area, data_key: Application_Area}
           - {id: SKKDCT, title: Count, data_key: Count}
           - {id: VJFJHI, title: '%', data_key: '%'}
           auto_header: true
@@ -47,10 +47,19 @@ components:
         layout_properties: {grid_position: 'TFJIOW,NYGEPX'}
         components:
         - type: RepeatingPanel
-          properties: {spacing_above: none, spacing_below: none, item_template: Stats_Tables.App_Areas.RowTemplate13}
+          properties: {spacing_above: none, spacing_below: none, item_template: Stats_Tables.Application_Areas.RowTemplate13}
           name: repeating_panel_1
           layout_properties: {}
 - type: FlowPanel
   properties: {}
   name: navbar_links
   layout_properties: {slot: nav-right}
+  components:
+  - type: Button
+    properties: {role: primary-color, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Go to Lists, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: button_1
+    layout_properties: {}
+    event_bindings: {click: button_1_click}

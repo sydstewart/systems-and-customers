@@ -7,8 +7,10 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 from datetime import datetime, time , date , timedelta
-from ..s
-
+from ..Searches.four_way_search import four_way_search
+from ..Stats_Tables.Application_Areas import Application_Areas
+from ..Stats_Tables.Customer_Types import Customer_Types
+from ..Stats_Tables.Version_Summary import Version_Summary
 
 class systems_and_accounts(systems_and_accountsTemplate):
   def __init__(self, **properties):
@@ -187,7 +189,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
   def app_group_type_button_click(self, **event_args):
     """This method is called when the button is clicked"""
      
-    open_form('App_Areas')
+    open_form('Stats_Tables.Application_Areas')
     pass
 
   def map_button_click(self, **event_args):
@@ -202,14 +204,14 @@ class systems_and_accounts(systems_and_accountsTemplate):
 
   def button_2_click(self, **event_args):
     """This method is called when the button is clicked"""
-    open_form('Version_Summary')
+    open_form('Stats_Tables.Version_Summary')
     dict_versions_group = anvil.server.call('versions')
 #     self.repeating_panel_1.items = dict_versions_group
     pass
 
   def button_3_click(self, **event_args):
     """This method is called when the button is clicked"""
-    open_form('Customer_Types')
+    open_form('Stats_Tables.Customer_Types')
     dict_customer_type_summary = anvil.server.call('customer_type__summary')
     pass
 
@@ -370,6 +372,27 @@ class systems_and_accounts(systems_and_accountsTemplate):
     Z = selectedcustomertype
     four_way_search(self,V, X,Y,Z)
    
+
+
+
+  def application_group_summary_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Stats_Tables.Application_Groups')
+    pass
+
+  def button_4_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Stats_Tables.Regional_Summary')
+    pass
+
+  def In_Use_Summary_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Stats_Tables.In_Use_Summary')
+    pass
+
+
+
+
 
 
 

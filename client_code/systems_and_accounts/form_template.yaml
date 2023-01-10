@@ -356,46 +356,53 @@ components:
     event_bindings: {click: button_2_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Customer Types, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      foreground: '', visible: true, text: Customer Type Summary, font_size: null,
+      font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '', bold: false, underline: false, icon: ''}
     name: button_3
     layout_properties: {grid_position: 'POWZOA,KWLZKC'}
     event_bindings: {click: button_3_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: App Group Type, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      foreground: '', visible: true, text: Applications Summary, font_size: null,
+      font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '', bold: false, underline: false, icon: ''}
     name: app_group_type_button
     layout_properties: {grid_position: 'PTPWQX,VPEYTH'}
     event_bindings: {click: app_group_type_button_click}
   - type: Button
-    properties: {text: button_4}
-    name: button_4
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Application Group Summary, font_size: null,
+      font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: application_group_summary_button
     layout_properties: {grid_position: 'KODRHZ,QWBNWQ'}
+    event_bindings: {click: application_group_summary_button_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: 'ac_button
-
-        ', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
-      italic: false, background: '', bold: false, underline: false, icon: ''}
-    name: app_button
-    layout_properties: {grid_position: 'CYRLKO,PFTGWW'}
-    event_bindings: {click: app_button_click}
+      foreground: '', visible: true, text: Regional Summary, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: button_4
+    layout_properties: {grid_position: 'OXBXZX,NZKRIU'}
+    event_bindings: {click: button_4_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Stats, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: stats_button
-    layout_properties: {grid_position: 'NPUFRO,QFCDSK'}
-    event_bindings: {click: stats_button_click}
+      foreground: '', visible: true, text: In Use Summary, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: In_Use_Summary_button
+    layout_properties: {grid_position: 'PDVQQZ,CZJIAX'}
+    event_bindings: {click: In_Use_Summary_button_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Map, font_size: null, font: '', spacing_above: small,
+      foreground: '', visible: true, text: Go To Map, font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
     name: map_button
-    layout_properties: {grid_position: 'NPNCVW,LOPSLE'}
+    layout_properties: {grid_position: 'WGOXVO,ZWAEOW'}
     event_bindings: {click: map_button_click}
+- type: Image
+  properties: {height: 52}
+  name: image_1
+  layout_properties: {slot: title}
