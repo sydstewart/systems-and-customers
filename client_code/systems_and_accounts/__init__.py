@@ -7,7 +7,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 from datetime import datetime, time , date , timedelta
-
+from ..four_way_search import four_way_search
 
 
 class systems_and_accounts(systems_and_accountsTemplate):
@@ -41,6 +41,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.last_refresh_date.text= t['last_date_refreshed']
 #     self.app_multi_select_drop_down.items = applicsations
 #     dictsapps, total_rows = anvil.server.call('listsystems')
+  
     
   def applications_button_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -213,23 +214,36 @@ class systems_and_accounts(systems_and_accountsTemplate):
     pass
 
   def customer_type_dropdown_change(self, **event_args):
-    """This method is called when an item is selected"""
     selectedcustomertype = self.customer_type_dropdown.selected_value
-#     self.region_dropdown.selected_value = None
-    self.repeating_panel_1.items = app_tables.suppported_products.search(Customer_Type=selectedcustomertype,InUseStatus='Live' )
-    self.hits_textbox.text = len(self.repeating_panel_1.items)
-    pass
+    selectedregion = self.region_dropdown.selected_value
+    selectedapparea_1 = self.apparea_1_dropdown.selected_value
+    if  selectedapparea_1:
+          selectedapp = ('%' + selectedapparea_1['application_area'] + '%')
+    else:
+          selectedapp = selectedapparea_1
+    selected_version_level= self.version_level_dropdown.selected_value
+    V = selectedapp
+    X = selectedregion
+    Y = selected_version_level
+    Z = selectedcustomertype
+    four_way_search(self,V, X,Y,Z)
+   
 
   def region_dropdown_change(self, **event_args):
-    """This method is called when an item is selected"""
     selectedcustomertype = self.customer_type_dropdown.selected_value
-    print(selectedcustomertype)
-    self.customer_type_dropdown.selected_value = None
     selectedregion = self.region_dropdown.selected_value
-    print(selectedregion)
-    self.repeating_panel_1.items = app_tables.suppported_products.search(Location_c = selectedregion,InUseStatus='Live')
-    self.hits_textbox.text = len(self.repeating_panel_1.items)
-    pass
+    selectedapparea_1 = self.apparea_1_dropdown.selected_value
+    if  selectedapparea_1:
+          selectedapp = ('%' + selectedapparea_1['application_area'] + '%')
+    else:
+          selectedapp = selectedapparea_1
+    selected_version_level= self.version_level_dropdown.selected_value
+    V = selectedapp
+    X = selectedregion
+    Y = selected_version_level
+    Z = selectedcustomertype
+    four_way_search(self,V, X,Y,Z)
+   
 
 
 #     self.repeating_panel_1.items=app_tables.suppported_products.search(
@@ -323,6 +337,41 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.repeating_panel_1.items = results
     self.hits_textbox.text = len(self.repeating_panel_1.items)
     pass
+
+  def apparea_1_dropdown_change(self, **event_args):
+    """This method is called when an item is selected"""
+    selectedcustomertype = self.customer_type_dropdown.selected_value
+    selectedregion = self.region_dropdown.selected_value
+    selectedapparea_1 = self.apparea_1_dropdown.selected_value
+    if  selectedapparea_1:
+          selectedapp = ('%' + selectedapparea_1['application_area'] + '%')
+    else:
+          selectedapp = selectedapparea_1
+    selected_version_level= self.version_level_dropdown.selected_value
+    V = selectedapp
+    X = selectedregion
+    Y = selected_version_level
+    Z = selectedcustomertype
+    four_way_search(self,V, X,Y,Z)
+    pass
+
+  def version_level_dropdown_change(self, **event_args):
+    selectedcustomertype = self.customer_type_dropdown.selected_value
+    selectedregion = self.region_dropdown.selected_value
+    selectedapparea_1 = self.apparea_1_dropdown.selected_value
+    if  selectedapparea_1:
+          selectedapp = ('%' + selectedapparea_1['application_area'] + '%')
+    else:
+          selectedapp = selectedapparea_1
+    selected_version_level= self.version_level_dropdown.selected_value
+    V = selectedapp
+    X = selectedregion
+    Y = selected_version_level
+    Z = selectedcustomertype
+    four_way_search(self,V, X,Y,Z)
+   
+
+
 
 
 
