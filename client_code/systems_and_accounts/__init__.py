@@ -18,11 +18,11 @@ class systems_and_accounts(systems_and_accountsTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    anvil.users.login_with_form()
-#     mfa_login_with_form()
-    loggedinuser =  anvil.users.get_user()['email']
-    self.loggedinuser.text = loggedinuser
-    user_type = anvil.users.get_user()['user_type']
+#     anvil.users.login_with_form()
+# #     mfa_login_with_form()
+#     loggedinuser =  anvil.users.get_user()['email']
+#     self.loggedinuser.text = loggedinuser
+#     user_type = anvil.users.get_user()['user_type']
     # Any code you write here will run before the form opens.
 #     anvil.server.call('listsystems')
     self.repeating_panel_1.items = app_tables.suppported_products.search()
