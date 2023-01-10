@@ -32,16 +32,7 @@ def four_way_search(self, V, X, Y, Z):
        results = app_tables.suppported_products.search(CFApplicationArea = q.like(V ),Location_c = X,Version_Level= Y, Customer_Type = Z, InUseStatus= 'Live')
         
     elif   V and not X and not Y and not Z:
-        search = app_tables.suppported_products.search()
-  
-        results = []
-  
-        for row in search:
-          if row['CFApplicationArea'] in V and row['InUseStatus'] == 'Live':
-              results.append(row)
-      
-  
-#       results = app_tables.suppported_products.search({string}=q.like(V) , InUseStatus= 'Live') 
+      results = app_tables.suppported_products.search(CFApplicationArea =q.like(V) , InUseStatus= 'Live') 
     elif  not  V and X and not Y and not Z:    
         results = app_tables.suppported_products.search( Location_c = X,  InUseStatus= 'Live')
     elif  not  V and not X and Y and not Z:    

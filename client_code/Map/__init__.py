@@ -29,7 +29,7 @@ class Map(MapTemplate):
 #     else:
 #     selectedapp = ('%' + 'Anticoagulation'  + '%')
 #     # Any code you write here will run before the form opens.
-    locations = anvil.server.call('get_all_locations' )
+    locations = app_tables.suppported_products.search() #anvil.server.call('get_all_locations' )
     self.hits_textbox.text = len(locations) 
     for location in locations:
       position = GoogleMap.LatLng(location['latitude'], location['longitude'])

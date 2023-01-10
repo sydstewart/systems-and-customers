@@ -15,16 +15,16 @@ import anvil.server
 
 def multi_search(self, selecttedinusestatus2, selectedapps):
     if selecttedinusestatus2 and selectedapps  :
-          locations= anvil.server.call('get_all_locations_with_two',selectedapps, selecttedinusestatus2 )
+          locations= app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps), InUseStatus=selecttedinusestatus2)  # anvil.server.call('get_all_locations_with_two',selectedapps, selecttedinusestatus2 )
       
     elif  not selecttedinusestatus2 and selectedapps  :
-          locations = anvil.server.call('get_all_locations_with_selectedapps_alone', selectedapps)
+          locations = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps)) #anvil.server.call('get_all_locations_with_selectedapps_alone', selectedapps)
 #       
     elif  selecttedinusestatus2 and not selectedapps  :
-          locations = anvil.server.call('get_all_locations_with_In_Use_alone', selecttedinusestatus2)
+          locations = app_tables.suppported_products.search(InUseStatus=selecttedinusestatus2) #anvil.server.call('get_all_locations_with_In_Use_alone', selecttedinusestatus2)
 #       
     elif  not selecttedinusestatus2 and not selectedapps: 
-            locations = anvil.server.call('get_all_locations')
+          locations = app_tables.suppported_products.search()  # anvil.server.call('get_all_locations')
     
     if locations:  
           self.hits_textbox.text = len(locations)

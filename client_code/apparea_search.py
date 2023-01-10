@@ -16,21 +16,21 @@ from datetime import datetime, time , date , timedelta
 #    Module1.say_hello()
 #
 
-def apparea_search(self, selectedapparea,selecttedinusestatus):
+def apparea_search(self, selectedapparea,selectedinusestatus):
        
-    if selectedapparea and not selecttedinusestatus:
+    if selectedapparea and not selectedinusestatus:
         selectedapparea = ('%' + selectedapparea['application_area'] + '%')
-        locations = anvil.server.call('get_locations',selectedapparea)
+        locations = app_tables.suppported_products.search(CFApplicationArea=q.like(selectedapparea)) #anvil.server.call('get_locations',selectedapparea)
 
-    elif selectedapparea and  selecttedinusestatus:
+    elif selectedapparea and  selectedinusestatus:
         selectedapparea = ('%' + selectedapparea['application_area'] + '%')
-        locations = anvil.server.call('get_InUse_locations',selectedapparea, selecttedinusestatus )
+        locations = app_tables.suppported_products.search(q.all_of(CFApplicationArea=q.like(selectedapparea), InUseStatus= (selectedinusestatus))) # anvil.server.call('get_InUse_locations',selectedapparea, selecttedinusestatus )
 
-    elif not selectedapparea and  selecttedinusestatus:   
+    elif not selectedapparea and  selectedinusestatus:   
 #         locations = app_tables.suppported_products.search( InUseStatus=selecttedinusestatus)
-       locations = anvil.server.call('get_all_locations_with_In_Use_alone', selecttedinusestatus) 
+       locations = app_tables.suppported_products.search(InUseStatus=selectedinusestatus) #anvil.server.call('get_all_locations_with_In_Use_alone', selectedinusestatus) 
     else:
-        locations = anvil.server.call('get_all_locations')
+        locations = app_tables.suppported_products.search() #anvil.server.call('get_all_locations')
         self.hits_textbox.text = len(app_tables.suppported_products.search())
 
     self.hits_textbox.text = len(locations)
