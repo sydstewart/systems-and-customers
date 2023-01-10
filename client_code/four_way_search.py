@@ -66,7 +66,7 @@ def four_way_search(self, V, X, Y, Z):
     
     
     else:   
-        results = app_tables.suppported_products.search()
+        results = app_tables.suppported_products.search(InUseStatus= 'Live')
  
     
     self.repeating_panel_1.items = results
