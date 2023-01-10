@@ -42,7 +42,7 @@ components:
       layout_properties: {grid_position: 'CNLFOZ,CJRAXC'}
       components:
       - type: RepeatingPanel
-        properties: {spacing_above: none, spacing_below: none, item_template: Version_Summary.RowTemplate11}
+        properties: {spacing_above: none, spacing_below: none, item_template: Stats_Tables.Version_Summary.RowTemplate11}
         name: repeating_panel_2
         layout_properties: {}
   - type: ColumnPanel
@@ -107,7 +107,7 @@ components:
         layout_properties: {grid_position: 'DIHVGA,UVPRHK'}
         components:
         - type: RepeatingPanel
-          properties: {spacing_above: none, spacing_below: none, item_template: Version_Summary.RowTemplate10}
+          properties: {spacing_above: none, spacing_below: none, item_template: Stats_Tables.Version_Summary.RowTemplate10}
           name: repeating_panel_1
           layout_properties: {}
 - type: FlowPanel

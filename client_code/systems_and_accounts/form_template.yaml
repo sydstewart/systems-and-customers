@@ -364,6 +364,18 @@ components:
     event_bindings: {click: button_3_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: App Group Type, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: app_group_type_button
+    layout_properties: {grid_position: 'PTPWQX,VPEYTH'}
+    event_bindings: {click: app_group_type_button_click}
+  - type: Button
+    properties: {text: button_4}
+    name: button_4
+    layout_properties: {grid_position: 'KODRHZ,QWBNWQ'}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: 'ac_button
 
         ', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
@@ -379,14 +391,6 @@ components:
     name: stats_button
     layout_properties: {grid_position: 'NPUFRO,QFCDSK'}
     event_bindings: {click: stats_button_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: App Group Type, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: app_group_type_button
-    layout_properties: {grid_position: 'JXKSOA,SYAOTE'}
-    event_bindings: {click: app_group_type_button_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: Map, font_size: null, font: '', spacing_above: small,

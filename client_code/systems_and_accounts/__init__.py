@@ -7,7 +7,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 from datetime import datetime, time , date , timedelta
-from ..four_way_search import four_way_search
+from ..s
 
 
 class systems_and_accounts(systems_and_accountsTemplate):
@@ -187,7 +187,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
   def app_group_type_button_click(self, **event_args):
     """This method is called when the button is clicked"""
      
-    anvil.server.call('appgrouptype')
+    open_form('App_Areas')
     pass
 
   def map_button_click(self, **event_args):

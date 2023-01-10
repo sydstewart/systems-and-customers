@@ -47,7 +47,7 @@ components:
       layout_properties: {grid_position: 'JLWVOS,OQQCPB'}
       components:
       - type: RepeatingPanel
-        properties: {spacing_above: none, spacing_below: none, item_template: Customer_Types.RowTemplate12}
+        properties: {spacing_above: none, spacing_below: none, item_template: Stats_Tables.Customer_Types.RowTemplate12}
         name: repeating_panel_1
         layout_properties: {}
 - type: FlowPanel
