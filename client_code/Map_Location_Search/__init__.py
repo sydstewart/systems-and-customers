@@ -46,8 +46,15 @@ class Map_Location_Search(Map_Location_SearchTemplate):
 
   def add_location_btn_click(self, **event_args):
     """This method is called when the button is clicked"""
-    anvil.server.call('update_location',self.drop_down_1.selected_value,self.latitude ,self.longitude)
-    open_form('Map')
+
+    line1 = self.location_name.text
+    line2 = 'Latitude = ' + str(self.latitude) 
+    line3 = 'Longitude = ' + str(self.longitude)
+    line4 = 'Please copy Lat and Long to CRM account'
+    message = line1 +'\n' + line2 + '\n' + line3 + '\n' + '\n' + line4
+    alert(message)
+#     anvil.server.call('update_location',self.drop_down_1.selected_value,self.latitude ,self.longitude)
+#     open_form('Map')
     pass
 
   def go_to_map_btn_click(self, **event_args):

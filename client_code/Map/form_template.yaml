@@ -170,8 +170,8 @@ components:
     event_bindings: {click: button_1_click}
   - type: Button
     properties: {role: primary-color, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Add Location, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      foreground: '', visible: true, text: Find Location (Lat and  Long), font_size: null,
+      font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '', bold: false, underline: false, icon: 'fa:plus'}
     name: add_location_btn
     layout_properties: {}

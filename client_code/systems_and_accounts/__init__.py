@@ -399,9 +399,11 @@ class systems_and_accounts(systems_and_accountsTemplate):
           self.region_dropdown.selected_value = None
           self.version_level_dropdown.selected_value = None
           
+          phrase = self.text_search_box.text
+          
           self.repeating_panel_1.items = app_tables.suppported_products.search(q.any_of(
-          Name=q.full_text_match(self.text_search_box.text),Account= q.full_text_match(self.text_search_box.text), \
-          Live_version_no= q.full_text_match(self.text_search_box.text)))
+          Name=q.full_text_match(self.text_search_box.text),Account= q.full_text_match(phrase), \
+          Live_version_no= q.full_text_match(phrase)))
     else:
          self.repeating_panel_1.items = app_tables.suppported_products.search()
         
