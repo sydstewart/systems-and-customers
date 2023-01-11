@@ -404,6 +404,21 @@ class systems_and_accounts(systems_and_accountsTemplate):
     pass
 
 
+  def text_search_box_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    if self.text_search_box.text:
+          self.repeating_panel_1.items = app_tables.suppported_products.search(q.any_of(
+          Name=q.full_text_match(self.text_search_box.text),Account= q.full_text_match(self.text_search_box.text), \
+          Live_version_no= q.full_text_match(self.text_search_box.text)))
+    else:
+         self.repeating_panel_1.items = app_tables.suppported_products.search()
+        
+    self.hits_textbox.text = len(self.repeating_panel_1.items)
+    pass
+
+
+
+
 
 
 
