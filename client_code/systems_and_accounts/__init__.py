@@ -399,8 +399,9 @@ class systems_and_accounts(systems_and_accountsTemplate):
 
   def logout_button_click(self, **event_args):
     """This method is called when the button is clicked"""
-    open_form('systems_and_accounts')
+    self.content_panel.clear()
     anvil.users.logout()
+    anvil.users.login_with_form()
     pass
 
 
