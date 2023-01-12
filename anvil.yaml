@@ -109,13 +109,40 @@ db_schema:
     - name: Customer_Type
       admin_ui: {width: 200}
       type: string
+    - name: Interfaces
+      admin_ui: {width: 200}
+      type: string
     - name: Inbound_INR
       admin_ui: {width: 200}
       type: string
     - name: Bidirectional_SystmOne
       admin_ui: {width: 200}
       type: string
-    - name: Interfaces
+    - name: Inbound_ADT
+      admin_ui: {width: 200}
+      type: string
+    - name: Inbound_Demographics
+      admin_ui: {width: 200}
+      type: string
+    - name: Inbound_Medications
+      admin_ui: {width: 200}
+      type: string
+    - name: Outbound_Billing
+      admin_ui: {width: 200}
+      type: string
+    - name: Outbound_Dosing
+      admin_ui: {width: 200}
+      type: string
+    - name: Outbound_PDF
+      admin_ui: {width: 200}
+      type: string
+    - name: Outbound_Query
+      admin_ui: {width: 200}
+      type: string
+    - name: Inbound_TestResults
+      admin_ui: {width: 200}
+      type: string
+    - name: Bidirectional_Telehealth
       admin_ui: {width: 200}
       type: string
   last_date_refreshed:
@@ -165,6 +192,14 @@ db_schema:
     - name: longitude
       admin_ui: {width: 200}
       type: number
+  interface_types:
+    title: Interface_Types
+    client: none
+    server: full
+    columns:
+    - name: Interface_Type
+      admin_ui: {width: 200}
+      type: string
 secrets:
   crm pass:
     value: {? '' : AtST9syC4yNvFXDbvAIW/E194h6TVazhOazfNxwlHqshwf86X3qz4v/r2FMiU0FmvNknYXGz6G5zKZbcGW6ArBUgguvf1593pWYqgS0fpZNatj2awgyk5bdRwykMTHRr2odl4mUPS+G0LQ==}

@@ -68,6 +68,7 @@ def listsystems():
       _cstm.Interface_Outbound_PDF Interface_Outbound_PDF, \
       _cstm.Interface_Outbound_Query Interface_Outbound_Query, \
       _cstm.Interface_Inbound_TestResults  Interface_Inbound_TestResults,\
+      `_cstm`.`Interface_Birectional_Telehealth` `Interface_Birectional_Telehealth`,\
       `account._cstm`.latitude_c as latitude, \
       `account._cstm`.longtitude_c as longitude, \
       _cstm.Installed_Version_Num  as Live_Version_no,\
@@ -88,7 +89,12 @@ def listsystems():
       dicts = [{'Account': r['account'],'Name': r['name'],'InUseStatus':r['InUseStatus'], 'Shipping_Address_Country':r['account.shipping_address_country'],
       'CFApplicationArea':r['CFApplicationArea'], '4S_Country':r['account.Dawn_Country'], 'Location_c' : r['account.location_c'], 'latitude' : r['latitude'],
        'longitude' :r['longitude'], 'Account_id' : r['account_id'], 'System_id' : r['id'] , 'Live_version_no': r['Live_Version_no'], 'Customer_Type' : r['customertype_c'] ,
-               'Inbound_INR' : r['Interface_Inbound_INR'], 'Bidirectional_SystmOne' : r['Interface_Bidirectional_SystmOne']}]
+               'Inbound_INR' : r['Interface_Inbound_INR'], 'Bidirectional_SystmOne' : r['Interface_Bidirectional_SystmOne'],
+               'Inbound_ADT' : r['Interface_Inbound_ADT'], 'Inbound_Demographics' : r['Interface_Inbound_Demographics'], 
+               'Inbound_Medications' : r['Interface_Inbound_Medications'], 'Outbound_Billing': r['Outbound_Billing_Interface'],
+               'Outbound_Dosing' : r['Interface_Outbound_Dosing'], 'Outbound_PDF' : r['Interface_Outbound_PDF'],
+               'Outbound_Query' : r['Interface_Outbound_Query'], 'Inbound_TestResults' : r['Interface_Inbound_TestResults'],
+               'Bidirectional_Telehealth' :r['Interface_Birectional_Telehealth']}]
       for d in dicts:
 #           t= app_tables.suppported_products.get(Account =  d['Account'], Name = d['Name'],CFApplicationArea= d['CFApplicationArea'],InUseStatus = d['InUseStatus'] )  
 #           if not t:
@@ -99,14 +105,62 @@ def listsystems():
                   Version_Level = '8'
             else:
                   Version_Level= '7'
-                
+            Interfaces= ''
+            count = 0 # to identify first interface in list
             if d['Inbound_INR'] == 'yes':
                 print('Inbound_INR')
-                Interfaces = 'Inbound_INR' + ''
-            elif d['Bidirectional_SystmOne'] == 'yes':
-                Interfaces = Interfaces + ' ' + 'Bidirectional_SystmOne'
-            else:
-                Interfaces = ' '
+                Interfaces = ' Inbound_INR'
+                count = 1
+            if d['Bidirectional_SystmOne'] == 'yes' and count ==1:
+                Interfaces = Interfaces + '\n ' +'Bidirectional_SystmOne'
+            elif count == 0 and d['Bidirectional_SystmOne'] == 'yes':
+                Interfaces = ' Bidirectional_SystmOne'
+                count = 1
+            if d['Inbound_ADT'] == 'yes' and count ==1:
+                Interfaces = Interfaces + '\n ' +'Inbound_ADT'
+            elif count ==0 and d['Inbound_ADT'] == 'yes':
+                Interfaces = ' Inbound_ADT'
+                count = 1
+            if d['Inbound_Demographics'] == 'yes'and count ==1:
+                Interfaces = Interfaces + '\n ' +'Inbound_Demographics'
+            elif count ==0 and d['Inbound_Demographics'] == 'yes' :
+                Interfaces = ' Inbound_Demographics'
+                count = 1
+            if d['Inbound_Medications'] == 'yes'and count ==1:
+                Interfaces = Interfaces + '\n ' +'Inbound_Medications'
+            elif count ==0 and d['Inbound_Medications'] == 'yes' :
+                Interfaces = ' Inbound_Medications'
+                count = 1
+            if d['Outbound_Billing'] == 'yes'and count ==1:
+                Interfaces = Interfaces + '\n ' +'Outbound_Billing'
+            elif count ==0 and d['Outbound_Billing'] == 'yes' :
+                Interfaces = ' Outbound_Billing'
+                count = 1
+            if d['Outbound_Dosing'] == 'yes'and count ==1:
+                Interfaces = Interfaces + '\n ' +'Outbound_Dosing'
+            elif count ==0 and d['Outbound_Dosing'] == 'yes' :
+                Interfaces = ' Outbound_Dosing'
+                count = 1
+            if d['Outbound_PDF'] == 'yes'and count ==1:
+                Interfaces = Interfaces + '\n ' +'Outbound_PDF'
+            elif count ==0 and d['Outbound_PDF'] == 'yes' :
+                Interfaces = ' Outbound_PDF'
+                count = 1
+            if d['Outbound_Query'] == 'yes'and count ==1:
+                Interfaces = Interfaces + '\n ' +'Outbound_Query'
+            elif count ==0 and d['Outbound_Query'] == 'yes' :
+                Interfaces = ' Outbound_Query'
+                count = 1
+            if d['Inbound_TestResults'] == 'yes'and count ==1:
+                Interfaces = Interfaces + '\n ' +'Inbound_TestResults'
+            elif count ==0 and d['Inbound_TestResults'] == 'yes' :
+                Interfaces = ' Inbound_TestResults'
+                count = 1
+            if d['Bidirectional_Telehealth'] == 'yes'and count ==1:
+                Interfaces = Interfaces + '\n ' +'Bidirectional_Telehealth'
+            elif count ==0 and d['Bidirectional_Telehealth'] == 'yes' :
+                Interfaces = ' Bidirectional_Telehealth'
+                count = 1
             app_tables.suppported_products.add_row(Version_Level = Version_Level,Interfaces = Interfaces,**d)
 
   return 

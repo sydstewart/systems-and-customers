@@ -45,6 +45,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.apparea_dropdown.items = [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
     self.apparea_1_dropdown.items = [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
     self.version_level_dropdown.items = version_level
+    self.interfaces_dropdown.items = [(str(row['Interface_Type']), row) for row in app_tables.interface_types.search(tables.order_by('Interface_Type'))]
     #     self.region_multi_select_drop_down.items = regions
 
     t = app_tables.last_date_refreshed.get(dateid =1 )
@@ -71,6 +72,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.region_dropdown.selected_value = None
     self.version_level_dropdown.selected_value = None
     self.text_search_box.text = None
+    self.interfaces_dropdown.selected_value = None
     
     selectedapps = self.app_multi_select_drop_down.selected
     selecttedinusestatus2 = self.in_use_2_drop_down.selected_value
@@ -119,7 +121,8 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.customer_type_dropdown.selected_value = None
     self.region_dropdown.selected_value = None
     self.version_level_dropdown.selected_value = None
-    self.text_search_box.text = None    
+    self.text_search_box.text = None   
+    self.interfaces_dropdown.selected_value = None
     
     
 #     print(selectedapparea['application_area'])
@@ -160,6 +163,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.region_dropdown.selected_value = None
     self.version_level_dropdown.selected_value = None
     self.text_search_box.text = None
+    self.interfaces_dropdown.selected_value = None
     
 #     print(selectedapparea['application_area'])
     if selectedapparea and not selecttedinusestatus:
@@ -202,6 +206,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.region_dropdown.selected_value = None
     self.version_level_dropdown.selected_value = None
     self.text_search_box.text = None
+    self.interfaces_dropdown.selected_value = None
     
     if selecttedinusestatus2 and selectedapps  :
           self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps), InUseStatus=selecttedinusestatus2)
@@ -268,7 +273,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.app_multi_select_drop_down.selected = None
     self.in_use_2_drop_down.selected_value = None
     self.text_search_box.text = None
-    
+    self.interfaces_dropdown.selected_value = None
     
     if  selectedapparea_1:
           self.apparea_dropdown.selected_value = None
@@ -294,6 +299,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.app_multi_select_drop_down.selected = None
     self.in_use_2_drop_down.selected_value = None
     self.text_search_box.text = None
+    self.interfaces_dropdown.selected_value = None
     
     if  selectedapparea_1:
           selectedapp = ('%' + selectedapparea_1['application_area'] + '%')
@@ -321,6 +327,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.app_multi_select_drop_down.selected = None
     self.in_use_2_drop_down.selected_value = None
     self.text_search_box.text = None
+    self.interfaces_dropdown.selected_value = None
     
     if  selectedapparea_1:
           selectedapp = ('%' + selectedapparea_1['application_area'] + '%')
@@ -344,6 +351,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.app_multi_select_drop_down.selected = None
     self.in_use_2_drop_down.selected_value = None
     self.text_search_box.text = None
+    self.interfaces_dropdown.selected_value = None
     
     if  selectedapparea_1:
           selectedapp = ('%' + selectedapparea_1['application_area'] + '%')
@@ -398,7 +406,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
           self.customer_type_dropdown.selected_value = None
           self.region_dropdown.selected_value = None
           self.version_level_dropdown.selected_value = None
-          
+          self.interfaces_dropdown.selected_value = None
           phrase = self.text_search_box.text
           
           self.repeating_panel_1.items = app_tables.suppported_products.search(q.any_of(
@@ -409,6 +417,24 @@ class systems_and_accounts(systems_and_accountsTemplate):
         
     self.hits_textbox.text = len(self.repeating_panel_1.items)
     pass
+
+  def interfaces_dropdown_change(self, **event_args):
+    """This method is called when an item is selected"""
+    self.apparea_dropdown.selected_value = None
+    self.In_Use_Status_dropdown.selected_value = None
+    self.app_multi_select_drop_down.selected = None
+    self.in_use_2_drop_down.selected_value = None
+    self.apparea_1_dropdown.selected_value = None
+    self.customer_type_dropdown.selected_value = None
+    self.region_dropdown.selected_value = None
+    self.version_level_dropdown.selected_value = None
+    self.text_search_box.text = None
+    selectedinterface = self.interfaces_dropdown.selected_value
+    selectedinterface = ('%' + selectedinterface['Interface_Type'] + '%')
+    self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = q.like(selectedinterface), InUseStatus= 'Live')
+    self.hits_textbox.text = len(self.repeating_panel_1.items)  
+    pass
+
 
 
 
