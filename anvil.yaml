@@ -22,6 +22,7 @@ allow_embedding: false
 name: Systems and Customers
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
 metadata: {}
+startup_form: Stats_Tables.Application_Areas
 native_deps: {head_html: ''}
 db_schema:
   users:
@@ -194,7 +195,7 @@ db_schema:
       type: number
   interface_types:
     title: Interface_Types
-    client: none
+    client: full
     server: full
     columns:
     - name: Interface_Type

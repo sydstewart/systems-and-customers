@@ -430,10 +430,21 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.version_level_dropdown.selected_value = None
     self.text_search_box.text = None
     selectedinterface = self.interfaces_dropdown.selected_value
-    selectedinterface = ('%' + selectedinterface['Interface_Type'] + '%')
-    self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = q.like(selectedinterface), InUseStatus= 'Live')
+    if  selectedinterface:
+          selectedinterface = ('%' + selectedinterface['Interface_Type'] + '%')
+          self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = (q.like(selectedinterface)), InUseStatus= 'Live')
+
+#           self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = q.not_(q.like(selectedinterface)), InUseStatus= 'Live')
+    else:
+          self.repeating_panel_1.items = app_tables.suppported_products.search()
     self.hits_textbox.text = len(self.repeating_panel_1.items)  
     pass
+
+  def button_5_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Stats_Tables.Interface_Types')
+    pass
+
 
 
 

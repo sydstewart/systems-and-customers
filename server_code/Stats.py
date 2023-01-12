@@ -305,3 +305,36 @@ def customer_type__summary():
     
    
     return dict_customer_type_summary
+  
+#Interface Summary  
+@anvil.server.callable
+def group_in_single_interface():  
+#   singleapps = [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
+  singleainterface = app_tables.interface_types.search()
+  df3 = pd.DataFrame() 
+  for r  in singleainterface:
+#      print((r['application_area']))
+     Interface1 = r['Interface_Type']
+     Interface2 = ('%' + Interface1  + '%')
+ 
+     supported_products = app_tables.suppported_products.search(Interfaces = q.like (Interface2),InUseStatus='Live')
+     no_of_systems = len(supported_products)
+     
+     new_row = {'Interface_Type': Interface1, 'Count':no_of_systems}
+   
+     df3 = df3.append(new_row, ignore_index=True)
+     
+  print(df3)
+  df3.sort_values(by=['Count'], ascending=False,inplace = True)
+  df3['sumsystems'] = df3['Count'].sum()
+  df3['%'] =(df3['Count'] * 100)/df3['sumsystems']
+  df3['%'] = df3['%'].map('{:,.2f}'.format)    
+  df3['%'] = df3['%'].astype(float)
+  df3['Count'] = df3['Count'].astype(int)
+  df3.loc['Total', 'Count']= df3['Count'].sum()
+  df3.loc['Total', '%']= df3['%'].sum()
+  df3 = df3.fillna("")
+  
+  dictinterfaces = df3.to_dict(orient='records')
+ 
+  return dictinterfaces 

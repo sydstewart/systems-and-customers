@@ -2,6 +2,7 @@ unique_ids:
   forms:
     Stats_Tables.Application_Areas: FSRSLMS5CUYRTWBVZJS3OPAI5MGIQ6BI
     Application_Area_Summary.RowTemplate7: 7JDHVCVA5MIAU67I7V752XOQUSBCYN2B
+    Stats_Tables.Interface_Types.RowTemplate17: ORZNIFCS2ABU36JBUOICEVOGXMKWLLBC
     Stats_Tables.Customer_Types.RowTemplate12: JZ3ACMKTU6R5XASOGX2W5TKT4WA63WPX
     Stats_Tables.Regional_Summary: A35HJR57SOOC6XJ66FBOXF7AOHVVGX7K
     Stats_Tables.Regional_Summary.RowTemplate15: DPYE2O7SAQZX2UOYLIEAISNPSF6NPZ3R
@@ -16,6 +17,7 @@ unique_ids:
     Application_Area_Summary.RowTemplate6: MCFEZVPDASHDMIBN7TJESFY5BYVKK4JH
     latLong.RowTemplate8: VHFEO56VEZOALK4P5URVDZHKBWKGQEH6
     Mapbox: NPVW7E2QRI7ACT3RIZ7RQWR7WLASLQDL
+    Stats_Tables.Interface_Types: UXIFICAQJQ6F6C7FW6XHUWYTRQEIL55R
     Application_Area_Summary.RowTemplate3_copy: TBXPFASJD3PXJ5WFLBDKQ2HDEVX3SF4E
     systems_and_accounts.RowTemplate1: J3KRYVGXYQZFUJP4XG6OJRCARP2I7EE5
     Stats_Tables.Application_Groups: 4UCP57SPAQPKKOEQ3G277EU7W3A7NBZ6
@@ -27,7 +29,6 @@ unique_ids:
     applications.RowTemplate2: 7VSN277DVND3FZ5B5UYQKTAUBATMJDBQ
     Stats_Tables.In_Use_Summary.RowTemplate16: TC2RMMLENSKXQ3E7XXM3SZONQOFYPWCN
     Stats_Tables.Application_Groups.RowTemplate14: H3UDVSXBOM3K7XIDWESDQBX3AVEHSLRO
-    Interface_Summary: 4TTBMHU4SK63P7BCDOXUFZJ2S2YYY7UP
     Stats_Tables.Version_Summary.RowTemplate11: CXIHBSBEEVZA3K4PMCPCLC23A5OABYFT
     Application_Area_Summary.RowTemplate3: JJ7WS27KAD5K4GMFU3SWL5HX3M42EKKA
     Map_Location_Search: F6DLESPCK5QJSKFKL5X5CSACFBOUUN72
