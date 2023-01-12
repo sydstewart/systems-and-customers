@@ -433,8 +433,8 @@ class systems_and_accounts(systems_and_accountsTemplate):
     if  selectedinterface:
           selectedinterface = ('%' + selectedinterface['Interface_Type'] + '%')
           self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = (q.like(selectedinterface)), InUseStatus= 'Live')
-
-#           self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = q.not_(q.like(selectedinterface)), InUseStatus= 'Live')
+    elif selectedinterface and self.NOT_interface_chkbox.checked == True:
+          self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = q.not_(q.like(selectedinterface)), InUseStatus= 'Live')
     else:
           self.repeating_panel_1.items = app_tables.suppported_products.search()
     self.hits_textbox.text = len(self.repeating_panel_1.items)  
@@ -444,6 +444,32 @@ class systems_and_accounts(systems_and_accountsTemplate):
     """This method is called when the button is clicked"""
     open_form('Stats_Tables.Interface_Types')
     pass
+
+  def NOT_interface_chkbox_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.apparea_dropdown.selected_value = None
+    self.In_Use_Status_dropdown.selected_value = None
+    self.app_multi_select_drop_down.selected = None
+    self.in_use_2_drop_down.selected_value = None
+    self.apparea_1_dropdown.selected_value = None
+    self.customer_type_dropdown.selected_value = None
+    self.region_dropdown.selected_value = None
+    self.version_level_dropdown.selected_value = None
+    self.text_search_box.text = None
+    selectedinterface = self.interfaces_dropdown.selected_value
+    selectedinterface = ('%' + selectedinterface['Interface_Type'] + '%')
+    if  selectedinterface and self.NOT_interface_chkbox == False:
+          selectedinterface = ('%' + selectedinterface['Interface_Type'] + '%')
+          self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = (q.like(selectedinterface)), InUseStatus= 'Live')
+    elif selectedinterface and self.NOT_interface_chkbox.checked == True:
+        selectedinterface = ('%' + selectedinterface['Interface_Type'] + '%')  
+        self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = q.not_(q.like(selectedinterface)), InUseStatus= 'Live')
+    else:
+          self.repeating_panel_1.items = app_tables.suppported_products.search()
+    self.hits_textbox.text = len(self.repeating_panel_1.items)  
+    pass
+    pass
+
 
 
 
