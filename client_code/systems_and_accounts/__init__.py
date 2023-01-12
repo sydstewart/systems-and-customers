@@ -73,6 +73,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.version_level_dropdown.selected_value = None
     self.text_search_box.text = None
     self.interfaces_dropdown.selected_value = None
+    self.NOT_interface_chkbox.checked == False
     
     selectedapps = self.app_multi_select_drop_down.selected
     selecttedinusestatus2 = self.in_use_2_drop_down.selected_value
@@ -123,7 +124,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.version_level_dropdown.selected_value = None
     self.text_search_box.text = None   
     self.interfaces_dropdown.selected_value = None
-    
+    self.NOT_interface_chkbox.checked == False
     
 #     print(selectedapparea['application_area'])
     if selectedapparea and not selecttedinusestatus:
@@ -164,6 +165,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.version_level_dropdown.selected_value = None
     self.text_search_box.text = None
     self.interfaces_dropdown.selected_value = None
+    self.NOT_interface_chkbox.checked == False
     
 #     print(selectedapparea['application_area'])
     if selectedapparea and not selecttedinusestatus:
@@ -207,6 +209,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.version_level_dropdown.selected_value = None
     self.text_search_box.text = None
     self.interfaces_dropdown.selected_value = None
+    self.NOT_interface_chkbox.checked == False
     
     if selecttedinusestatus2 and selectedapps  :
           self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps), InUseStatus=selecttedinusestatus2)
@@ -274,6 +277,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.in_use_2_drop_down.selected_value = None
     self.text_search_box.text = None
     self.interfaces_dropdown.selected_value = None
+    self.NOT_interface_chkbox.checked == False
     
     if  selectedapparea_1:
           self.apparea_dropdown.selected_value = None
@@ -300,6 +304,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.in_use_2_drop_down.selected_value = None
     self.text_search_box.text = None
     self.interfaces_dropdown.selected_value = None
+    self.NOT_interface_chkbox.checked == False
     
     if  selectedapparea_1:
           selectedapp = ('%' + selectedapparea_1['application_area'] + '%')
@@ -328,6 +333,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.in_use_2_drop_down.selected_value = None
     self.text_search_box.text = None
     self.interfaces_dropdown.selected_value = None
+    self.NOT_interface_chkbox.checked == False
     
     if  selectedapparea_1:
           selectedapp = ('%' + selectedapparea_1['application_area'] + '%')
@@ -352,6 +358,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.in_use_2_drop_down.selected_value = None
     self.text_search_box.text = None
     self.interfaces_dropdown.selected_value = None
+    self.NOT_interface_chkbox.checked == False
     
     if  selectedapparea_1:
           selectedapp = ('%' + selectedapparea_1['application_area'] + '%')
@@ -407,6 +414,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
           self.region_dropdown.selected_value = None
           self.version_level_dropdown.selected_value = None
           self.interfaces_dropdown.selected_value = None
+          self.NOT_interface_chkbox.checked == False
           phrase = self.text_search_box.text
           
           self.repeating_panel_1.items = app_tables.suppported_products.search(q.any_of(
