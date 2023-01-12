@@ -430,15 +430,16 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.version_level_dropdown.selected_value = None
     self.text_search_box.text = None
     selectedinterface = self.interfaces_dropdown.selected_value
-    if  selectedinterface:
+
+    if  selectedinterface and self.NOT_interface_chkbox.checked == False:
           selectedinterface = ('%' + selectedinterface['Interface_Type'] + '%')
           self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = (q.like(selectedinterface)), InUseStatus= 'Live')
-    elif selectedinterface and self.NOT_interface_chkbox.checked == True:
-          self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = q.not_(q.like(selectedinterface)), InUseStatus= 'Live')
-    else:
+    if selectedinterface and self.NOT_interface_chkbox.checked == True:
+        selectedinterface = ('%' + selectedinterface['Interface_Type'] + '%')  
+        self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = q.not_(q.like(selectedinterface)), InUseStatus= 'Live')
+    if not selectedinterface and self.NOT_interface_chkbox.checked == False:
           self.repeating_panel_1.items = app_tables.suppported_products.search()
-    self.hits_textbox.text = len(self.repeating_panel_1.items)  
-    pass
+    self.hits_textbox.text = len(self.repeating_panel_1.items) 
 
   def button_5_click(self, **event_args):
     """This method is called when the button is clicked"""
