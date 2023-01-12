@@ -329,6 +329,8 @@ components:
         - {id: WOPIKV, title: Live_version_no, data_key: Live_version_no}
         - {id: JZKZVM, title: Version Level, data_key: Version_Level}
         - {id: VXZDPK, title: Customer Type, data_key: Customer_Type}
+        - {id: VFQKYL, title: Inbound_INR, data_key: Inbound_INR}
+        - {id: JNWKEM, title: Bidirectional_SystmOne, data_key: Bidirectional_SystmOne}
         auto_header: true
         tooltip: ''
         border: ''
