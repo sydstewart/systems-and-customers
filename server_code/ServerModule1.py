@@ -87,7 +87,8 @@ def listsystems():
   for r in cur.fetchall(): 
       dicts = [{'Account': r['account'],'Name': r['name'],'InUseStatus':r['InUseStatus'], 'Shipping_Address_Country':r['account.shipping_address_country'],
       'CFApplicationArea':r['CFApplicationArea'], '4S_Country':r['account.Dawn_Country'], 'Location_c' : r['account.location_c'], 'latitude' : r['latitude'],
-       'longitude' :r['longitude'], 'Account_id' : r['account_id'], 'System_id' : r['id'] , 'Live_version_no': r['Live_Version_no'], 'Customer_Type' : r['customertype_c']   }]
+       'longitude' :r['longitude'], 'Account_id' : r['account_id'], 'System_id' : r['id'] , 'Live_version_no': r['Live_Version_no'], 'Customer_Type' : r['customertype_c'] ,
+               'Inbound_INR' : r['Interface_Inbound_INR'], 'Bidirectional_SystmOne' : r['Interface_Bidirectional_SystmOne']}]
       for d in dicts:
 #           t= app_tables.suppported_products.get(Account =  d['Account'], Name = d['Name'],CFApplicationArea= d['CFApplicationArea'],InUseStatus = d['InUseStatus'] )  
 #           if not t:
