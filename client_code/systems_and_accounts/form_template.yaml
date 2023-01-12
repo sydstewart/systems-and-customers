@@ -10,7 +10,7 @@ components:
   components:
   - type: ColumnPanel
     properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
-      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"DGPCOW":16,"AXVXVB":24,"ZZIJTD":13}',
+      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"ZZIJTD":13}',
       spacing_below: small, background: ''}
     name: card_4
     layout_properties: {grid_position: 'DGEQHR,SPBQKM', full_width_row: true}
@@ -21,15 +21,15 @@ components:
         icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
         underline: false, icon: ''}
       name: label_13
-      layout_properties: {grid_position: 'PQTAGK,DGPCOW'}
+      layout_properties: {grid_position: 'NNSOOF,GLMEEG'}
     - type: TextBox
       properties: {role: null, align: left, hide_text: false, tooltip: 'Text search
           of System, Customer and Version No', placeholder: '', border: '', enabled: true,
-        foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+        foreground: '', visible: true, text: '', font_size: 14, font: '', spacing_above: small,
         type: text, spacing_below: small, italic: false, background: '', bold: false,
         underline: false}
       name: text_search_box
-      layout_properties: {grid_position: 'PQTAGK,AXVXVB'}
+      layout_properties: {grid_position: 'NNSOOF,FODYPZ'}
       event_bindings: {pressed_enter: text_search_box_pressed_enter}
     - type: Label
       properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
@@ -63,7 +63,7 @@ components:
         foreground: ''
         items: []
         visible: true
-        font_size: null
+        font_size: 14
         font: ''
         spacing_above: small
         spacing_below: small
@@ -179,7 +179,7 @@ components:
         foreground: ''
         items: []
         visible: true
-        font_size: null
+        font_size: 14
         font: ''
         spacing_above: small
         spacing_below: small
@@ -193,7 +193,7 @@ components:
       event_bindings: {change: in_use_2_drop_down_change}
   - type: ColumnPanel
     properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
-      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"OVEZTY":4,"OFZJJV":12,"TYBVKD":8,"ZDZNGZ":8,"BZGGYZ":7,"CEGLGT":7,"JYUQKK":7,"OWKINT":7}',
+      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"OVEZTY":4,"TYBVKD":8,"ZDZNGZ":8,"BZGGYZ":7,"CEGLGT":7,"JYUQKK":7,"OWKINT":7}',
       spacing_below: small, background: ''}
     name: card_3
     layout_properties: {grid_position: 'HEKXNQ,WHNESW', full_width_row: true}
@@ -216,7 +216,7 @@ components:
         foreground: ''
         items: []
         visible: true
-        font_size: null
+        font_size: 14
         font: ''
         spacing_above: small
         spacing_below: small
@@ -246,7 +246,7 @@ components:
         foreground: ''
         items: []
         visible: true
-        font_size: null
+        font_size: 14
         font: ''
         spacing_above: small
         spacing_below: small
@@ -256,7 +256,7 @@ components:
         underline: false
         include_placeholder: true
       name: region_dropdown
-      layout_properties: {grid_position: 'UYINTX,OFZJJV', full_width_row: true}
+      layout_properties: {grid_position: 'UYINTX,YCSAAI', full_width_row: true}
       event_bindings: {change: region_dropdown_change}
     - type: Label
       properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
@@ -276,7 +276,7 @@ components:
         foreground: ''
         items: []
         visible: true
-        font_size: null
+        font_size: 14
         font: ''
         spacing_above: small
         spacing_below: small
@@ -306,7 +306,7 @@ components:
         foreground: ''
         items: []
         visible: true
-        font_size: null
+        font_size: 14
         font: ''
         spacing_above: small
         spacing_below: small
@@ -321,7 +321,7 @@ components:
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: Hits, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
       underline: false, icon: ''}
     name: label_5
     layout_properties: {grid_position: 'UFCKSU,MZZWNT'}
