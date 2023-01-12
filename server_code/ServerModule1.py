@@ -100,7 +100,14 @@ def listsystems():
             else:
                   Version_Level= '7'
                 
-            app_tables.suppported_products.add_row(Version_Level = Version_Level,**d)
+            if d['Inbound_INR'] == 'yes':
+                print('Inbound_INR')
+                Interfaces = 'Inbound_INR' + ''
+            elif d['Bidirectional_SystmOne'] == 'yes':
+                Interfaces = Interfaces + ' ' + 'Bidirectional_SystmOne'
+            else:
+                Interfaces = ' '
+            app_tables.suppported_products.add_row(Version_Level = Version_Level,Interfaces = Interfaces,**d)
 
   return 
 

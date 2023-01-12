@@ -115,6 +115,9 @@ db_schema:
     - name: Bidirectional_SystmOne
       admin_ui: {width: 200}
       type: string
+    - name: Interfaces
+      admin_ui: {width: 200}
+      type: string
   last_date_refreshed:
     title: Last_Date_Refreshed
     client: full
