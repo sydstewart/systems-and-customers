@@ -1,0 +1,78 @@
+is_package: true
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Name, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_1
+    layout_properties: {grid_position: 'JSCPMX,QQJHDE'}
+  - type: TextBox
+    properties: {}
+    name: text_box_1
+    layout_properties: {grid_position: 'JSCPMX,DGJUJU'}
+    event_bindings: {pressed_enter: text_box_1_pressed_enter}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: System, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2
+    layout_properties: {grid_position: 'JSCPMX,OKJCGM'}
+  - type: TextBox
+    properties: {}
+    name: text_box_2
+    layout_properties: {grid_position: 'JSCPMX,FXCCGZ'}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: version, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_3
+    layout_properties: {grid_position: 'JSCPMX,KYAKYB'}
+  - type: TextBox
+    properties: {}
+    name: text_box_3
+    layout_properties: {grid_position: 'JSCPMX,WZHPHX'}
+  - type: ColumnPanel
+    properties: {col_widths: '{}'}
+    name: column_panel_1
+    layout_properties: {grid_position: 'HESGAD,FQIFHZ'}
+    components:
+    - type: DataGrid
+      properties:
+        role: null
+        columns:
+        - {id: FIODTJ, title: Name, data_key: Name}
+        - {id: OXBYRP, title: Account, data_key: Account}
+        - {id: QTWEHW, title: Version, data_key: Live_version_no}
+        auto_header: true
+        tooltip: ''
+        border: ''
+        foreground: ''
+        rows_per_page: 20
+        visible: true
+        wrap_on: never
+        show_page_controls: true
+        spacing_above: small
+        spacing_below: small
+        background: ''
+      name: data_grid_1
+      layout_properties: {grid_position: 'CRPTFC,EXHRTE'}
+      components:
+      - type: RepeatingPanel
+        properties: {spacing_above: none, spacing_below: none, item_template: Test.RowTemplate18}
+        name: repeating_panel_1
+        layout_properties: {}
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}
