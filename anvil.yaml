@@ -16,7 +16,7 @@ services:
     use_email: true, allow_remember_me: true, allow_signup: false, enable_automatically: true,
     confirm_email: true, require_mfa: true, remember_me_days: 30}
   server_config: {user_table: users}
-startup: {type: form, module: systems_and_accounts}
+startup: {type: form, module: Test}
 package_name: Systems_and_Customers
 allow_embedding: false
 name: Systems and Customers
@@ -198,6 +198,20 @@ db_schema:
     server: full
     columns:
     - name: Interface_Type
+      admin_ui: {width: 200}
+      type: string
+  test:
+    title: test
+    client: full
+    server: full
+    columns:
+    - name: name
+      admin_ui: {width: 200}
+      type: string
+    - name: employed
+      admin_ui: {width: 200}
+      type: string
+    - name: age
       admin_ui: {width: 200}
       type: string
 secrets:

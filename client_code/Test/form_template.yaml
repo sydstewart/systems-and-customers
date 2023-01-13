@@ -16,7 +16,10 @@ components:
     name: label_1
     layout_properties: {grid_position: 'JSCPMX,QQJHDE'}
   - type: TextBox
-    properties: {}
+    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+      border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
+      font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
     name: text_box_1
     layout_properties: {grid_position: 'JSCPMX,DGJUJU'}
     event_bindings: {pressed_enter: text_box_1_pressed_enter}
@@ -28,7 +31,10 @@ components:
     name: label_2
     layout_properties: {grid_position: 'JSCPMX,OKJCGM'}
   - type: TextBox
-    properties: {}
+    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+      border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
+      font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
     name: text_box_2
     layout_properties: {grid_position: 'JSCPMX,FXCCGZ'}
   - type: Label
@@ -39,7 +45,10 @@ components:
     name: label_3
     layout_properties: {grid_position: 'JSCPMX,KYAKYB'}
   - type: TextBox
-    properties: {}
+    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+      border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
+      font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
     name: text_box_3
     layout_properties: {grid_position: 'JSCPMX,WZHPHX'}
   - type: ColumnPanel
@@ -51,9 +60,9 @@ components:
       properties:
         role: null
         columns:
-        - {id: FIODTJ, title: Name, data_key: Name}
-        - {id: OXBYRP, title: Account, data_key: Account}
-        - {id: QTWEHW, title: Version, data_key: Live_version_no}
+        - {id: FIODTJ, title: age, data_key: age}
+        - {id: OXBYRP, title: employed, data_key: employed}
+        - {id: QTWEHW, title: Name, data_key: name}
         auto_header: true
         tooltip: ''
         border: ''
