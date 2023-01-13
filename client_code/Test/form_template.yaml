@@ -60,9 +60,9 @@ components:
       properties:
         role: null
         columns:
-        - {id: FIODTJ, title: age, data_key: age}
-        - {id: OXBYRP, title: employed, data_key: employed}
-        - {id: QTWEHW, title: Name, data_key: name}
+        - {id: FIODTJ, title: Name, data_key: Name}
+        - {id: OXBYRP, title: Account, data_key: Account}
+        - {id: QTWEHW, title: Version, data_key: Live_version_no}
         auto_header: true
         tooltip: ''
         border: ''
@@ -75,7 +75,7 @@ components:
         spacing_below: small
         background: ''
       name: data_grid_1
-      layout_properties: {grid_position: 'CRPTFC,EXHRTE'}
+      layout_properties: {grid_position: 'SMQBRK,NZGBHE'}
       components:
       - type: RepeatingPanel
         properties: {spacing_above: none, spacing_below: none, item_template: Test.RowTemplate18}

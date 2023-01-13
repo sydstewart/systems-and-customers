@@ -12,8 +12,12 @@ class Test(TestTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    kwargs = { 'employed': 'unemployed', 'age' : '77'}
-    results = app_tables.test.search(**kwargs)
+    kwargs ={}
+#     x = ''Name': q.like('%'+'Native' +'%')'
+    kwargs.append("'Name': q.like('%'+'Native' +'%')")
+#     kwargs = { 'Name': q.like('%'+'Native' +'%' ), 'Live_version_no': q.like('%'+ 'CF 8' + '%')}
+             
+    results = app_tables.suppported_products.search(**kwargs)
 #     namevalue =  '%' + 'Alaska' + '%' # 'Alaska Native Medical Center - AC System'
 #     versionvalue = '%'+'CF 8'+'%'
 #     kwargs = {'Name': namevalue}
