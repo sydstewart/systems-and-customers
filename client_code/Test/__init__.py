@@ -12,9 +12,19 @@ class Test(TestTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    search1 = 'CF 7'  # Version No
+    search2 = None    #Name
+    search3 =  'Out'  # interface
     kwargs ={}
-#     x = ''Name': q.like('%'+'Native' +'%')'
-    kwargs = kwargs.append{'Name': q.like('%'+'Native' +'%')}
+
+    if search1:
+         kwargs['Live_version_no'] = q.like('%'+ search1 + '%')
+    kwargs['InUseStatus'] ='Live'
+    if search2:
+       kwargs["Name"] = q.like('%'+ search2 +'%')
+    if search3:
+         kwargs['Interfaces'] = q.like('%'+ search3 + '%') 
+    print(kwargs)
 #     kwargs = { 'Name': q.like('%'+'Native' +'%' ), 'Live_version_no': q.like('%'+ 'CF 8' + '%')}
              
     results = app_tables.suppported_products.search(**kwargs)
@@ -24,6 +34,7 @@ class Test(TestTemplate):
 #     print(kwargs)
 #     results = app_tables.suppported_products.search(q.all_of(**kwargs)) #q.like(**kwargs))
     self.repeating_panel_1.items = results
+    self.text_box_1.text = len(results)
     pass 
 #     if self.text_box_1.text:
 #        namesearch  = '%' + self.text_box_1.text + '%'

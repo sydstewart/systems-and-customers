@@ -10,7 +10,7 @@ components:
   components:
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Name, font_size: null, font: '', spacing_above: small,
+      visible: true, text: Hits, font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
     name: label_1
@@ -23,34 +23,6 @@ components:
     name: text_box_1
     layout_properties: {grid_position: 'JSCPMX,DGJUJU'}
     event_bindings: {pressed_enter: text_box_1_pressed_enter}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: System, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_2
-    layout_properties: {grid_position: 'JSCPMX,OKJCGM'}
-  - type: TextBox
-    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
-      border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
-      font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false}
-    name: text_box_2
-    layout_properties: {grid_position: 'JSCPMX,FXCCGZ'}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: version, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_3
-    layout_properties: {grid_position: 'JSCPMX,KYAKYB'}
-  - type: TextBox
-    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
-      border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
-      font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false}
-    name: text_box_3
-    layout_properties: {grid_position: 'JSCPMX,WZHPHX'}
   - type: ColumnPanel
     properties: {col_widths: '{}'}
     name: column_panel_1
@@ -63,6 +35,7 @@ components:
         - {id: FIODTJ, title: Name, data_key: Name}
         - {id: OXBYRP, title: Account, data_key: Account}
         - {id: QTWEHW, title: Version, data_key: Live_version_no}
+        - {id: VUWWSP, title: Interfaces, data_key: Interfaces}
         auto_header: true
         tooltip: ''
         border: ''
