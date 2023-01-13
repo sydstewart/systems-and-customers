@@ -14,7 +14,7 @@ class Test(TestTemplate):
     self.init_components(**properties)
     kwargs ={}
 #     x = ''Name': q.like('%'+'Native' +'%')'
-    kwargs = kwargs.append("'Name': q.like('%'+'Native' +'%')")
+    kwargs = kwargs.append{'Name': q.like('%'+'Native' +'%')}
 #     kwargs = { 'Name': q.like('%'+'Native' +'%' ), 'Live_version_no': q.like('%'+ 'CF 8' + '%')}
              
     results = app_tables.suppported_products.search(**kwargs)
