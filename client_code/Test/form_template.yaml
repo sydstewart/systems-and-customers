@@ -8,134 +8,219 @@ components:
   name: content_panel
   layout_properties: {slot: default}
   components:
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Application Area, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_2
-    layout_properties: {grid_position: 'SYDYXV,QFGDTB', full_width_row: true}
-  - type: DropDown
-    properties:
-      role: null
-      align: full
-      tooltip: ''
-      placeholder: ''
-      border: ''
-      enabled: true
-      foreground: ''
-      items: []
-      visible: true
-      font_size: 14
-      font: ''
-      spacing_above: small
-      spacing_below: small
-      italic: false
-      background: ''
-      bold: false
-      underline: false
-      include_placeholder: true
-    name: apparea_drop_down
-    layout_properties: {grid_position: 'SYDYXV,VKGHRU', full_width_row: true}
-    event_bindings: {change: apparea_drop_down_change}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: In Use Status, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_3
-    layout_properties: {grid_position: 'SYDYXV,WQHHTC', full_width_row: true}
-  - type: DropDown
-    properties:
-      role: null
-      align: full
-      tooltip: ''
-      placeholder: ''
-      border: ''
-      enabled: true
-      foreground: ''
-      items: []
-      visible: true
-      font_size: 14
-      font: ''
-      spacing_above: small
-      spacing_below: small
-      italic: false
-      background: ''
-      bold: false
-      underline: false
-      include_placeholder: true
-    name: in_use_drop_down
-    layout_properties: {grid_position: 'SYDYXV,AFFZAF', full_width_row: true}
-    event_bindings: {change: in_use_drop_down_change}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Version Level, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_4
-    layout_properties: {grid_position: 'SYDYXV,MSTNBS', full_width_row: true}
-  - type: DropDown
-    properties:
-      role: null
-      align: full
-      tooltip: ''
-      placeholder: ''
-      border: ''
-      enabled: true
-      foreground: ''
-      items: []
-      visible: true
-      font_size: 14
-      font: ''
-      spacing_above: small
-      spacing_below: small
-      italic: false
-      background: ''
-      bold: false
-      underline: false
-      include_placeholder: true
-    name: version_level_drop_down
-    layout_properties: {grid_position: 'SYDYXV,JKSRFE', full_width_row: true}
-    event_bindings: {change: version_level_drop_down_change}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Interfaces, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_5
-    layout_properties: {grid_position: 'SYDYXV,IKFSIR', full_width_row: true}
-  - type: DropDown
-    properties:
-      role: null
-      align: full
-      tooltip: ''
-      placeholder: ''
-      border: ''
-      enabled: true
-      foreground: ''
-      items: []
-      visible: true
-      font_size: 14
-      font: ''
-      spacing_above: small
-      spacing_below: small
-      italic: false
-      background: ''
-      bold: false
-      underline: false
-      include_placeholder: true
-    name: interfaces_drop_down
-    layout_properties: {grid_position: 'SYDYXV,ZKFFPY', full_width_row: true}
-    event_bindings: {change: interfaces_drop_down_change}
-  - type: CheckBox
-    properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
-      foreground: '', allow_indeterminate: false, visible: true, text: NOT, font_size: null,
-      font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
-      bold: false, checked: false, underline: false}
-    name: NOT_interface_chkbox
-    layout_properties: {grid_position: 'SYDYXV,WIVTPT', full_width_row: true}
-    event_bindings: {change: NOT_interface_chkbox_change}
+  - type: ColumnPanel
+    properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
+      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"VXFOTY":3,"XLPJFD":11,"PTHUKK":3,"CZDCDV":8,"XKCPRI":4,"BAWGDD":11}',
+      spacing_below: small, background: ''}
+    name: card_1
+    layout_properties: {grid_position: 'KAFSBE,WBZUZY', full_width_row: true}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Application Area, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_2
+      layout_properties: {grid_position: 'JREDGI,ADUYDY', full_width_row: true}
+    - type: DropDown
+      properties:
+        role: null
+        align: full
+        tooltip: ''
+        placeholder: ''
+        border: ''
+        enabled: true
+        foreground: ''
+        items: []
+        visible: true
+        font_size: 14
+        font: ''
+        spacing_above: small
+        spacing_below: small
+        italic: false
+        background: ''
+        bold: false
+        underline: false
+        include_placeholder: true
+      name: apparea_drop_down
+      layout_properties: {grid_position: 'JREDGI,ULYWJA', full_width_row: true}
+      event_bindings: {change: apparea_drop_down_change}
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: In Use Status, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_3
+      layout_properties: {grid_position: 'JREDGI,VVFBSX', full_width_row: true}
+    - type: DropDown
+      properties:
+        role: null
+        align: full
+        tooltip: ''
+        placeholder: ''
+        border: ''
+        enabled: true
+        foreground: ''
+        items: []
+        visible: true
+        font_size: 14
+        font: ''
+        spacing_above: small
+        spacing_below: small
+        italic: false
+        background: ''
+        bold: false
+        underline: false
+        include_placeholder: true
+      name: in_use_drop_down
+      layout_properties: {grid_position: 'JREDGI,VJINAO', full_width_row: true}
+      event_bindings: {change: in_use_drop_down_change}
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Version Level, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_4
+      layout_properties: {grid_position: 'JREDGI,GBVQCD', full_width_row: true}
+    - type: DropDown
+      properties:
+        role: null
+        align: full
+        tooltip: ''
+        placeholder: ''
+        border: ''
+        enabled: true
+        foreground: ''
+        items: []
+        visible: true
+        font_size: 14
+        font: ''
+        spacing_above: small
+        spacing_below: small
+        italic: false
+        background: ''
+        bold: false
+        underline: false
+        include_placeholder: true
+      name: version_level_drop_down
+      layout_properties: {grid_position: 'JREDGI,URCLAO', full_width_row: true}
+      event_bindings: {change: version_level_drop_down_change}
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Interfaces, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_5
+      layout_properties: {grid_position: 'JREDGI,DREXNO', full_width_row: true}
+    - type: DropDown
+      properties:
+        role: null
+        align: full
+        tooltip: ''
+        placeholder: ''
+        border: ''
+        enabled: true
+        foreground: ''
+        items: []
+        visible: true
+        font_size: 14
+        font: ''
+        spacing_above: small
+        spacing_below: small
+        italic: false
+        background: ''
+        bold: false
+        underline: false
+        include_placeholder: true
+      name: interfaces_drop_down
+      layout_properties: {grid_position: 'JREDGI,MBKPRQ', full_width_row: true}
+      event_bindings: {change: interfaces_drop_down_change}
+    - type: CheckBox
+      properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
+        foreground: '', allow_indeterminate: false, visible: true, text: NOT, font_size: null,
+        font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
+        bold: false, checked: false, underline: false}
+      name: NOT_interface_chkbox
+      layout_properties: {grid_position: 'JREDGI,OJPILG', full_width_row: true}
+      event_bindings: {change: NOT_interface_chkbox_change}
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Application Combinations, font_size: null, font: '',
+        spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false, icon: ''}
+      name: label_7
+      layout_properties: {grid_position: 'LFOYAW,VXFOTY', full_width_row: true}
+    - type: form:C6ZZPAPN4YYF5NVJ:MultiSelectDropDown
+      properties: {width: '', align: left, enable_filtering: true, placeholder: None Selected,
+        enabled: true, enable_select_all: true, items: null, visible: true, spacing_above: small,
+        spacing_below: small, multiple: true}
+      name: app_multi_select_drop_down
+      layout_properties: {grid_position: 'LFOYAW,XLPJFD', full_width_row: true}
+      event_bindings: {change: app_multi_select_drop_down_change}
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Region, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_8
+      layout_properties: {grid_position: 'LFOYAW,PTHUKK', full_width_row: true}
+    - type: DropDown
+      properties:
+        role: null
+        align: full
+        tooltip: ''
+        placeholder: ''
+        border: ''
+        enabled: true
+        foreground: ''
+        items: []
+        visible: true
+        font_size: 14
+        font: ''
+        spacing_above: small
+        spacing_below: small
+        italic: false
+        background: ''
+        bold: false
+        underline: false
+        include_placeholder: true
+      name: region_dropdown
+      layout_properties: {grid_position: 'LFOYAW,CZDCDV', full_width_row: true}
+      event_bindings: {change: region_dropdown_change}
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Customer Type, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_9
+      layout_properties: {grid_position: 'LFOYAW,XKCPRI', full_width_row: true}
+    - type: DropDown
+      properties:
+        role: null
+        align: full
+        tooltip: ''
+        placeholder: ''
+        border: ''
+        enabled: true
+        foreground: ''
+        items: []
+        visible: true
+        font_size: 14
+        font: ''
+        spacing_above: small
+        spacing_below: small
+        italic: false
+        background: ''
+        bold: false
+        underline: false
+        include_placeholder: true
+      name: customer_type_dropdown
+      layout_properties: {grid_position: 'LFOYAW,BAWGDD', full_width_row: true}
+      event_bindings: {change: customer_type_dropdown_change}
+    - type: Label
+      properties: {}
+      name: label_6
+      layout_properties: {grid_position: 'LFOYAW,GKJCLM', full_width_row: true}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: Hits, font_size: null, font: '', spacing_above: small,
@@ -167,6 +252,9 @@ components:
         - {id: DKGHIQ, title: In Use Status, data_key: InUseStatus}
         - {id: QTWEHW, title: Version, data_key: Live_version_no}
         - {id: VUWWSP, title: Interfaces, data_key: Interfaces}
+        - {id: VYHCGP, title: Application Area/s, data_key: CFApplicationArea}
+        - {id: VJXZJX, title: Region, data_key: Location_c}
+        - {id: WTDHBE, title: Customer Type, data_key: Customer_Type}
         auto_header: true
         tooltip: ''
         border: ''
@@ -179,7 +267,7 @@ components:
         spacing_below: small
         background: ''
       name: data_grid_1
-      layout_properties: {grid_position: 'SMQBRK,NZGBHE', full_width_row: true}
+      layout_properties: {grid_position: 'RURAOB,PTEUQU', full_width_row: true}
       components:
       - type: RepeatingPanel
         properties: {spacing_above: none, spacing_below: none, item_template: Test.RowTemplate18}
