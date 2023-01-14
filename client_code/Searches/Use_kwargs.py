@@ -20,7 +20,7 @@ def search_using_kwargs(self):
     search3 = self.interfaces_drop_down.selected_value
     search4 = self.apparea_drop_down.selected_value
     search5 = self.version_level_drop_down.selected_value
-    search6 = self.NOT_interface_chkbox
+    search6 = self.NOT_interface_chkbox.checked
     kwargs ={}
 
     if search1:
@@ -36,10 +36,9 @@ def search_using_kwargs(self):
          kwargs['CFApplicationArea'] = q.like('%'+ selectedapparea + '%') 
     if search5:
         kwargs['Version_Level'] = search5
-    if search6 == True:
-       
-            selectedinterface = ('%' + search3['Interface_Type'] + '%')
-            kwargs['Interfaces'] = q.not_(q.like('%'+ selectedinterface + '%'))
+    if search6 == True and search3:
+         selectedinterface = ('%' + search3['Interface_Type'] + '%')
+         kwargs['Interfaces'] = q.not_(q.like('%'+ selectedinterface + '%'))
 
              
     results = app_tables.suppported_products.search(**kwargs)
