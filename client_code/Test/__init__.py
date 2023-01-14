@@ -39,20 +39,20 @@ class Test(TestTemplate):
     
     kwargs ={}
 
-    if search1:
-         kwargs['InUseStatus'] = search1
-#     kwargs['InUseStatus'] ='Live'
-    if search2:
-       kwargs["Name"] = q.like('%'+ search2 +'%')
-    if search3:
-         kwargs['Interfaces'] = search3
-    if search4:
-         selectedapparea = ('%' + search4['application_area'] + '%')
-         kwargs['CFApplicationArea'] = q.like('%'+ selectedapparea + '%') 
-    if search5:
-      kwargs['Version_Level'] = search5
+#     if search1:
+#          kwargs['InUseStatus'] = search1
+# #     kwargs['InUseStatus'] ='Live'
+#     if search2:
+#        kwargs["Name"] = q.like('%'+ search2 +'%')
+#     if search3:
+#          kwargs['Interfaces'] = search3
+#     if search4:
+#          selectedapparea = ('%' + search4['application_area'] + '%')
+#          kwargs['CFApplicationArea'] = q.like('%'+ selectedapparea + '%') 
+#     if search5:
+#       kwargs['Version_Level'] = search5
              
-    results = app_tables.suppported_products.search(**kwargs)
+    results = app_tables.suppported_products.search()
 
     self.repeating_panel_1.items = results
     self.text_box_1.text = len(results)
@@ -99,6 +99,12 @@ class Test(TestTemplate):
     """This method is called when an item is selected"""
     search_using_kwargs(self)
     pass
+
+  def text_search_box_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    search_using_kwargs(self)
+    pass
+
 
 
 

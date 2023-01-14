@@ -4,13 +4,13 @@ container:
   properties: {html: '@theme:standard-page.html'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{}'}
+  properties: {col_widths: '{"QQJHDE":10,"DGJUJU":5,"EAHXQP":65}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
   - type: ColumnPanel
     properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
-      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"VXFOTY":3,"XLPJFD":11,"PTHUKK":3,"CZDCDV":8,"XKCPRI":4,"BAWGDD":11}',
+      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"VXFOTY":4,"XLPJFD":11,"PTHUKK":4,"CZDCDV":8,"XKCPRI":4,"BAWGDD":5,"GKJCLM":6,"HANVAR":5,"OYXXZY":5,"ZWHIYU":14}',
       spacing_below: small, background: ''}
     name: card_1
     layout_properties: {grid_position: 'KAFSBE,WBZUZY', full_width_row: true}
@@ -218,13 +218,36 @@ components:
       layout_properties: {grid_position: 'LFOYAW,BAWGDD', full_width_row: true}
       event_bindings: {change: customer_type_dropdown_change}
     - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Text Search, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_11
+      layout_properties: {grid_position: 'LFOYAW,HANVAR', full_width_row: true}
+    - type: TextBox
+      properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+        border: '', enabled: true, foreground: '', visible: true, text: '', font_size: 14,
+        font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false}
+      name: text_search_box
+      layout_properties: {grid_position: 'LFOYAW,OYXXZY', full_width_row: true}
+      event_bindings: {pressed_enter: text_search_box_pressed_enter}
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: 'Text search of System, Customer Application Area or
+          Version No', font_size: 9, font: '', spacing_above: small, icon_align: left,
+        spacing_below: small, italic: false, background: '', bold: false, underline: false,
+        icon: ''}
+      name: label_12
+      layout_properties: {grid_position: 'LFOYAW,ZWHIYU', full_width_row: true}
+    - type: Label
       properties: {}
       name: label_6
       layout_properties: {grid_position: 'LFOYAW,GKJCLM', full_width_row: true}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: Hits, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
       underline: false, icon: ''}
     name: label_1
     layout_properties: {grid_position: 'JSCPMX,QQJHDE'}
@@ -232,10 +255,14 @@ components:
     properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
       border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
       font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false}
+      background: '', bold: true, underline: false}
     name: text_box_1
     layout_properties: {grid_position: 'JSCPMX,DGJUJU'}
     event_bindings: {}
+  - type: Label
+    properties: {}
+    name: label_10
+    layout_properties: {grid_position: 'JSCPMX,EAHXQP'}
   - type: ColumnPanel
     properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
       wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
