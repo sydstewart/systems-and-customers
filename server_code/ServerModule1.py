@@ -105,6 +105,14 @@ def listsystems():
                   Version_Level = '8'
             else:
                   Version_Level= '7'
+            fullstringAC = d['CFApplicationArea']
+            substringAC = 'Anticoagulation'
+            
+            if substringAC in fullstringAC:
+                AC_Non_AC = 'AC'
+            else:
+                AC_Non_AC = 'Non_AC'
+            
             Interfaces= ''
             count = 0 # to identify first interface in list
             if d['Inbound_INR'] == 'yes':
@@ -161,7 +169,7 @@ def listsystems():
             elif count ==0 and d['Bidirectional_Telehealth'] == 'yes' :
                 Interfaces = ' Bidirectional_Telehealth'
                 count = 1
-            app_tables.suppported_products.add_row(Version_Level = Version_Level,Interfaces = Interfaces,**d)
+            app_tables.suppported_products.add_row(Version_Level = Version_Level,Interfaces = Interfaces,AC_Non_AC=AC_Non_AC, **d)
 
   return 
 

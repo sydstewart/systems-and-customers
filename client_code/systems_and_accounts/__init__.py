@@ -13,6 +13,7 @@ from ..Searches.four_way_search import four_way_search
 from ..Stats_Tables.Application_Areas import Application_Areas
 from ..Stats_Tables.Customer_Types import Customer_Types
 from ..Stats_Tables.Version_Summary import Version_Summary
+from ..Searches.Use_kwargs import search_using_kwargs
 
 class systems_and_accounts(systems_and_accountsTemplate):
   def __init__(self, **properties):
@@ -29,65 +30,157 @@ class systems_and_accounts(systems_and_accountsTemplate):
 #     open_form('systems_and_accounts')
     self.repeating_panel_1.items = app_tables.suppported_products.search()
     self.hits_textbox.text = len(app_tables.suppported_products.search())
-    
+    t = app_tables.last_date_refreshed.get(dateid =1 )
+    self.last_refresh_date.text= t['last_date_refreshed']
     applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
     inusestatus = list({(r['InUseStatus']) for r in app_tables.suppported_products.search()})
     customertype = list({(r['Customer_Type']) for r in app_tables.suppported_products.search()})
     regions= list({(r['Location_c']) for r in app_tables.suppported_products.search()})
     version_level = list({(r['Version_Level']) for r in app_tables.suppported_products.search()})
-    print(regions)
-    print(customertype)
+    version = list({(r['Live_version_no']) for r in app_tables.suppported_products.search(tables.order_by('Live_version_no'))})
+    
+    self.apparea_drop_down.items =  [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
+    self.in_use_drop_down.items = inusestatus
+    self.version_level_drop_down.items = version_level
+    self.interfaces_drop_down.items = [(str(row['Interface_Type']), row) for row in app_tables.interface_types.search(tables.order_by('Interface_Type'))]
     self.app_multi_select_drop_down.items = applications
-    self.In_Use_Status_dropdown.items = inusestatus
-    self.in_use_2_drop_down.items = inusestatus
     self.region_dropdown.items = regions
     self.customer_type_dropdown.items = customertype
-    self.apparea_dropdown.items = [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
-    self.apparea_1_dropdown.items = [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
-    self.version_level_dropdown.items = version_level
-    self.interfaces_dropdown.items = [(str(row['Interface_Type']), row) for row in app_tables.interface_types.search(tables.order_by('Interface_Type'))]
-    #     self.region_multi_select_drop_down.items = regions
+    self.live_version_drop_down.items = version
+    
+#     search1 = self.in_use_drop_down.selected_value
+#     search2 = None    #Name
+#     search3 = self.interfaces_drop_down.selected_value
+#     search4 = self.apparea_drop_down.selected_value
+#     search5 = self.version_level_drop_down.selected_value
+#     search6 = self.NOT_interface_chkbox.checked
+#     search7 = self.app_multi_select_drop_down.selected
+#     search8 = self.region_dropdown.selected_value
+    
+    kwargs ={}
 
-    t = app_tables.last_date_refreshed.get(dateid =1 )
-    self.last_refresh_date.text= t['last_date_refreshed']
-#     self.app_multi_select_drop_down.items = applicsations
-#     dictsapps, total_rows = anvil.server.call('listsystems')
-  
-    
-  def applications_button_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    open_form('applications')
-    pass
-# combinations dropdown search
-  def app_multi_select_drop_down_change(self, **event_args):
-    """This method is called when the selected values change"""
-    self.apparea_dropdown.selected_value = None
-    self.In_Use_Status_dropdown.selected_value = None
-    self.apparea_dropdown.selected_value = None
-    self.In_Use_Status_dropdown.selected_value = None
-#     self.app_multi_select_drop_down.selected = None
-#     self.in_use_2_drop_down.selected_value = None
-    self.apparea_1_dropdown.selected_value = None
-    self.customer_type_dropdown.selected_value = None
-    self.region_dropdown.selected_value = None
-    self.version_level_dropdown.selected_value = None
-    self.text_search_box.text = None
-    self.interfaces_dropdown.selected_value = None
-    self.NOT_interface_chkbox.checked == False
-    
-    selectedapps = self.app_multi_select_drop_down.selected
-    selecttedinusestatus2 = self.in_use_2_drop_down.selected_value
-    if selecttedinusestatus2 and selectedapps  :
-          self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps), InUseStatus=selecttedinusestatus2)
-    elif  not selecttedinusestatus2 and selectedapps  :
-          self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps))
-    elif  selecttedinusestatus2 and not selectedapps  :
-          self.repeating_panel_1.items = app_tables.suppported_products.search(InUseStatus=selecttedinusestatus2)
+#     if search1:
+#          kwargs['InUseStatus'] = search1
+# #     kwargs['InUseStatus'] ='Live'
+#     if search2:
+#        kwargs["Name"] = q.like('%'+ search2 +'%')
+#     if search3:
+#          kwargs['Interfaces'] = search3
+#     if search4:
+#          selectedapparea = ('%' + search4['application_area'] + '%')
+#          kwargs['CFApplicationArea'] = q.like('%'+ selectedapparea + '%') 
+#     if search5:
+#       kwargs['Version_Level'] = search5
+             
+    results = app_tables.suppported_products.search()
+
+    self.repeating_panel_1.items = results
+    self.hits_textbox.text = len(results)
+    pass 
 
       
-    self.hits_textbox.text = len(self.repeating_panel_1.items)
+      
+
+  def apparea_drop_down_change(self, **event_args):
+    """This method is called when an item is selected"""
+    search_using_kwargs(self)
     pass
-# refresh data
+
+  def in_use_drop_down_change(self, **event_args):
+    """This method is called when an item is selected"""
+    search_using_kwargs(self)
+
+  def version_level_drop_down_change(self, **event_args):
+    """This method is called when an item is selected"""
+    search_using_kwargs(self)
+    pass
+
+  def interfaces_drop_down_change(self, **event_args):
+    """This method is called when an item is selected"""
+    search_using_kwargs(self)
+    pass
+
+  def NOT_interface_chkbox_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    search_using_kwargs(self)
+    pass
+
+  def app_multi_select_drop_down_change(self, **event_args):
+    """This method is called when the selected values change"""
+    search_using_kwargs(self)
+    pass
+
+  def region_dropdown_change(self, **event_args):
+    """This method is called when an item is selected"""
+    search_using_kwargs(self)
+    pass
+  def customer_type_dropdown_change(self, **event_args):
+    """This method is called when an item is selected"""
+    search_using_kwargs(self)
+    pass
+  def live_version_drop_down_change(self, **event_args):
+    """This method is called when the selected values change"""
+    search_using_kwargs(self)
+    pass 
+    
+    
+#     applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+#     inusestatus = list({(r['InUseStatus']) for r in app_tables.suppported_products.search()})
+#     customertype = list({(r['Customer_Type']) for r in app_tables.suppported_products.search()})
+#     regions= list({(r['Location_c']) for r in app_tables.suppported_products.search()})
+#     version_level = list({(r['Version_Level']) for r in app_tables.suppported_products.search()})
+#     print(regions)
+#     print(customertype)
+#     self.app_multi_select_drop_down.items = applications
+#     self.In_Use_Status_dropdown.items = inusestatus
+#     self.in_use_2_drop_down.items = inusestatus
+#     self.region_dropdown.items = regions
+#     self.customer_type_dropdown.items = customertype
+#     self.apparea_dropdown.items = [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
+#     self.apparea_1_dropdown.items = [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
+#     self.version_level_dropdown.items = version_level
+#     self.interfaces_dropdown.items = [(str(row['Interface_Type']), row) for row in app_tables.interface_types.search(tables.order_by('Interface_Type'))]
+#     #     self.region_multi_select_drop_down.items = regions
+
+
+# #     self.app_multi_select_drop_down.items = applicsations
+# #     dictsapps, total_rows = anvil.server.call('listsystems')
+  
+    
+#   def applications_button_click(self, **event_args):
+#     """This method is called when the button is clicked"""
+#     open_form('applications')
+#     pass
+# # combinations dropdown search
+#   def app_multi_select_drop_down_change(self, **event_args):
+#     """This method is called when the selected values change"""
+#     self.apparea_dropdown.selected_value = None
+#     self.In_Use_Status_dropdown.selected_value = None
+#     self.apparea_dropdown.selected_value = None
+#     self.In_Use_Status_dropdown.selected_value = None
+# #     self.app_multi_select_drop_down.selected = None
+# #     self.in_use_2_drop_down.selected_value = None
+#     self.apparea_1_dropdown.selected_value = None
+#     self.customer_type_dropdown.selected_value = None
+#     self.region_dropdown.selected_value = None
+#     self.version_level_dropdown.selected_value = None
+#     self.text_search_box.text = None
+#     self.interfaces_dropdown.selected_value = None
+#     self.NOT_interface_chkbox.checked == False
+    
+#     selectedapps = self.app_multi_select_drop_down.selected
+#     selecttedinusestatus2 = self.in_use_2_drop_down.selected_value
+#     if selecttedinusestatus2 and selectedapps  :
+#           self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps), InUseStatus=selecttedinusestatus2)
+#     elif  not selecttedinusestatus2 and selectedapps  :
+#           self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps))
+#     elif  selecttedinusestatus2 and not selectedapps  :
+#           self.repeating_panel_1.items = app_tables.suppported_products.search(InUseStatus=selecttedinusestatus2)
+
+      
+#     self.hits_textbox.text = len(self.repeating_panel_1.items)
+#     pass
+# # refresh data
   def refresh_data_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     anvil.server.call('listsystems')
@@ -98,144 +191,144 @@ class systems_and_accounts(systems_and_accountsTemplate):
     t = app_tables.last_date_refreshed.get(dateid =1 )
     t['last_date_refreshed'] = str(datetime.today() )
     pass
-# AC list
-  def app_button_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like ('%Anticoagulation%'))
-    applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
-    self.app_multi_select_drop_down.items = applications
+# # AC list
+#   def app_button_click(self, **event_args):
+#     """This method is called when the button is clicked"""
+#     self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like ('%Anticoagulation%'))
+#     applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+#     self.app_multi_select_drop_down.items = applications
        
-    t = app_tables.last_date_refreshed.get(dateid =1 )
-    self.last_refresh_date.text= t['last_date_refreshed']
-    pass
-#single app area search
-  def apparea_dropdown_change(self, **event_args):
-    """This method is called when an item is selected"""
-    self.app_multi_select_drop_down.selected = None
-    self.in_use_2_drop_down.selected_value = None
-    selectedapparea = self.apparea_dropdown.selected_value
-    selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
+#     t = app_tables.last_date_refreshed.get(dateid =1 )
+#     self.last_refresh_date.text= t['last_date_refreshed']
+#     pass
+# #single app area search
+#   def apparea_dropdown_change(self, **event_args):
+#     """This method is called when an item is selected"""
+#     self.app_multi_select_drop_down.selected = None
+#     self.in_use_2_drop_down.selected_value = None
+#     selectedapparea = self.apparea_dropdown.selected_value
+#     selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
     
-    self.app_multi_select_drop_down.selected = None
-    self.in_use_2_drop_down.selected_value = None
-    self.apparea_1_dropdown.selected_value = None
-    self.customer_type_dropdown.selected_value = None
-    self.region_dropdown.selected_value = None
-    self.version_level_dropdown.selected_value = None
-    self.text_search_box.text = None   
-    self.interfaces_dropdown.selected_value = None
-    self.NOT_interface_chkbox.checked == False
+#     self.app_multi_select_drop_down.selected = None
+#     self.in_use_2_drop_down.selected_value = None
+#     self.apparea_1_dropdown.selected_value = None
+#     self.customer_type_dropdown.selected_value = None
+#     self.region_dropdown.selected_value = None
+#     self.version_level_dropdown.selected_value = None
+#     self.text_search_box.text = None   
+#     self.interfaces_dropdown.selected_value = None
+#     self.NOT_interface_chkbox.checked == False
     
-#     print(selectedapparea['application_area'])
-    if selectedapparea and not selecttedinusestatus:
-        selectedapp = ('%' + selectedapparea['application_area'] + '%')
-        self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp))
-        applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
-        self.app_multi_select_drop_down.items = applications
-    elif selectedapparea and  selecttedinusestatus:
-        selectedapp = ('%' + selectedapparea['application_area'] + '%')
-        self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp), InUseStatus=selecttedinusestatus)
-        applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
-        self.app_multi_select_drop_down.items = applications
-    elif not selectedapparea and  selecttedinusestatus:   
-        self.repeating_panel_1.items = app_tables.suppported_products.search( InUseStatus=selecttedinusestatus)
-    else:
-        self.repeating_panel_1.items = app_tables.suppported_products.search()
-        self.hits_textbox.text = len(app_tables.suppported_products.search())
-    t = app_tables.last_date_refreshed.get(dateid =1 )
-    self.last_refresh_date.text= t['last_date_refreshed']
-    self.hits_textbox.text = len(self.repeating_panel_1.items)
-    pass
+# #     print(selectedapparea['application_area'])
+#     if selectedapparea and not selecttedinusestatus:
+#         selectedapp = ('%' + selectedapparea['application_area'] + '%')
+#         self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp))
+#         applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+#         self.app_multi_select_drop_down.items = applications
+#     elif selectedapparea and  selecttedinusestatus:
+#         selectedapp = ('%' + selectedapparea['application_area'] + '%')
+#         self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp), InUseStatus=selecttedinusestatus)
+#         applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+#         self.app_multi_select_drop_down.items = applications
+#     elif not selectedapparea and  selecttedinusestatus:   
+#         self.repeating_panel_1.items = app_tables.suppported_products.search( InUseStatus=selecttedinusestatus)
+#     else:
+#         self.repeating_panel_1.items = app_tables.suppported_products.search()
+#         self.hits_textbox.text = len(app_tables.suppported_products.search())
+#     t = app_tables.last_date_refreshed.get(dateid =1 )
+#     self.last_refresh_date.text= t['last_date_refreshed']
+#     self.hits_textbox.text = len(self.repeating_panel_1.items)
+#     pass
 
-  def In_Use_Status_dropdown_change(self, **event_args):
-    """This method is called when an item is selected"""
-#     self.apparea_dropdown.enabled = true
-    self.app_multi_select_drop_down.selected = None
-    self.in_use_2_drop_down.selected_value = None
-    selectedapparea = self.apparea_dropdown.selected_value
-    selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
+#   def In_Use_Status_dropdown_change(self, **event_args):
+#     """This method is called when an item is selected"""
+# #     self.apparea_dropdown.enabled = true
+#     self.app_multi_select_drop_down.selected = None
+#     self.in_use_2_drop_down.selected_value = None
+#     selectedapparea = self.apparea_dropdown.selected_value
+#     selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
 
+# #     self.apparea_dropdown.selected_value = None
+# #     self.In_Use_Status_dropdown.selected_value = None
+#     self.app_multi_select_drop_down.selected = None
+#     self.in_use_2_drop_down.selected_value = None
+#     self.apparea_1_dropdown.selected_value = None
+#     self.customer_type_dropdown.selected_value = None
+#     self.region_dropdown.selected_value = None
+#     self.version_level_dropdown.selected_value = None
+#     self.text_search_box.text = None
+#     self.interfaces_dropdown.selected_value = None
+#     self.NOT_interface_chkbox.checked == False
+    
+# #     print(selectedapparea['application_area'])
+#     if selectedapparea and not selecttedinusestatus:
+#         selectedapp = ('%' + selectedapparea['application_area'] + '%')
+#         self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp))
+#         applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+#         self.app_multi_select_drop_down.items = applications
+#     elif selectedapparea and  selecttedinusestatus:
+#         selectedapp = ('%' + selectedapparea['application_area'] + '%')
+#         self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp), InUseStatus=selecttedinusestatus)
+#         applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+#         self.app_multi_select_drop_down.items = applications
+#     elif not selectedapparea and  selecttedinusestatus:   
+#         self.repeating_panel_1.items = app_tables.suppported_products.search( InUseStatus=selecttedinusestatus)
+#     else:
+#         self.repeating_panel_1.items = app_tables.suppported_products.search()
+#         self.hits_textbox.text = len(app_tables.suppported_products.search())
+#     t = app_tables.last_date_refreshed.get(dateid =1 )
+#     self.last_refresh_date.text= t['last_date_refreshed']
+#     self.hits_textbox.text = len(self.repeating_panel_1.items)
+#     pass
+       
+#     t = app_tables.last_date_refreshed.get(dateid =1 )
+#     self.last_refresh_date.text= t['last_date_refreshed']
+#     pass
+
+#   def pivot_button_click(self, **event_args):
+#     """This method is called when the button is clicked"""
+#     open_form('Pivot')
+#     pass
+
+#   def in_use_2_drop_down_change(self, **event_args):
+#     """This method is called when an item is selected"""
 #     self.apparea_dropdown.selected_value = None
 #     self.In_Use_Status_dropdown.selected_value = None
-    self.app_multi_select_drop_down.selected = None
-    self.in_use_2_drop_down.selected_value = None
-    self.apparea_1_dropdown.selected_value = None
-    self.customer_type_dropdown.selected_value = None
-    self.region_dropdown.selected_value = None
-    self.version_level_dropdown.selected_value = None
-    self.text_search_box.text = None
-    self.interfaces_dropdown.selected_value = None
-    self.NOT_interface_chkbox.checked == False
+#     selectedapps = self.app_multi_select_drop_down.selected 
+#     selecttedinusestatus2 = self.in_use_2_drop_down.selected_value
+#     self.apparea_1_dropdown.selected_value = None
+#     self.customer_type_dropdown.selected_value = None
+#     self.region_dropdown.selected_value = None
+#     self.version_level_dropdown.selected_value = None
+#     self.text_search_box.text = None
+#     self.interfaces_dropdown.selected_value = None
+#     self.NOT_interface_chkbox.checked == False
     
-#     print(selectedapparea['application_area'])
-    if selectedapparea and not selecttedinusestatus:
-        selectedapp = ('%' + selectedapparea['application_area'] + '%')
-        self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp))
-        applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
-        self.app_multi_select_drop_down.items = applications
-    elif selectedapparea and  selecttedinusestatus:
-        selectedapp = ('%' + selectedapparea['application_area'] + '%')
-        self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea = q.like(selectedapp), InUseStatus=selecttedinusestatus)
-        applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
-        self.app_multi_select_drop_down.items = applications
-    elif not selectedapparea and  selecttedinusestatus:   
-        self.repeating_panel_1.items = app_tables.suppported_products.search( InUseStatus=selecttedinusestatus)
-    else:
-        self.repeating_panel_1.items = app_tables.suppported_products.search()
-        self.hits_textbox.text = len(app_tables.suppported_products.search())
-    t = app_tables.last_date_refreshed.get(dateid =1 )
-    self.last_refresh_date.text= t['last_date_refreshed']
-    self.hits_textbox.text = len(self.repeating_panel_1.items)
-    pass
-       
-    t = app_tables.last_date_refreshed.get(dateid =1 )
-    self.last_refresh_date.text= t['last_date_refreshed']
-    pass
-
-  def pivot_button_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    open_form('Pivot')
-    pass
-
-  def in_use_2_drop_down_change(self, **event_args):
-    """This method is called when an item is selected"""
-    self.apparea_dropdown.selected_value = None
-    self.In_Use_Status_dropdown.selected_value = None
-    selectedapps = self.app_multi_select_drop_down.selected 
-    selecttedinusestatus2 = self.in_use_2_drop_down.selected_value
-    self.apparea_1_dropdown.selected_value = None
-    self.customer_type_dropdown.selected_value = None
-    self.region_dropdown.selected_value = None
-    self.version_level_dropdown.selected_value = None
-    self.text_search_box.text = None
-    self.interfaces_dropdown.selected_value = None
-    self.NOT_interface_chkbox.checked == False
-    
-    if selecttedinusestatus2 and selectedapps  :
-          self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps), InUseStatus=selecttedinusestatus2)
-    elif  not selecttedinusestatus2 and selectedapps  :
-          self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps))
-    elif  selecttedinusestatus2 and not selectedapps  :
-          self.repeating_panel_1.items = app_tables.suppported_products.search(InUseStatus=selecttedinusestatus2)
-
-    
-    
-    
-    
-    
-    
-#     if selecttedinusestatus :
-#           self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps), InUseStatus=selecttedinusestatus)
-#     else:
+#     if selecttedinusestatus2 and selectedapps  :
+#           self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps), InUseStatus=selecttedinusestatus2)
+#     elif  not selecttedinusestatus2 and selectedapps  :
 #           self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps))
+#     elif  selecttedinusestatus2 and not selectedapps  :
+#           self.repeating_panel_1.items = app_tables.suppported_products.search(InUseStatus=selecttedinusestatus2)
 
-    self.hits_textbox.text = len(self.repeating_panel_1.items)
-    pass
+    
+    
+    
+    
+    
+    
+# #     if selecttedinusestatus :
+# #           self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps), InUseStatus=selecttedinusestatus)
+# #     else:
+# #           self.repeating_panel_1.items = app_tables.suppported_products.search(CFApplicationArea=q.any_of(*selectedapps))
 
-  def stats_button_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    open_form('Application_Area_Summary')
-    pass
+#     self.hits_textbox.text = len(self.repeating_panel_1.items)
+#     pass
+
+#   def stats_button_click(self, **event_args):
+#     """This method is called when the button is clicked"""
+#     open_form('Application_Area_Summary')
+#     pass
 
   def app_group_type_button_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -266,110 +359,110 @@ class systems_and_accounts(systems_and_accountsTemplate):
     dict_customer_type_summary = anvil.server.call('customer_type__summary')
     pass
 
-  def customer_type_dropdown_change(self, **event_args):
-    selectedcustomertype = self.customer_type_dropdown.selected_value
-    selectedregion = self.region_dropdown.selected_value
-    selectedapparea_1 = self.apparea_1_dropdown.selected_value
+#   def customer_type_dropdown_change(self, **event_args):
+#     selectedcustomertype = self.customer_type_dropdown.selected_value
+#     selectedregion = self.region_dropdown.selected_value
+#     selectedapparea_1 = self.apparea_1_dropdown.selected_value
     
-    self.apparea_dropdown.selected_value = None
-    self.In_Use_Status_dropdown.selected_value = None
-    self.app_multi_select_drop_down.selected = None
-    self.in_use_2_drop_down.selected_value = None
-    self.text_search_box.text = None
-    self.interfaces_dropdown.selected_value = None
-    self.NOT_interface_chkbox.checked == False
+#     self.apparea_dropdown.selected_value = None
+#     self.In_Use_Status_dropdown.selected_value = None
+#     self.app_multi_select_drop_down.selected = None
+#     self.in_use_2_drop_down.selected_value = None
+#     self.text_search_box.text = None
+#     self.interfaces_dropdown.selected_value = None
+#     self.NOT_interface_chkbox.checked == False
     
-    if  selectedapparea_1:
-          self.apparea_dropdown.selected_value = None
-          self.In_Use_Status_dropdown.selected_value = None
-          selectedapp = ('%' + selectedapparea_1['application_area'] + '%')
-    else:
-          selectedapp = selectedapparea_1
-    selected_version_level= self.version_level_dropdown.selected_value
-    V = selectedapp
-    X = selectedregion
-    Y = selected_version_level
-    Z = selectedcustomertype
-    four_way_search(self,V, X,Y,Z)
+#     if  selectedapparea_1:
+#           self.apparea_dropdown.selected_value = None
+#           self.In_Use_Status_dropdown.selected_value = None
+#           selectedapp = ('%' + selectedapparea_1['application_area'] + '%')
+#     else:
+#           selectedapp = selectedapparea_1
+#     selected_version_level= self.version_level_dropdown.selected_value
+#     V = selectedapp
+#     X = selectedregion
+#     Y = selected_version_level
+#     Z = selectedcustomertype
+#     four_way_search(self,V, X,Y,Z)
    
 
-  def region_dropdown_change(self, **event_args):
-    selectedcustomertype = self.customer_type_dropdown.selected_value
-    selectedregion = self.region_dropdown.selected_value
-    selectedapparea_1 = self.apparea_1_dropdown.selected_value
+#   def region_dropdown_change(self, **event_args):
+#     selectedcustomertype = self.customer_type_dropdown.selected_value
+#     selectedregion = self.region_dropdown.selected_value
+#     selectedapparea_1 = self.apparea_1_dropdown.selected_value
     
-    self.apparea_dropdown.selected_value = None
-    self.In_Use_Status_dropdown.selected_value = None
-    self.app_multi_select_drop_down.selected = None
-    self.in_use_2_drop_down.selected_value = None
-    self.text_search_box.text = None
-    self.interfaces_dropdown.selected_value = None
-    self.NOT_interface_chkbox.checked == False
+#     self.apparea_dropdown.selected_value = None
+#     self.In_Use_Status_dropdown.selected_value = None
+#     self.app_multi_select_drop_down.selected = None
+#     self.in_use_2_drop_down.selected_value = None
+#     self.text_search_box.text = None
+#     self.interfaces_dropdown.selected_value = None
+#     self.NOT_interface_chkbox.checked == False
     
-    if  selectedapparea_1:
-          selectedapp = ('%' + selectedapparea_1['application_area'] + '%')
-    else:
-          selectedapp = selectedapparea_1
-    selected_version_level= self.version_level_dropdown.selected_value
-    V = selectedapp
-    X = selectedregion
-    Y = selected_version_level
-    Z = selectedcustomertype
-    four_way_search(self,V, X,Y,Z)
+#     if  selectedapparea_1:
+#           selectedapp = ('%' + selectedapparea_1['application_area'] + '%')
+#     else:
+#           selectedapp = selectedapparea_1
+#     selected_version_level= self.version_level_dropdown.selected_value
+#     V = selectedapp
+#     X = selectedregion
+#     Y = selected_version_level
+#     Z = selectedcustomertype
+#     four_way_search(self,V, X,Y,Z)
    
 
 
 
 
-  def apparea_1_dropdown_change(self, **event_args):
-    """This method is called when an item is selected"""
-    selectedcustomertype = self.customer_type_dropdown.selected_value
-    selectedregion = self.region_dropdown.selected_value
-    selectedapparea_1 = self.apparea_1_dropdown.selected_value
+#   def apparea_1_dropdown_change(self, **event_args):
+#     """This method is called when an item is selected"""
+#     selectedcustomertype = self.customer_type_dropdown.selected_value
+#     selectedregion = self.region_dropdown.selected_value
+#     selectedapparea_1 = self.apparea_1_dropdown.selected_value
     
-    self.apparea_dropdown.selected_value = None
-    self.In_Use_Status_dropdown.selected_value = None
-    self.app_multi_select_drop_down.selected = None
-    self.in_use_2_drop_down.selected_value = None
-    self.text_search_box.text = None
-    self.interfaces_dropdown.selected_value = None
-    self.NOT_interface_chkbox.checked == False
+#     self.apparea_dropdown.selected_value = None
+#     self.In_Use_Status_dropdown.selected_value = None
+#     self.app_multi_select_drop_down.selected = None
+#     self.in_use_2_drop_down.selected_value = None
+#     self.text_search_box.text = None
+#     self.interfaces_dropdown.selected_value = None
+#     self.NOT_interface_chkbox.checked == False
     
-    if  selectedapparea_1:
-          selectedapp = ('%' + selectedapparea_1['application_area'] + '%')
-    else:
-          selectedapp = selectedapparea_1
-    selected_version_level= self.version_level_dropdown.selected_value
-    V = selectedapp
-    X = selectedregion
-    Y = selected_version_level
-    Z = selectedcustomertype
-    four_way_search(self,V, X,Y,Z)
-    pass
+#     if  selectedapparea_1:
+#           selectedapp = ('%' + selectedapparea_1['application_area'] + '%')
+#     else:
+#           selectedapp = selectedapparea_1
+#     selected_version_level= self.version_level_dropdown.selected_value
+#     V = selectedapp
+#     X = selectedregion
+#     Y = selected_version_level
+#     Z = selectedcustomertype
+#     four_way_search(self,V, X,Y,Z)
+#     pass
 
-  def version_level_dropdown_change(self, **event_args):
-    selectedcustomertype = self.customer_type_dropdown.selected_value
-    selectedregion = self.region_dropdown.selected_value
-    selectedapparea_1 = self.apparea_1_dropdown.selected_value
+#   def version_level_dropdown_change(self, **event_args):
+#     selectedcustomertype = self.customer_type_dropdown.selected_value
+#     selectedregion = self.region_dropdown.selected_value
+#     selectedapparea_1 = self.apparea_1_dropdown.selected_value
     
-    self.apparea_dropdown.selected_value = None
-    self.In_Use_Status_dropdown.selected_value = None
-    self.app_multi_select_drop_down.selected = None
-    self.in_use_2_drop_down.selected_value = None
-    self.text_search_box.text = None
-    self.interfaces_dropdown.selected_value = None
-    self.NOT_interface_chkbox.checked == False
+#     self.apparea_dropdown.selected_value = None
+#     self.In_Use_Status_dropdown.selected_value = None
+#     self.app_multi_select_drop_down.selected = None
+#     self.in_use_2_drop_down.selected_value = None
+#     self.text_search_box.text = None
+#     self.interfaces_dropdown.selected_value = None
+#     self.NOT_interface_chkbox.checked == False
     
-    if  selectedapparea_1:
-          selectedapp = ('%' + selectedapparea_1['application_area'] + '%')
-    else:
-          selectedapp = selectedapparea_1
-    selected_version_level= self.version_level_dropdown.selected_value
-    V = selectedapp
-    X = selectedregion
-    Y = selected_version_level
-    Z = selectedcustomertype
-    four_way_search(self,V, X,Y,Z)
+#     if  selectedapparea_1:
+#           selectedapp = ('%' + selectedapparea_1['application_area'] + '%')
+#     else:
+#           selectedapp = selectedapparea_1
+#     selected_version_level= self.version_level_dropdown.selected_value
+#     V = selectedapp
+#     X = selectedregion
+#     Y = selected_version_level
+#     Z = selectedcustomertype
+#     four_way_search(self,V, X,Y,Z)
    
 
 
@@ -399,85 +492,109 @@ class systems_and_accounts(systems_and_accountsTemplate):
     
     anvil.users.login_with_form()
     open_form('systems_and_accounts')
-    passjavascript:void(0)
+#     passjavascript:void(0)
 
 
-  def text_search_box_pressed_enter(self, **event_args):
-    """This method is called when the user presses Enter in this text box"""
-    if self.text_search_box.text:
-          self.apparea_dropdown.selected_value = None
-          self.In_Use_Status_dropdown.selected_value = None
-          self.app_multi_select_drop_down.selected = None
-          self.in_use_2_drop_down.selected_value = None
-          self.apparea_1_dropdown.selected_value = None
-          self.customer_type_dropdown.selected_value = None
-          self.region_dropdown.selected_value = None
-          self.version_level_dropdown.selected_value = None
-          self.interfaces_dropdown.selected_value = None
-          self.NOT_interface_chkbox.checked == False
-          phrase = self.text_search_box.text
+#   def text_search_box_pressed_enter(self, **event_args):
+#     """This method is called when the user presses Enter in this text box"""
+#     if self.text_search_box.text:
+#           self.apparea_dropdown.selected_value = None
+#           self.In_Use_Status_dropdown.selected_value = None
+#           self.app_multi_select_drop_down.selected = None
+#           self.in_use_2_drop_down.selected_value = None
+#           self.apparea_1_dropdown.selected_value = None
+#           self.customer_type_dropdown.selected_value = None
+#           self.region_dropdown.selected_value = None
+#           self.version_level_dropdown.selected_value = None
+#           self.interfaces_dropdown.selected_value = None
+#           self.NOT_interface_chkbox.checked == False
+#           phrase = self.text_search_box.text
           
-          self.repeating_panel_1.items = app_tables.suppported_products.search(q.any_of(
-          Name=q.full_text_match(self.text_search_box.text),Account= q.full_text_match(phrase), \
-          Live_version_no= q.full_text_match(phrase),CFApplicationArea= q.full_text_match(phrase)))
-    else:
-         self.repeating_panel_1.items = app_tables.suppported_products.search()
+#           self.repeating_panel_1.items = app_tables.suppported_products.search(q.any_of(
+#           Name=q.full_text_match(self.text_search_box.text),Account= q.full_text_match(phrase), \
+#           Live_version_no= q.full_text_match(phrase),CFApplicationArea= q.full_text_match(phrase)))
+#     else:
+#          self.repeating_panel_1.items = app_tables.suppported_products.search()
         
-    self.hits_textbox.text = len(self.repeating_panel_1.items)
-    pass
+#     self.hits_textbox.text = len(self.repeating_panel_1.items)
+#     pass
 
-  def interfaces_dropdown_change(self, **event_args):
-    """This method is called when an item is selected"""
-    self.apparea_dropdown.selected_value = None
-    self.In_Use_Status_dropdown.selected_value = None
-    self.app_multi_select_drop_down.selected = None
-    self.in_use_2_drop_down.selected_value = None
-    self.apparea_1_dropdown.selected_value = None
-    self.customer_type_dropdown.selected_value = None
-    self.region_dropdown.selected_value = None
-    self.version_level_dropdown.selected_value = None
-    self.text_search_box.text = None
-    selectedinterface = self.interfaces_dropdown.selected_value
+#   def interfaces_dropdown_change(self, **event_args):
+#     """This method is called when an item is selected"""
+#     self.apparea_dropdown.selected_value = None
+#     self.In_Use_Status_dropdown.selected_value = None
+#     self.app_multi_select_drop_down.selected = None
+#     self.in_use_2_drop_down.selected_value = None
+#     self.apparea_1_dropdown.selected_value = None
+#     self.customer_type_dropdown.selected_value = None
+#     self.region_dropdown.selected_value = None
+#     self.version_level_dropdown.selected_value = None
+#     self.text_search_box.text = None
+#     selectedinterface = self.interfaces_dropdown.selected_value
 
-    if  selectedinterface and self.NOT_interface_chkbox.checked == False:
-          selectedinterface = ('%' + selectedinterface['Interface_Type'] + '%')
-          self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = (q.like(selectedinterface)), InUseStatus= 'Live')
-    if selectedinterface and self.NOT_interface_chkbox.checked == True:
-        selectedinterface = ('%' + selectedinterface['Interface_Type'] + '%')  
-        self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = q.not_(q.like(selectedinterface)), InUseStatus= 'Live')
-    if not selectedinterface and self.NOT_interface_chkbox.checked == False:
-          self.repeating_panel_1.items = app_tables.suppported_products.search()
-    self.hits_textbox.text = len(self.repeating_panel_1.items) 
+#     if  selectedinterface and self.NOT_interface_chkbox.checked == False:
+#           selectedinterface = ('%' + selectedinterface['Interface_Type'] + '%')
+#           self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = (q.like(selectedinterface)), InUseStatus= 'Live')
+#     if selectedinterface and self.NOT_interface_chkbox.checked == True:
+#         selectedinterface = ('%' + selectedinterface['Interface_Type'] + '%')  
+#         self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = q.not_(q.like(selectedinterface)), InUseStatus= 'Live')
+#     if not selectedinterface and self.NOT_interface_chkbox.checked == False:
+#           self.repeating_panel_1.items = app_tables.suppported_products.search()
+#     self.hits_textbox.text = len(self.repeating_panel_1.items) 
 
-  def button_5_click(self, **event_args):
+  def interface_summary_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form('Stats_Tables.Interface_Types')
     pass
 
-  def NOT_interface_chkbox_change(self, **event_args):
-    """This method is called when this checkbox is checked or unchecked"""
-    self.apparea_dropdown.selected_value = None
-    self.In_Use_Status_dropdown.selected_value = None
-    self.app_multi_select_drop_down.selected = None
-    self.in_use_2_drop_down.selected_value = None
-    self.apparea_1_dropdown.selected_value = None
-    self.customer_type_dropdown.selected_value = None
-    self.region_dropdown.selected_value = None
-    self.version_level_dropdown.selected_value = None
-    self.text_search_box.text = None
-    selectedinterface = self.interfaces_dropdown.selected_value
-#     selectedinterface = ('%' + selectedinterface['Interface_Type'] + '%')
-    if  selectedinterface and self.NOT_interface_chkbox.checked == False:
-          selectedinterface = ('%' + selectedinterface['Interface_Type'] + '%')
-          self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = (q.like(selectedinterface)), InUseStatus= 'Live')
-    if selectedinterface and self.NOT_interface_chkbox.checked == True:
-        selectedinterface = ('%' + selectedinterface['Interface_Type'] + '%')  
-        self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = q.not_(q.like(selectedinterface)), InUseStatus= 'Live')
-    if not selectedinterface and self.NOT_interface_chkbox.checked == False:
-          self.repeating_panel_1.items = app_tables.suppported_products.search()
-    self.hits_textbox.text = len(self.repeating_panel_1.items)  
+#   def NOT_interface_chkbox_change(self, **event_args):
+#     """This method is called when this checkbox is checked or unchecked"""
+#     self.apparea_dropdown.selected_value = None
+#     self.In_Use_Status_dropdown.selected_value = None
+#     self.app_multi_select_drop_down.selected = None
+#     self.in_use_2_drop_down.selected_value = None
+#     self.apparea_1_dropdown.selected_value = None
+#     self.customer_type_dropdown.selected_value = None
+#     self.region_dropdown.selected_value = None
+#     self.version_level_dropdown.selected_value = None
+#     self.text_search_box.text = None
+#     selectedinterface = self.interfaces_dropdown.selected_value
+# #     selectedinterface = ('%' + selectedinterface['Interface_Type'] + '%')
+#     if  selectedinterface and self.NOT_interface_chkbox.checked == False:
+#           selectedinterface = ('%' + selectedinterface['Interface_Type'] + '%')
+#           self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = (q.like(selectedinterface)), InUseStatus= 'Live')
+#     if selectedinterface and self.NOT_interface_chkbox.checked == True:
+#         selectedinterface = ('%' + selectedinterface['Interface_Type'] + '%')  
+#         self.repeating_panel_1.items = app_tables.suppported_products.search(Interfaces = q.not_(q.like(selectedinterface)), InUseStatus= 'Live')
+#     if not selectedinterface and self.NOT_interface_chkbox.checked == False:
+#           self.repeating_panel_1.items = app_tables.suppported_products.search()
+#     self.hits_textbox.text = len(self.repeating_panel_1.items)  
+#     pass
+#     pass
+
+  def live_version_drop_down_change(self, **event_args):
+    """This method is called when the selected values change"""
     pass
+
+ 
+
+  def version_summary_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Stats_Tables.Version_Summary')
+    dict_versions_group = anvil.server.call('versions')
     pass
+
+  def region_summary_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Stats_Tables.Regional_Summary')
+    pass
+
+
+
+
+
+
+
 
 
 

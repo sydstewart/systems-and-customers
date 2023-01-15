@@ -4,7 +4,7 @@ container:
   properties: {html: '@theme:standard-page.html'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"QQJHDE":10,"DGJUJU":5,"EAHXQP":65}'}
+  properties: {}
   name: content_panel
   layout_properties: {slot: default}
   components:
@@ -13,7 +13,10 @@ components:
       wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"VXFOTY":5,"XLPJFD":11,"PTHUKK":5,"CZDCDV":9,"XKCPRI":5,"BAWGDD":6,"KRDMMO":4,"IHHPMZ":8}',
       spacing_below: small, background: ''}
     name: card_1
-    layout_properties: {grid_position: 'KAFSBE,REHTBD', full_width_row: true}
+    layout_properties:
+      col_widths: {}
+      grid_position: DEJKFE,ZCCUUR
+      full_width_row: true
     components:
     - type: Label
       properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
@@ -231,62 +234,6 @@ components:
       name: live_version_drop_down
       layout_properties: {grid_position: 'LFOYAW,IHHPMZ', full_width_row: true}
       event_bindings: {change: live_version_drop_down_change}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Hits, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
-      underline: false, icon: ''}
-    name: label_1
-    layout_properties: {grid_position: 'JSCPMX,QQJHDE'}
-  - type: TextBox
-    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
-      border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
-      font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-      background: '', bold: true, underline: false}
-    name: hits_textbox
-    layout_properties: {grid_position: 'JSCPMX,DGJUJU'}
-    event_bindings: {}
-  - type: Label
-    properties: {}
-    name: label_10
-    layout_properties: {grid_position: 'JSCPMX,EAHXQP'}
-  - type: ColumnPanel
-    properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
-      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
-      spacing_below: small, background: ''}
-    name: column_panel_1
-    layout_properties: {grid_position: 'HESGAD,FQIFHZ', full_width_row: true}
-    components:
-    - type: DataGrid
-      properties:
-        role: null
-        columns:
-        - {id: FIODTJ, title: Name, data_key: Name}
-        - {id: OXBYRP, title: Account, data_key: Account}
-        - {id: DKGHIQ, title: In Use Status, data_key: InUseStatus}
-        - {id: QTWEHW, title: Version, data_key: Live_version_no}
-        - {id: VUWWSP, title: Interfaces, data_key: Interfaces}
-        - {id: VYHCGP, title: Application Area/s, data_key: CFApplicationArea}
-        - {id: VJXZJX, title: Region, data_key: Location_c}
-        - {id: WTDHBE, title: Customer Type, data_key: Customer_Type}
-        auto_header: true
-        tooltip: ''
-        border: ''
-        foreground: ''
-        rows_per_page: 20
-        visible: true
-        wrap_on: never
-        show_page_controls: true
-        spacing_above: small
-        spacing_below: small
-        background: ''
-      name: data_grid_1
-      layout_properties: {grid_position: 'RURAOB,PTEUQU', full_width_row: true}
-      components:
-      - type: RepeatingPanel
-        properties: {spacing_above: none, spacing_below: none, item_template: Test.RowTemplate18}
-        name: repeating_panel_1
-        layout_properties: {}
 - type: FlowPanel
   properties: {}
   name: navbar_links
