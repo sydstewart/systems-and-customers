@@ -45,13 +45,14 @@ def search_using_kwargs(self):
     if search5:
 #         self.text_search_box.text = None
         kwargs['Version_Level'] = search5
+        self.live_version_drop_down.selected = None
     if search6 == True and search3:
 #          self.text_search_box.text = None
          selectedinterface = ('%' + search3['Interface_Type'] + '%')
          kwargs['Interfaces'] = q.not_(q.like('%'+ selectedinterface + '%'))
     if search7:
 #       self.text_search_box.text = None
-      self.apparea_drop_down.selected_value = None
+      self.apparea_drop_down.selected = None
       kwargs['CFApplicationArea']=q.any_of(*search7)
     if search8:
 #       self.text_search_box.text = None
@@ -59,6 +60,7 @@ def search_using_kwargs(self):
     
     if search10:
         kwargs['Live_version_no'] = q.any_of(*search10)
+        self.version_level_drop_down.selected_value =None
         
 #     if search11:
 #         kwargs['AC_Non_AC'] = search11

@@ -28,6 +28,10 @@ class systems_and_accounts(systems_and_accountsTemplate):
     # Any code you write here will run before the form opens.
 #     anvil.server.call('listsystems'
 #     open_form('systems_and_accounts')
+
+    self.live_version_drop_down.enabled = True
+    self.version_level_drop_down.enabled = True
+    
     self.repeating_panel_1.items = app_tables.suppported_products.search()
     self.hits_textbox.text = len(app_tables.suppported_products.search())
     t = app_tables.last_date_refreshed.get(dateid =1 )
@@ -92,6 +96,8 @@ class systems_and_accounts(systems_and_accountsTemplate):
 
   def version_level_drop_down_change(self, **event_args):
     """This method is called when an item is selected"""
+#     self.live_version_drop_down.enabled = False
+    self.live_version_drop_down.selected_value = None
     search_using_kwargs(self)
     pass
 
@@ -120,6 +126,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     pass
   def live_version_drop_down_change(self, **event_args):
     """This method is called when the selected values change"""
+    self.version_level_drop_down.selected_value = None
     search_using_kwargs(self)
     pass 
     
