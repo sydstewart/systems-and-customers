@@ -17,7 +17,7 @@ components:
     components:
     - type: ColumnPanel
       properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
-        wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"VXFOTY":5,"XLPJFD":11,"PTHUKK":5,"CZDCDV":9,"XKCPRI":5,"BAWGDD":6,"KRDMMO":4,"IHHPMZ":8}',
+        wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"VXFOTY":5,"XLPJFD":11,"PTHUKK":5,"CZDCDV":9,"XKCPRI":5,"BAWGDD":6}',
         spacing_below: small, background: ''}
       name: card_1_copy
       layout_properties:
@@ -87,34 +87,18 @@ components:
         event_bindings: {change: in_use_drop_down_change}
       - type: Label
         properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-          visible: true, text: Version Level, font_size: null, font: '', spacing_above: small,
+          visible: true, text: Live Version, font_size: null, font: '', spacing_above: small,
           icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
           underline: false, icon: ''}
-        name: label_4_copy
-        layout_properties: {grid_position: 'JREDGI,GBVQCD', full_width_row: true}
-      - type: DropDown
-        properties:
-          role: null
-          align: full
-          tooltip: ''
-          placeholder: ''
-          border: ''
-          enabled: true
-          foreground: ''
-          items: []
-          visible: true
-          font_size: 14
-          font: ''
-          spacing_above: small
-          spacing_below: small
-          italic: false
-          background: ''
-          bold: false
-          underline: false
-          include_placeholder: true
-        name: version_level_drop_down
-        layout_properties: {grid_position: 'JREDGI,URCLAO', full_width_row: true}
-        event_bindings: {change: version_level_drop_down_change}
+        name: label_11_copy
+        layout_properties: {grid_position: 'JREDGI,TPOHHA', full_width_row: true}
+      - type: form:C6ZZPAPN4YYF5NVJ:MultiSelectDropDown
+        properties: {width: '', align: left, enable_filtering: true, placeholder: None Selected,
+          enabled: true, enable_select_all: true, items: null, visible: true, spacing_above: small,
+          spacing_below: small, multiple: true}
+        name: live_version_dropdown
+        layout_properties: {grid_position: 'JREDGI,VXIXFL', full_width_row: true}
+        event_bindings: {change: live_version_dropdown_change}
       - type: Label
         properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
           visible: true, text: Interfaces, font_size: null, font: '', spacing_above: small,
@@ -227,20 +211,6 @@ components:
         name: customer_type_dropdown
         layout_properties: {grid_position: 'LFOYAW,BAWGDD', full_width_row: true}
         event_bindings: {change: customer_type_dropdown_change}
-      - type: Label
-        properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-          visible: true, text: Live Version, font_size: null, font: '', spacing_above: small,
-          icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-          underline: false, icon: ''}
-        name: label_11_copy
-        layout_properties: {grid_position: 'LFOYAW,KRDMMO', full_width_row: true}
-      - type: form:C6ZZPAPN4YYF5NVJ:MultiSelectDropDown
-        properties: {width: '', align: left, enable_filtering: true, placeholder: None Selected,
-          enabled: true, enable_select_all: true, items: null, visible: true, spacing_above: small,
-          spacing_below: small, multiple: true}
-        name: live_version_drop_down
-        layout_properties: {grid_position: 'LFOYAW,IHHPMZ', full_width_row: true}
-        event_bindings: {change: live_version_drop_down_change}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: Hits, font_size: null, font: '', spacing_above: small,

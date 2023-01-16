@@ -29,8 +29,8 @@ class systems_and_accounts(systems_and_accountsTemplate):
 #     anvil.server.call('listsystems'
 #     open_form('systems_and_accounts')
 
-    self.live_version_drop_down.enabled = True
-    self.version_level_drop_down.enabled = True
+#     self.live_version_drop_down.enabled = True
+#     self.version_level_drop_down.enabled = True
     
     self.repeating_panel_1.items = app_tables.suppported_products.search()
     self.hits_textbox.text = len(app_tables.suppported_products.search())
@@ -40,17 +40,17 @@ class systems_and_accounts(systems_and_accountsTemplate):
     inusestatus = list({(r['InUseStatus']) for r in app_tables.suppported_products.search()})
     customertype = list({(r['Customer_Type']) for r in app_tables.suppported_products.search()})
     regions= list({(r['Location_c']) for r in app_tables.suppported_products.search()})
-    version_level = list({(r['Version_Level']) for r in app_tables.suppported_products.search()})
+#     version_level = list({(r['Version_Level']) for r in app_tables.suppported_products.search()})
     version = list({(r['Live_version_no']) for r in app_tables.suppported_products.search(tables.order_by('Live_version_no'))})
     
     self.apparea_drop_down.items =  [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
     self.in_use_drop_down.items = inusestatus
-    self.version_level_drop_down.items = version_level
+#     self.version_level_drop_down.items = version_level
     self.interfaces_drop_down.items = [(str(row['Interface_Type']), row) for row in app_tables.interface_types.search(tables.order_by('Interface_Type'))]
     self.app_multi_select_drop_down.items = applications
     self.region_dropdown.items = regions
     self.customer_type_dropdown.items = customertype
-    self.live_version_drop_down.items = version
+    self.live_version_dropdown.items = version
     
 #     search1 = self.in_use_drop_down.selected_value
 #     search2 = None    #Name
@@ -124,9 +124,9 @@ class systems_and_accounts(systems_and_accountsTemplate):
     """This method is called when an item is selected"""
     search_using_kwargs(self)
     pass
-  def live_version_drop_down_change(self, **event_args):
+  def live_version_dropdown_change(self, **event_args):
     """This method is called when the selected values change"""
-    self.version_level_drop_down.selected_value = None
+#     self.version_level_drop_down.selected_value = None
     search_using_kwargs(self)
     pass 
     
@@ -595,6 +595,11 @@ class systems_and_accounts(systems_and_accountsTemplate):
     """This method is called when the button is clicked"""
     open_form('Stats_Tables.Regional_Summary')
     pass
+
+  def live_version_dropdown_change(self, **event_args):
+    """This method is called when an item is selected"""
+    pass
+
 
 
 
