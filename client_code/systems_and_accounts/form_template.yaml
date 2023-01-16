@@ -17,7 +17,7 @@ components:
     components:
     - type: ColumnPanel
       properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
-        wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"VXFOTY":7,"XLPJFD":11,"PTHUKK":5,"CZDCDV":8,"XKCPRI":4,"BAWGDD":10,"RDAAKT":4,"SQJKCP":11,"CUYMQH":6,"ADUYDY":7,"ULYWJA":7,"VVFBSX":7,"VJINAO":7,"TPOHHA":4,"VXIXFL":10,"DREXNO":4,"MBKPRQ":8,"OJPILG":6}',
+        wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"VXFOTY":7,"XLPJFD":11,"PTHUKK":5,"CZDCDV":8,"XKCPRI":4,"BAWGDD":10,"RDAAKT":4,"CUYMQH":6,"ADUYDY":7,"ULYWJA":7,"VVFBSX":7,"VJINAO":7,"TPOHHA":4,"VXIXFL":10,"DREXNO":4,"MBKPRQ":8,"OJPILG":6}',
         spacing_below: small, background: ''}
       name: version_level_drop_down
       layout_properties:
@@ -241,10 +241,14 @@ components:
         name: customer_type_dropdown
         layout_properties: {grid_position: 'LFOYAW,BAWGDD', full_width_row: true}
         event_bindings: {change: customer_type_dropdown_change}
-      - type: Label
-        properties: {}
-        name: label_4
-        layout_properties: {grid_position: 'LFOYAW,SQJKCP', full_width_row: true}
+      - type: Button
+        properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+          foreground: '', visible: true, text: Clear All Search Criteria, font_size: 11,
+          font: '', spacing_above: small, icon_align: left, spacing_below: small,
+          italic: false, background: '', bold: true, underline: false, icon: ''}
+        name: clear_search_criteria
+        layout_properties: {grid_position: 'LFOYAW,ZNEQYA', full_width_row: true}
+        event_bindings: {click: clear_search_criteria_click}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: Hits, font_size: null, font: '', spacing_above: small,

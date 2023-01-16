@@ -162,6 +162,28 @@ class systems_and_accounts(systems_and_accountsTemplate):
     t = app_tables.last_date_refreshed.get(dateid =1 )
     t['last_date_refreshed'] = str(datetime.today() )
     pass
+
+# Clear All Search Criieria
+
+  def clear_search_criteria_click(self, **event_args):
+    """This method is called when the button is clicked"""
+#Set all fileds to None    
+    self.in_use_drop_down.selected_value = None
+    self.interfaces_drop_down.selected_value = None
+    self.apparea_drop_down.selected_value = None
+    self.version_level_dropdown.selected_value= None
+    self.NOT_interface_chkbox.checked = None
+    self.app_multi_select_drop_down.selected = None
+    self.region_dropdown.selected_value = None
+    self.customer_type_dropdown.selected_value = None
+    self.live_version_dropdown.selected = None  
+#Initial Search             
+    results = app_tables.suppported_products.search()
+
+    self.repeating_panel_1.items = results
+#Hits
+    self.hits_textbox.text = len(results)
+    pass
     
 #     applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
 #     inusestatus = list({(r['InUseStatus']) for r in app_tables.suppported_products.search()})
@@ -598,6 +620,9 @@ class systems_and_accounts(systems_and_accountsTemplate):
 #   def drop_down_1_change(self, **event_args):
 #     """This method is called when an item is selected"""
 #     pass
+
+
+
 
 
 
