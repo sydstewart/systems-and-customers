@@ -4,7 +4,7 @@ container:
   properties: {html: '@theme:standard-page.html'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{}'}
+  properties: {col_widths: '{"FADNRP":5,"NSTEMW":10,"FRGXII":10,"FIBWAX":20,"BPASJL":27}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
@@ -17,9 +17,9 @@ components:
     components:
     - type: ColumnPanel
       properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
-        wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"VXFOTY":5,"XLPJFD":11,"PTHUKK":5,"CZDCDV":9,"XKCPRI":5,"BAWGDD":6}',
+        wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"VXFOTY":7,"XLPJFD":11,"PTHUKK":5,"CZDCDV":8,"XKCPRI":4,"BAWGDD":10,"RDAAKT":4,"SQJKCP":11,"CUYMQH":6,"ADUYDY":7,"ULYWJA":7,"VVFBSX":7,"VJINAO":7,"TPOHHA":4,"VXIXFL":10,"DREXNO":4,"MBKPRQ":8,"OJPILG":6}',
         spacing_below: small, background: ''}
-      name: card_1_copy
+      name: version_level_drop_down
       layout_properties:
         col_widths: {}
         grid_position: DQAGZG,NVNDWI
@@ -183,6 +183,36 @@ components:
         event_bindings: {change: region_dropdown_change}
       - type: Label
         properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+          visible: true, text: Version Level, font_size: null, font: '', spacing_above: small,
+          icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+          underline: false, icon: ''}
+        name: label_3
+        layout_properties: {grid_position: 'LFOYAW,RDAAKT', full_width_row: true}
+      - type: DropDown
+        properties:
+          role: null
+          align: full
+          tooltip: ''
+          placeholder: ''
+          border: ''
+          enabled: true
+          foreground: ''
+          items: []
+          visible: true
+          font_size: null
+          font: ''
+          spacing_above: small
+          spacing_below: small
+          italic: false
+          background: ''
+          bold: false
+          underline: false
+          include_placeholder: true
+        name: version_level_dropdown
+        layout_properties: {grid_position: 'LFOYAW,CUYMQH', full_width_row: true}
+        event_bindings: {change: version_level_dropdown_change}
+      - type: Label
+        properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
           visible: true, text: Customer Type, font_size: null, font: '', spacing_above: small,
           icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
           underline: false, icon: ''}
@@ -211,6 +241,10 @@ components:
         name: customer_type_dropdown
         layout_properties: {grid_position: 'LFOYAW,BAWGDD', full_width_row: true}
         event_bindings: {change: customer_type_dropdown_change}
+      - type: Label
+        properties: {}
+        name: label_4
+        layout_properties: {grid_position: 'LFOYAW,SQJKCP', full_width_row: true}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: Hits, font_size: null, font: '', spacing_above: small,
@@ -237,9 +271,16 @@ components:
     name: label_2
     layout_properties: {grid_position: 'KAKDEZ,FRGXII'}
   - type: TextBox
-    properties: {}
+    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: 14,
+      font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+      background: '', bold: true, underline: false}
     name: last_refresh_date
     layout_properties: {grid_position: 'KAKDEZ,FIBWAX'}
+  - type: Label
+    properties: {}
+    name: label_5
+    layout_properties: {grid_position: 'KAKDEZ,BPASJL'}
   - type: ColumnPanel
     properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
       wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
@@ -254,7 +295,7 @@ components:
         - {id: FIODTJ, title: Name, data_key: Name}
         - {id: OXBYRP, title: Account, data_key: Account}
         - {id: DKGHIQ, title: In Use Status, data_key: InUseStatus}
-        - {id: QTWEHW, title: Version, data_key: Live_version_no}
+        - {id: QTWEHW, title: Live Version, data_key: Live_version_no}
         - {id: VUWWSP, title: Interfaces, data_key: Interfaces}
         - {id: VYHCGP, title: Application Area/s, data_key: CFApplicationArea, expand: false,
           width: '250'}
@@ -274,7 +315,7 @@ components:
       name: data_grid_1
       layout_properties:
         col_widths: {}
-        grid_position: MGOWTC,TUKHQH
+        grid_position: IRPWRK,RDPSSM
         full_width_row: true
       components:
       - type: RepeatingPanel

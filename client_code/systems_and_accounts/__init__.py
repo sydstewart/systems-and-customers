@@ -19,88 +19,79 @@ class systems_and_accounts(systems_and_accountsTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+
+# Login
     anvil.users.login_with_form()
-#     mfa_login_with_form()
     loggedinuser =  anvil.users.get_user()['email']
 #     self.loggedinuser.text = loggedinuser
     user_type = anvil.users.get_user()['user_type']
-#     user_type = anvil.users.get_user()['user_type']
-    # Any code you write here will run before the form opens.
-#     anvil.server.call('listsystems'
-#     open_form('systems_and_accounts')
 
-#     self.live_version_drop_down.enabled = True
-#     self.version_level_drop_down.enabled = True
-    
-    self.repeating_panel_1.items = app_tables.suppported_products.search()
-    self.hits_textbox.text = len(app_tables.suppported_products.search())
+#Last Refresh of Data   
     t = app_tables.last_date_refreshed.get(dateid =1 )
     self.last_refresh_date.text= t['last_date_refreshed']
-    applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+    
+#-------------------------------------------------------------------------
+# Loading Dropdowns
+#--------------------------------------------------------------------------------
+    applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search(tables.order_by('CFApplicationArea'))})
     inusestatus = list({(r['InUseStatus']) for r in app_tables.suppported_products.search()})
     customertype = list({(r['Customer_Type']) for r in app_tables.suppported_products.search()})
     regions= list({(r['Location_c']) for r in app_tables.suppported_products.search()})
-#     version_level = list({(r['Version_Level']) for r in app_tables.suppported_products.search()})
+    version_level = list({(r['Version_Level']) for r in app_tables.suppported_products.search()})
     version = list({(r['Live_version_no']) for r in app_tables.suppported_products.search(tables.order_by('Live_version_no'))})
     
     self.apparea_drop_down.items =  [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
     self.in_use_drop_down.items = inusestatus
-#     self.version_level_drop_down.items = version_level
+    self.version_level_dropdown.items = version_level
     self.interfaces_drop_down.items = [(str(row['Interface_Type']), row) for row in app_tables.interface_types.search(tables.order_by('Interface_Type'))]
     self.app_multi_select_drop_down.items = applications
     self.region_dropdown.items = regions
     self.customer_type_dropdown.items = customertype
     self.live_version_dropdown.items = version
-    
-#     search1 = self.in_use_drop_down.selected_value
-#     search2 = None    #Name
-#     search3 = self.interfaces_drop_down.selected_value
-#     search4 = self.apparea_drop_down.selected_value
-#     search5 = self.version_level_drop_down.selected_value
-#     search6 = self.NOT_interface_chkbox.checked
-#     search7 = self.app_multi_select_drop_down.selected
-#     search8 = self.region_dropdown.selected_value
-    
-    kwargs ={}
 
-#     if search1:
-#          kwargs['InUseStatus'] = search1
-# #     kwargs['InUseStatus'] ='Live'
-#     if search2:
-#        kwargs["Name"] = q.like('%'+ search2 +'%')
-#     if search3:
-#          kwargs['Interfaces'] = search3
-#     if search4:
-#          selectedapparea = ('%' + search4['application_area'] + '%')
-#          kwargs['CFApplicationArea'] = q.like('%'+ selectedapparea + '%') 
-#     if search5:
-#       kwargs['Version_Level'] = search5
-             
+#Initial Search             
     results = app_tables.suppported_products.search()
 
     self.repeating_panel_1.items = results
+#Hits
     self.hits_textbox.text = len(results)
     pass 
+  
+#--------------------------------------------------------------------
+# Changes in Fields      
+#-------------------------------------------------------------------
 
-      
-      
-
+#Application Areas      
   def apparea_drop_down_change(self, **event_args):
     """This method is called when an item is selected"""
+    self.app_multi_select_drop_down.selected = None
     search_using_kwargs(self)
     pass
-
+  
+  def app_multi_select_drop_down_change(self, **event_args):
+    """This method is called when the selected values change"""
+    self.apparea_drop_down.selected_value = None
+    search_using_kwargs(self)
+    pass
+  
+# In Use Status
   def in_use_drop_down_change(self, **event_args):
     """This method is called when an item is selected"""
     search_using_kwargs(self)
 
-  def version_level_drop_down_change(self, **event_args):
-    """This method is called when an item is selected"""
-#     self.live_version_drop_down.enabled = False
-    self.live_version_drop_down.selected_value = None
+# Versions
+  def live_version_dropdown_change(self, **event_args):
+    """This method is called when the selected values change"""
+    self.version_level_dropdown.selected_value = None
     search_using_kwargs(self)
-    pass
+    pass 
+  def version_level_dropdown_change(self, **event_args):
+    """This method is called when an item is selected"""
+    self.live_version_dropdown.selected = None
+    search_using_kwargs(self)
+    pass 
 
+# interfaces
   def interfaces_drop_down_change(self, **event_args):
     """This method is called when an item is selected"""
     search_using_kwargs(self)
@@ -111,25 +102,66 @@ class systems_and_accounts(systems_and_accountsTemplate):
     search_using_kwargs(self)
     pass
 
-  def app_multi_select_drop_down_change(self, **event_args):
-    """This method is called when the selected values change"""
-    search_using_kwargs(self)
-    pass
-
+#Regions
   def region_dropdown_change(self, **event_args):
     """This method is called when an item is selected"""
     search_using_kwargs(self)
     pass
+  
+#Customer Types
   def customer_type_dropdown_change(self, **event_args):
     """This method is called when an item is selected"""
     search_using_kwargs(self)
     pass
-  def live_version_dropdown_change(self, **event_args):
-    """This method is called when the selected values change"""
-#     self.version_level_drop_down.selected_value = None
-    search_using_kwargs(self)
-    pass 
-    
+  
+#-------------------------------------------------------------------------  
+# Navigation side bar and top bar
+#---------------------------------------------------------------------------
+# Application_Areas summary
+  def app_group_type_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+     
+    open_form('Stats_Tables.Application_Areas')
+    pass
+
+# Open Map top bar
+  def map_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Map')
+    pass
+
+#Open Map side menu
+  def button_1_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Map')
+    pass
+
+#Version_Summary
+  def button_2_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Stats_Tables.Version_Summary')
+    dict_versions_group = anvil.server.call('versions')
+#     self.repeating_panel_1.items = dict_versions_group
+    pass
+
+# Customer_Types Summary
+  def button_3_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Stats_Tables.Customer_Types')
+    dict_customer_type_summary = anvil.server.call('customer_type__summary')
+    pass
+ 
+# refresh data
+  def refresh_data_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    anvil.server.call('listsystems')
+    self.repeating_panel_1.items = app_tables.suppported_products.search()
+    applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
+    self.app_multi_select_drop_down.items = applications
+    self.last_refresh_date.text= str(datetime.today()) 
+    t = app_tables.last_date_refreshed.get(dateid =1 )
+    t['last_date_refreshed'] = str(datetime.today() )
+    pass
     
 #     applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
 #     inusestatus = list({(r['InUseStatus']) for r in app_tables.suppported_products.search()})
@@ -187,17 +219,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
       
 #     self.hits_textbox.text = len(self.repeating_panel_1.items)
 #     pass
-# # refresh data
-  def refresh_data_button_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    anvil.server.call('listsystems')
-    self.repeating_panel_1.items = app_tables.suppported_products.search()
-    applications =list({(r['CFApplicationArea']) for r in app_tables.suppported_products.search()})
-    self.app_multi_select_drop_down.items = applications
-    self.last_refresh_date.text= str(datetime.today()) 
-    t = app_tables.last_date_refreshed.get(dateid =1 )
-    t['last_date_refreshed'] = str(datetime.today() )
-    pass
+
 # # AC list
 #   def app_button_click(self, **event_args):
 #     """This method is called when the button is clicked"""
@@ -337,34 +359,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
 #     open_form('Application_Area_Summary')
 #     pass
 
-  def app_group_type_button_click(self, **event_args):
-    """This method is called when the button is clicked"""
-     
-    open_form('Stats_Tables.Application_Areas')
-    pass
 
-  def map_button_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    open_form('Map')
-    pass
-
-  def button_1_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    open_form('Map')
-    pass
-
-  def button_2_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    open_form('Stats_Tables.Version_Summary')
-    dict_versions_group = anvil.server.call('versions')
-#     self.repeating_panel_1.items = dict_versions_group
-    pass
-
-  def button_3_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    open_form('Stats_Tables.Customer_Types')
-    dict_customer_type_summary = anvil.server.call('customer_type__summary')
-    pass
 
 #   def customer_type_dropdown_change(self, **event_args):
 #     selectedcustomertype = self.customer_type_dropdown.selected_value
@@ -579,26 +574,34 @@ class systems_and_accounts(systems_and_accountsTemplate):
 #     pass
 #     pass
 
-  def live_version_drop_down_change(self, **event_args):
-    """This method is called when the selected values change"""
-    pass
+#   def live_version_drop_down_change(self, **event_args):
+#     """This method is called when the selected values change"""
+#     pass
 
  
 
-  def version_summary_button_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    open_form('Stats_Tables.Version_Summary')
-    dict_versions_group = anvil.server.call('versions')
-    pass
+#   def version_summary_button_click(self, **event_args):
+#     """This method is called when the button is clicked"""
+#     open_form('Stats_Tables.Version_Summary')
+#     dict_versions_group = anvil.server.call('versions')
+#     pass
 
-  def region_summary_button_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    open_form('Stats_Tables.Regional_Summary')
-    pass
+#   def region_summary_button_click(self, **event_args):
+#     """This method is called when the button is clicked"""
+#     open_form('Stats_Tables.Regional_Summary')
+#     pass
 
-  def live_version_dropdown_change(self, **event_args):
-    """This method is called when an item is selected"""
-    pass
+#   def live_version_dropdown_change(self, **event_args):
+#     """This method is called when an item is selected"""
+#     pass
+
+#   def drop_down_1_change(self, **event_args):
+#     """This method is called when an item is selected"""
+#     pass
+
+
+
+
 
 
 
