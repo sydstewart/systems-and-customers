@@ -297,7 +297,7 @@ components:
           background: ''
           bold: false
           underline: false
-          include_placeholder: false
+          include_placeholder: true
         name: operating_system_dropdown
         layout_properties: {grid_position: 'LZVWZW,OHABOT', full_width_row: true}
         event_bindings: {change: operating_system_dropdown_change}
@@ -327,7 +327,7 @@ components:
           background: ''
           bold: false
           underline: false
-          include_placeholder: false
+          include_placeholder: true
         name: access_dropdown
         layout_properties: {grid_position: 'LZVWZW,XLMYID', full_width_row: true}
         event_bindings: {change: access_dropdown_change}

@@ -239,7 +239,8 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.live_version_dropdown.selected = None
     self.database_version_dropdown.selected_value = None
     self.operating_system_dropdown.selected_value = None
-    self.access_dropdown.selected_value =None
+    self.access_dropdown.selected_value = None
+    
     #Initial Search             
     results = app_tables.suppported_products.search()
 
