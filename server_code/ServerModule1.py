@@ -54,7 +54,7 @@ def listsystems():
   conn = connect()
   with conn.cursor() as cur:
    cur.execute(
-      "Select t0.name , t0.id, account.name account, t0.account_id, `account._cstm`.Dawn_Country `account.Dawn_Country`, _cstm.CFApplicationArea ,\
+    "Select t0.name , t0.id, account.name account, t0.account_id, `account._cstm`.Dawn_Country `account.Dawn_Country`, _cstm.CFApplicationArea ,\
       CFApplicationArea, _cstm.InUseStatus InUseStatus,\
       account.shipping_address_country `account.shipping_address_country`, \
       `account._cstm`.location_c `account.location_c`, \
@@ -72,8 +72,11 @@ def listsystems():
       `account._cstm`.latitude_c as latitude, \
       `account._cstm`.longtitude_c as longitude, \
       _cstm.Installed_Version_Num  as Live_Version_no,\
-       `account._cstm`.customertype_c \
-    From assets t0 Left Join \
+       `account._cstm`.customertype_c, \
+       _cstm.Operating_System As Operating_System , \
+       _cstm.Database_Version As  Database_Version, \
+       _cstm.Remote_Access_Available As Remote_Access_Available \
+     From assets t0 Left Join \
       accounts account On account.id = t0.account_id And account.deleted = 0 \
       Left Join \
       accounts_cstm `account._cstm` On `account._cstm`.id_c = account.id Left Join \
@@ -94,7 +97,8 @@ def listsystems():
                'Inbound_Medications' : r['Interface_Inbound_Medications'], 'Outbound_Billing': r['Outbound_Billing_Interface'],
                'Outbound_Dosing' : r['Interface_Outbound_Dosing'], 'Outbound_PDF' : r['Interface_Outbound_PDF'],
                'Outbound_Query' : r['Interface_Outbound_Query'], 'Inbound_TestResults' : r['Interface_Inbound_TestResults'],
-               'Bidirectional_Telehealth' :r['Interface_Birectional_Telehealth']}]
+               'Bidirectional_Telehealth' :r['Interface_Birectional_Telehealth'],  'Operating_System' : r['Operating_System'],
+                'Database_Version': r['Database_Version'], 'Remote_Access_Available'  : r['Remote_Access_Available']}]
       for d in dicts:
 #           t= app_tables.suppported_products.get(Account =  d['Account'], Name = d['Name'],CFApplicationArea= d['CFApplicationArea'],InUseStatus = d['InUseStatus'] )  
 #           if not t:

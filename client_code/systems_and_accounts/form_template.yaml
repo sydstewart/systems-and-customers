@@ -10,19 +10,19 @@ components:
   components:
   - type: ColumnPanel
     properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
-      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '',
+      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
       spacing_below: small, background: ''}
     name: column_panel_2
     layout_properties: {grid_position: 'VRLWHH,EATRYE', full_width_row: true}
     components:
     - type: ColumnPanel
       properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
-        wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"VXFOTY":7,"XLPJFD":11,"PTHUKK":5,"CZDCDV":8,"XKCPRI":4,"BAWGDD":10,"RDAAKT":4,"CUYMQH":6,"ADUYDY":7,"ULYWJA":7,"VVFBSX":7,"VJINAO":7,"TPOHHA":4,"VXIXFL":10,"DREXNO":4,"MBKPRQ":8,"OJPILG":6}',
+        wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"VXFOTY":7,"XLPJFD":12,"PTHUKK":4,"CZDCDV":7,"XKCPRI":6,"BAWGDD":10,"RDAAKT":5,"CUYMQH":4,"ADUYDY":7,"ULYWJA":7,"VVFBSX":7,"VJINAO":7,"TPOHHA":4,"VXIXFL":10,"DREXNO":4,"MBKPRQ":8,"OJPILG":6,"ITUIBB":5,"SIRXNF":15,"PABLKH":40,"QHGFKA":15}',
         spacing_below: small, background: ''}
       name: version_level_drop_down
       layout_properties:
         col_widths: {}
-        grid_position: DQAGZG,NVNDWI
+        grid_position: NWQFQT,OZWKXS
         full_width_row: true
       components:
       - type: Label
@@ -241,13 +241,47 @@ components:
         name: customer_type_dropdown
         layout_properties: {grid_position: 'LFOYAW,BAWGDD', full_width_row: true}
         event_bindings: {change: customer_type_dropdown_change}
+      - type: Label
+        properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+          visible: true, text: Database, font_size: null, font: '', spacing_above: small,
+          icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+          underline: false, icon: ''}
+        name: label_4
+        layout_properties: {grid_position: 'LZVWZW,ITUIBB', full_width_row: true}
+      - type: DropDown
+        properties:
+          role: null
+          align: full
+          tooltip: ''
+          placeholder: ''
+          border: ''
+          enabled: true
+          foreground: ''
+          items: []
+          visible: true
+          font_size: 14
+          font: ''
+          spacing_above: small
+          spacing_below: small
+          italic: false
+          background: ''
+          bold: false
+          underline: false
+          include_placeholder: true
+        name: database_version_dropdown
+        layout_properties: {grid_position: 'LZVWZW,SIRXNF', full_width_row: true}
+        event_bindings: {change: database_version_dropdown_change}
+      - type: Label
+        properties: {}
+        name: label_6
+        layout_properties: {grid_position: 'LZVWZW,PABLKH', full_width_row: true}
       - type: Button
         properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
           foreground: '', visible: true, text: Clear All Search Criteria, font_size: 11,
           font: '', spacing_above: small, icon_align: left, spacing_below: small,
           italic: false, background: '', bold: true, underline: false, icon: ''}
         name: clear_search_criteria
-        layout_properties: {grid_position: 'LFOYAW,ZNEQYA', full_width_row: true}
+        layout_properties: {grid_position: 'LZVWZW,QHGFKA', full_width_row: true}
         event_bindings: {click: clear_search_criteria_click}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
@@ -300,11 +334,14 @@ components:
         - {id: OXBYRP, title: Account, data_key: Account}
         - {id: DKGHIQ, title: In Use Status, data_key: InUseStatus}
         - {id: QTWEHW, title: Live Version, data_key: Live_version_no}
-        - {id: VUWWSP, title: Interfaces, data_key: Interfaces}
+        - {id: VUWWSP, title: Interfaces, data_key: Interfaces, width: '250'}
         - {id: VYHCGP, title: Application Area/s, data_key: CFApplicationArea, expand: false,
           width: '250'}
         - {id: VJXZJX, title: Region, data_key: Location_c}
         - {id: WTDHBE, title: Customer Type, data_key: Customer_Type}
+        - {id: HYQUGK, title: DB, data_key: Database_Version}
+        - {id: SICCCZ, title: OS, data_key: Operating_System}
+        - {id: HJIRPA, title: Access, data_key: Remote_Access_Available}
         auto_header: true
         tooltip: ''
         border: ''

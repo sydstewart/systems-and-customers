@@ -24,7 +24,9 @@ def search_using_kwargs(self):
     search7 = self.app_multi_select_drop_down.selected
     search8 = self.region_dropdown.selected_value
     search9 = self.customer_type_dropdown.selected_value
-    search10 = self.live_version_dropdown.selected   
+    search10 = self.live_version_dropdown.selected 
+    search11 = self.database_version_dropdown.selected_value
+    
 #     search11= self.AC_Non_AC_drop_down.selected_value
 
 # Handle Interacting Fields
@@ -80,6 +82,10 @@ def search_using_kwargs(self):
 # Customer Type    
     if search9:
       kwargs['Customer_Type'] = search9
+      
+#Database Version
+    if search11:
+     kwargs['Database_Version'] = search11
         
 #     if search11:
 #         kwargs['AC_Non_AC'] = search11

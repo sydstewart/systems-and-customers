@@ -39,6 +39,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     regions= list({(r['Location_c']) for r in app_tables.suppported_products.search()})
     version_level = list({(r['Version_Level']) for r in app_tables.suppported_products.search()})
     version = list({(r['Live_version_no']) for r in app_tables.suppported_products.search(tables.order_by('Live_version_no'))})
+    DB_version = list({(r['Database_Version']) for r in app_tables.suppported_products.search(tables.order_by('Database_Version'))})
     
     self.apparea_drop_down.items =  [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
     self.in_use_drop_down.items = inusestatus
@@ -48,7 +49,8 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.region_dropdown.items = regions
     self.customer_type_dropdown.items = customertype
     self.live_version_dropdown.items = version
-
+    self.database_version_dropdown.items = DB_version
+    
 #Initial Search             
     results = app_tables.suppported_products.search()
 
@@ -110,6 +112,11 @@ class systems_and_accounts(systems_and_accountsTemplate):
   
 #Customer Types
   def customer_type_dropdown_change(self, **event_args):
+    """This method is called when an item is selected"""
+    search_using_kwargs(self)
+    pass
+#Database Versions  
+  def database_version_dropdown_change(self, **event_args):
     """This method is called when an item is selected"""
     search_using_kwargs(self)
     pass
@@ -620,6 +627,9 @@ class systems_and_accounts(systems_and_accountsTemplate):
 #   def drop_down_1_change(self, **event_args):
 #     """This method is called when an item is selected"""
 #     pass
+
+
+
 
 
 
