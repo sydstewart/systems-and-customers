@@ -148,6 +148,15 @@ db_schema:
     - name: AC_Non_AC
       admin_ui: {width: 200}
       type: string
+    - name: Operating_System
+      admin_ui: {width: 200}
+      type: string
+    - name: Database_Version
+      admin_ui: {width: 200}
+      type: string
+    - name: Remote_Access_Available
+      admin_ui: {width: 200}
+      type: string
   last_date_refreshed:
     title: Last_Date_Refreshed
     client: full
