@@ -602,16 +602,16 @@ class systems_and_accounts(systems_and_accountsTemplate):
 
  
 
-#   def version_summary_button_click(self, **event_args):
-#     """This method is called when the button is clicked"""
-#     open_form('Stats_Tables.Version_Summary')
-#     dict_versions_group = anvil.server.call('versions')
-#     pass
+  def version_summary_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Stats_Tables.Version_Summary')
+    dict_versions_group = anvil.server.call('versions')
+    pass
 
-#   def region_summary_button_click(self, **event_args):
-#     """This method is called when the button is clicked"""
-#     open_form('Stats_Tables.Regional_Summary')
-#     pass
+  def region_summary_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Stats_Tables.Regional_Summary')
+    pass
 
 #   def live_version_dropdown_change(self, **event_args):
 #     """This method is called when an item is selected"""
