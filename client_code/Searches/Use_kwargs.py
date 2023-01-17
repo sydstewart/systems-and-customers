@@ -5,13 +5,7 @@ from anvil.google.drive import app_files
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-# This is a module.
-# You can define variables and functions here, and use them from any form. For example, in a top-level form:
-#
-#    from .Searches import Module1
-#
-#    Module1.say_hello()
-#
+
 
 def search_using_kwargs(self):
       
@@ -26,8 +20,9 @@ def search_using_kwargs(self):
     search9 = self.customer_type_dropdown.selected_value
     search10 = self.live_version_dropdown.selected 
     search11 = self.database_version_dropdown.selected_value
-    
-#     search11= self.AC_Non_AC_drop_down.selected_value
+    search12 = self.operating_system_dropdown.selected_value
+    search13 = self.access_dropdown.selected_value
+     
 
 # Handle Interacting Fields
     if search4:
@@ -86,16 +81,16 @@ def search_using_kwargs(self):
 #Database Version
     if search11:
      kwargs['Database_Version'] = search11
-        
-#     if search11:
-#         kwargs['AC_Non_AC'] = search11
-        
-#     if search2:
-#           self.repeating_panel_1.items = app_tables.suppported_products.search(q.any_of(
-#           Name=q.full_text_match(search2),Account= q.full_text_match(search2), \
-#           Live_version_no= q.full_text_match(search2),CFApplicationArea= q.full_text_match('%' + search2 + '%')))
-#           self.text_box_1.text = len(self.repeating_panel_1.items)
-#     else:  
+      
+#Operating Systems
+    if search12:
+        kwargs['Operating_System'] = search12
+      
+#Remote_Access_Available
+    if search13:
+        kwargs['Remote_Access_Available'] = search13
+    
+    print(kwargs)
     results = app_tables.suppported_products.search(**kwargs)
 
     self.repeating_panel_1.items = results

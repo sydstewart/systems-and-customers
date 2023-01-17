@@ -17,7 +17,7 @@ components:
     components:
     - type: ColumnPanel
       properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
-        wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"VXFOTY":7,"XLPJFD":12,"PTHUKK":4,"CZDCDV":7,"XKCPRI":6,"BAWGDD":10,"RDAAKT":5,"CUYMQH":4,"ADUYDY":7,"ULYWJA":7,"VVFBSX":7,"VJINAO":7,"TPOHHA":4,"VXIXFL":10,"DREXNO":4,"MBKPRQ":8,"OJPILG":6,"ITUIBB":5,"SIRXNF":15,"PABLKH":40,"QHGFKA":15}',
+        wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"VXFOTY":7,"XLPJFD":12,"PTHUKK":4,"CZDCDV":7,"XKCPRI":6,"BAWGDD":10,"RDAAKT":5,"CUYMQH":4,"ADUYDY":7,"ULYWJA":7,"VVFBSX":7,"VJINAO":7,"TPOHHA":4,"VXIXFL":10,"DREXNO":4,"MBKPRQ":8,"OJPILG":6,"ITUIBB":2,"SIRXNF":7,"PABLKH":11,"QHGFKA":9,"VDSEQX":5,"OHABOT":10,"AFEATT":6,"XLMYID":10}',
         spacing_below: small, background: ''}
       name: version_level_drop_down
       layout_properties:
@@ -271,6 +271,48 @@ components:
         name: database_version_dropdown
         layout_properties: {grid_position: 'LZVWZW,SIRXNF', full_width_row: true}
         event_bindings: {change: database_version_dropdown_change}
+      - type: Label
+        properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+          visible: true, text: Operating System, font_size: null, font: '', spacing_above: small,
+          icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+          underline: false, icon: ''}
+        name: label_7
+        layout_properties: {grid_position: 'LZVWZW,VDSEQX', full_width_row: true}
+      - type: DropDown
+        properties:
+          role: null
+          align: full
+          tooltip: ''
+          placeholder: ''
+          border: ''
+          enabled: true
+          foreground: ''
+          items: []
+          visible: true
+          font_size: 14
+          font: ''
+          spacing_above: small
+          spacing_below: small
+          italic: false
+          background: ''
+          bold: false
+          underline: false
+          include_placeholder: false
+        name: operating_system_dropdown
+        layout_properties: {grid_position: 'LZVWZW,OHABOT', full_width_row: true}
+        event_bindings: {change: operating_system_dropdown_change}
+      - type: Label
+        properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+          visible: true, text: Access, font_size: null, font: '', spacing_above: small,
+          icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+          underline: false, icon: ''}
+        name: label_8
+        layout_properties: {grid_position: 'LZVWZW,AFEATT', full_width_row: true}
+      - type: DropDown
+        properties: {}
+        name: access_dropdown
+        layout_properties: {grid_position: 'LZVWZW,XLMYID', full_width_row: true}
+        event_bindings: {change: access_dropdown_change}
       - type: Label
         properties: {}
         name: label_6
