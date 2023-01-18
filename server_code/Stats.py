@@ -7,6 +7,7 @@ from anvil.tables import app_tables
 import anvil.secrets
 import anvil.server
 import pandas as pd
+import numpy as np
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
 #
@@ -361,14 +362,14 @@ def database_summary():
                              .sort_values(['count'], ascending=False)
     df['sumsystems'] = df['count'].sum()
     df['%'] =(df['count'] * 100)/df['sumsystems']
-    df['%'] = df['%'].map('{:,.1f}'.format)    
-    df['%'] = (df['%'].astype(float))
+#     df['%'] = df['%'].map('{:,.1f}'.format)    
+#     df['%'] = (df['%'].astype(float)) 
 #     df['%'] = df['%'].round(2)
-
+    df['%'] = np.round(df['%'], decimals = 2)
     df.loc['Total', 'count']= df['count'].sum()
     df.loc['Total', '%']= df['%'].sum()
     df = df.fillna("")
-    
+    print(df)
     dictsdatabases = df.to_dict(orient='records')
-    
+    print(dictsdatabases)
     return dictsdatabases
