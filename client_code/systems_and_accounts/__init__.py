@@ -9,7 +9,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 from datetime import datetime, time , date , timedelta
-from ..Searches.four_way_search import four_way_search
+# from ..Searches.four_way_search import four_way_search
 from ..Stats_Tables.Application_Areas import Application_Areas
 from ..Stats_Tables.Customer_Types import Customer_Types
 from ..Stats_Tables.Version_Summary import Version_Summary
@@ -212,6 +212,12 @@ class systems_and_accounts(systems_and_accountsTemplate):
     """This method is called when the button is clicked"""
     open_form('Stats_Tables.In_Use_Summary')
     pass
+# Database Version Summary
+  def database_version_summary_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Stats_Tables.Database_Version_Summary')
+    pass
+
 # Logout
   def logout_button_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -249,6 +255,8 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.hits_textbox.text = len(results)
     pass
     
+
+
 
 
 

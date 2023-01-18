@@ -79,7 +79,7 @@ def search_using_kwargs(self):
       kwargs['Customer_Type'] = search9
       
 #Database Version
-    if search11:
+    if search11 or not search11: # has blank entries
      kwargs['Database_Version'] = search11
       
 #Operating Systems
