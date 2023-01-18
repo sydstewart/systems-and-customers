@@ -117,6 +117,14 @@ def listsystems():
             else:
                 AC_Non_AC = 'Non_AC'
             
+#             #Database Version blan
+#             if d['Database_Version']=='':
+#                 DB_Version  = 'Not Recorded'
+#                 print(DB_Version)
+#             else:
+#                 DB_Version = d['Database_Version']
+#                 print(DB_Version)
+            
             Interfaces= ''
             count = 0 # to identify first interface in list
             if d['Inbound_INR'] == 'yes':
@@ -173,7 +181,7 @@ def listsystems():
             elif count ==0 and d['Bidirectional_Telehealth'] == 'yes' :
                 Interfaces = ' Bidirectional_Telehealth'
                 count = 1
-            app_tables.suppported_products.add_row(Version_Level = Version_Level,Interfaces = Interfaces,AC_Non_AC=AC_Non_AC, **d)
+            app_tables.suppported_products.add_row(Version_Level = Version_Level,Interfaces = Interfaces, AC_Non_AC=AC_Non_AC, **d)
 
   return 
 

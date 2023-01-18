@@ -347,7 +347,7 @@ def database_summary():
 # Get an iterable object with all the rows in my_table
     all_records = app_tables.suppported_products.search(InUseStatus='Live')
     # For each row, pull out only the data we want to put into pandas
-    dicts = [{'Database_Version': r['Database_Version'], 'Name': r['Name']}
+    dicts = [{'Database_Version': r['Database_Version'], 'Account': r['Account']}
             for r in all_records]
     
     df = pd.DataFrame.from_dict(dicts)
@@ -357,7 +357,7 @@ def database_summary():
 #     print(group_by_region) 
 
 
-    df = df.groupby('Database_Version')['Name'].count() \
+    df = df.groupby('Database_Version')['Account'].count() \
                              .reset_index(name='count') \
                              .sort_values(['count'], ascending=False)
     df['sumsystems'] = df['count'].sum()
