@@ -158,7 +158,7 @@ db_schema:
     - name: Remote_Access_Available
       admin_ui: {width: 200}
       type: string
-    - name: DB_Version
+    - name: appareas
       admin_ui: {width: 200}
       type: string
   last_date_refreshed:

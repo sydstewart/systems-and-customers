@@ -109,14 +109,8 @@ def listsystems():
                   Version_Level = '8'
             else:
                   Version_Level= '7'
-            fullstringAC = d['CFApplicationArea']
-            substringAC = 'Anticoagulation'
-            
-            if substringAC in fullstringAC:
-                AC_Non_AC = 'AC'
-            else:
-                AC_Non_AC = 'Non_AC'
-            
+
+           
 #             #Database Version blan
 #             if d['Database_Version']=='':
 #                 DB_Version  = 'Not Recorded'
@@ -181,7 +175,22 @@ def listsystems():
             elif count ==0 and d['Bidirectional_Telehealth'] == 'yes' :
                 Interfaces = ' Bidirectional_Telehealth'
                 count = 1
-            app_tables.suppported_products.add_row(Version_Level = Version_Level,Interfaces = Interfaces, AC_Non_AC=AC_Non_AC, **d)
+            
+            appareas= ''
+            appfullstring  = d['CFApplicationArea']
+            appsubstring  = 'Anticoagulation'
+           
+            if appsubstring in appfullstring:
+                  appareas = 'Anticoagulation'
+                
+            appsubstring  = 'Rheumatology'
+            if appsubstring in appfullstring:
+                  appareas = appareas + '\n' + 'Rheumatology'
+            else:
+                  appareas = appareas
+                
+                
+            app_tables.suppported_products.add_row(Version_Level = Version_Level,Interfaces = Interfaces,appareas =appareas,  **d)
 
   return 
 

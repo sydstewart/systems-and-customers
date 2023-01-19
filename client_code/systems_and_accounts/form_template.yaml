@@ -398,6 +398,7 @@ components:
         - {id: HYQUGK, title: DB, data_key: Database_Version}
         - {id: SICCCZ, title: OS, data_key: Operating_System}
         - {id: HJIRPA, title: Access, data_key: Remote_Access_Available}
+        - {id: VYYLBR, title: App Areas, data_key: appareas}
         auto_header: true
         tooltip: ''
         border: ''
