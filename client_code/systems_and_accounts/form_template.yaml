@@ -390,15 +390,13 @@ components:
         - {id: OXBYRP, title: Account, data_key: Account}
         - {id: DKGHIQ, title: In Use Status, data_key: InUseStatus}
         - {id: QTWEHW, title: Live Version, data_key: Live_version_no}
-        - {id: VUWWSP, title: Interfaces, data_key: Interfaces, width: '250'}
-        - {id: VYHCGP, title: Application Area/s, data_key: CFApplicationArea, expand: false,
-          width: '250'}
+        - {id: VYYLBR, title: App Areas, data_key: appareas, width: 154, expand: false}
+        - {id: VUWWSP, title: Interfaces, data_key: Interfaces, width: 149, expand: false}
         - {id: VJXZJX, title: Region, data_key: Location_c}
         - {id: WTDHBE, title: Customer Type, data_key: Customer_Type}
         - {id: HYQUGK, title: DB, data_key: Database_Version}
         - {id: SICCCZ, title: OS, data_key: Operating_System}
         - {id: HJIRPA, title: Access, data_key: Remote_Access_Available}
-        - {id: VYYLBR, title: App Areas, data_key: appareas}
         auto_header: true
         tooltip: ''
         border: ''
@@ -413,7 +411,7 @@ components:
       name: data_grid_1
       layout_properties:
         col_widths: {}
-        grid_position: IRPWRK,RDPSSM
+        grid_position: NKGYCK,JUXEVW
         full_width_row: true
       components:
       - type: RepeatingPanel

@@ -120,75 +120,79 @@ def listsystems():
 #                 print(DB_Version)
             
             Interfaces= ''
-            count = 0 # to identify first interface in list
-            if d['Inbound_INR'] == 'yes':
-                print('Inbound_INR')
-                Interfaces = ' Inbound_INR'
-                count = 1
-            if d['Bidirectional_SystmOne'] == 'yes' and count ==1:
-                Interfaces = Interfaces + '\n ' +'Bidirectional_SystmOne'
-            elif count == 0 and d['Bidirectional_SystmOne'] == 'yes':
-                Interfaces = ' Bidirectional_SystmOne'
-                count = 1
-            if d['Inbound_ADT'] == 'yes' and count ==1:
-                Interfaces = Interfaces + '\n ' +'Inbound_ADT'
-            elif count ==0 and d['Inbound_ADT'] == 'yes':
-                Interfaces = ' Inbound_ADT'
-                count = 1
-            if d['Inbound_Demographics'] == 'yes'and count ==1:
-                Interfaces = Interfaces + '\n ' +'Inbound_Demographics'
-            elif count ==0 and d['Inbound_Demographics'] == 'yes' :
-                Interfaces = ' Inbound_Demographics'
-                count = 1
-            if d['Inbound_Medications'] == 'yes'and count ==1:
-                Interfaces = Interfaces + '\n ' +'Inbound_Medications'
-            elif count ==0 and d['Inbound_Medications'] == 'yes' :
-                Interfaces = ' Inbound_Medications'
-                count = 1
-            if d['Outbound_Billing'] == 'yes'and count ==1:
-                Interfaces = Interfaces + '\n ' +'Outbound_Billing'
-            elif count ==0 and d['Outbound_Billing'] == 'yes' :
-                Interfaces = ' Outbound_Billing'
-                count = 1
-            if d['Outbound_Dosing'] == 'yes'and count ==1:
-                Interfaces = Interfaces + '\n ' +'Outbound_Dosing'
-            elif count ==0 and d['Outbound_Dosing'] == 'yes' :
-                Interfaces = ' Outbound_Dosing'
-                count = 1
-            if d['Outbound_PDF'] == 'yes'and count ==1:
-                Interfaces = Interfaces + '\n ' +'Outbound_PDF'
-            elif count ==0 and d['Outbound_PDF'] == 'yes' :
-                Interfaces = ' Outbound_PDF'
-                count = 1
-            if d['Outbound_Query'] == 'yes'and count ==1:
-                Interfaces = Interfaces + '\n ' +'Outbound_Query'
-            elif count ==0 and d['Outbound_Query'] == 'yes' :
-                Interfaces = ' Outbound_Query'
-                count = 1
-            if d['Inbound_TestResults'] == 'yes'and count ==1:
-                Interfaces = Interfaces + '\n ' +'Inbound_TestResults'
-            elif count ==0 and d['Inbound_TestResults'] == 'yes' :
-                Interfaces = ' Inbound_TestResults'
-                count = 1
-            if d['Bidirectional_Telehealth'] == 'yes'and count ==1:
-                Interfaces = Interfaces + '\n ' +'Bidirectional_Telehealth'
-            elif count ==0 and d['Bidirectional_Telehealth'] == 'yes' :
-                Interfaces = ' Bidirectional_Telehealth'
-                count = 1
+            count = 0        # to identify first interface in list
+            inters = ["Inbound_INR","Bidirectional_SystmOne","Inbound_ADT","Inbound_Demographics","Inbound_Medications",\
+                     "Outbound_Billing","Outbound_Dosing","Outbound_PDF","Outbound_Query","Inbound_TestResults","Bidirectional_Telehealth" ]
+#         Inbound_INR	Bidirectional_SystmOne	Inbound_ADT	Inbound_Demographics	
+#         Inbound_Medications	Outbound_Billing	Outbound_Dosing	Outbound_PDF	
+#         Outbound_Query	Inbound_TestResults	Bidirectional_Telehealth
+                
+
+            for i in inters:
+                if d[i] == 'yes' and count ==1:
+                    Interfaces = Interfaces + '\n' + i
+                elif count == 0 and d[i] == 'yes':
+                    Interfaces = i
+                    count = 1
+#                 if d['Inbound_ADT'] == 'yes' and count ==1:
+#                     Interfaces = Interfaces + '\n ' +'Inbound_ADT'
+#                 elif count ==0 and d['Inbound_ADT'] == 'yes':
+#                     Interfaces = 'Inbound_ADT'
+#                     count = 1
+#                 if d['Inbound_Demographics'] == 'yes'and count ==1:
+#                     Interfaces = Interfaces + '\n ' +'Inbound_Demographics'
+#                 elif count ==0 and d['Inbound_Demographics'] == 'yes' :
+#                     Interfaces = ' Inbound_Demographics'
+#                     count = 1
+#                 if d['Inbound_Medications'] == 'yes'and count ==1:
+#                     Interfaces = Interfaces + '\n ' +'Inbound_Medications'
+#                 elif count ==0 and d['Inbound_Medications'] == 'yes' :
+#                     Interfaces = ' Inbound_Medications'
+#                     count = 1
+#                 if d['Outbound_Billing'] == 'yes'and count ==1:
+#                     Interfaces = Interfaces + '\n ' +'Outbound_Billing'
+#                 elif count ==0 and d['Outbound_Billing'] == 'yes' :
+#                     Interfaces = ' Outbound_Billing'
+#                     count = 1
+#                 if d['Outbound_Dosing'] == 'yes'and count ==1:
+#                     Interfaces = Interfaces + '\n ' +'Outbound_Dosing'
+#                 elif count ==0 and d['Outbound_Dosing'] == 'yes' :
+#                     Interfaces = ' Outbound_Dosing'
+#                     count = 1
+#                 if d['Outbound_PDF'] == 'yes'and count ==1:
+#                     Interfaces = Interfaces + '\n ' +'Outbound_PDF'
+#                 elif count ==0 and d['Outbound_PDF'] == 'yes' :
+#                     Interfaces = ' Outbound_PDF'
+#                     count = 1
+#                 if d['Outbound_Query'] == 'yes'and count ==1:
+#                     Interfaces = Interfaces + '\n ' +'Outbound_Query'
+#                 elif count ==0 and d['Outbound_Query'] == 'yes' :
+#                     Interfaces = ' Outbound_Query'
+#                     count = 1
+#                 if d['Inbound_TestResults'] == 'yes'and count ==1:
+#                     Interfaces = Interfaces + '\n ' +'Inbound_TestResults'
+#                 elif count ==0 and d['Inbound_TestResults'] == 'yes' :
+#                     Interfaces = ' Inbound_TestResults'
+#                     count = 1
+#                 if d['Bidirectional_Telehealth'] == 'yes'and count ==1:
+#                     Interfaces = Interfaces + '\n ' +'Bidirectional_Telehealth'
+#                 elif count ==0 and d['Bidirectional_Telehealth'] == 'yes' :
+#                     Interfaces = ' Bidirectional_Telehealth'
+#                     count = 1
             
+            appcount = 0
             appareas= ''
-            appfullstring  = d['CFApplicationArea']
-            appsubstring  = 'Anticoagulation'
-           
-            if appsubstring in appfullstring:
-                  appareas = 'Anticoagulation'
-                
-            appsubstring  = 'Rheumatology'
-            if appsubstring in appfullstring:
-                  appareas = appareas + '\n' + 'Rheumatology'
-            else:
-                  appareas = appareas
-                
+            appfullstring  = d['CFApplicationArea']          
+            apps = ["Anticoagulation","Rheumatology","Dermatology",	"AF Rate Control (97)", \
+                    "Growth Factors", "Multiple Sclerosis",	"Gastroenterology","DVT Assessment", \
+                    "Clinical Haematology",	"Ophthalmology","Respiratory","Heart Failure"]
+            for r in apps:      
+                appsubstring  = r
+                if appsubstring in appfullstring and appcount == 1:
+                      appareas = appareas + '\n' +  r
+                elif appcount ==0 and appsubstring in appfullstring:
+                      appareas = r
+                      appcount = 1
                 
             app_tables.suppported_products.add_row(Version_Level = Version_Level,Interfaces = Interfaces,appareas =appareas,  **d)
 
