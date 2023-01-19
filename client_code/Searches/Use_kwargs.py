@@ -56,11 +56,12 @@ def search_using_kwargs(self):
          kwargs['Interfaces'] = q.not_(q.like('%'+ selectedinterface + '%'))
     
 # Applications  
-    if  not search4 and search7:
+    if  search7:
         kwargs['CFApplicationArea']=q.any_of(*search7)
-    if search4 and not search7:
+    
+    if search4:
         selectedapparea = ('%' + search4['application_area'] + '%')
-        kwargs['CFApplicationArea'] = q.like('%'+ selectedapparea + '%') 
+        kwargs['CFApplicationArea'] = q.like(selectedapparea) 
     
 # Version Levels    
     if search5 and not search10:
@@ -79,7 +80,7 @@ def search_using_kwargs(self):
       kwargs['Customer_Type'] = search9
       
 #Database Version
-    if search11 or not search11: # has blank entries
+    if search11: # has blank entries
      kwargs['Database_Version'] = search11
       
 #Operating Systems
