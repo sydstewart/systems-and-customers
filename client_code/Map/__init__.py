@@ -8,8 +8,8 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from ..Searches.apparea_search import apparea_search
-from ..Searches.multi_search import multi_search
+# from ..Searches.apparea_search import apparea_search 
+# from ..Searches.multi_search import multi_search 
 
 class Map(MapTemplate):
   def __init__(self, **properties):
