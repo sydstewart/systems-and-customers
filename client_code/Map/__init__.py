@@ -57,7 +57,7 @@ class Map(MapTemplate):
     selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
 #     print(selectedapparea['application_area'])
 #     selectedapparea  = ('%' + selectedapparea['application_area'] + '%')
-    apparea_search(self, selectedapparea,selecttedinusestatus)
+#     apparea_search(self, selectedapparea,selecttedinusestatus)
       
       
   def In_Use_Status_dropdown_change(self, **event_args):
