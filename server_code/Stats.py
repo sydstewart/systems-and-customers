@@ -373,3 +373,70 @@ def database_summary():
     dictsdatabases = df.to_dict(orient='records')
     print(dictsdatabases)
     return dictsdatabases
+  
+#OS Summary  
+@anvil.server.callable
+def OS_summary():
+# Get an iterable object with all the rows in my_table
+    all_records = app_tables.suppported_products.search(InUseStatus='Live')
+    # For each row, pull out only the data we want to put into pandas
+    dicts = [{'Operating_System': r['Operating_System'], 'Account': r['Account']}
+            for r in all_records]
+    
+    df = pd.DataFrame.from_dict(dicts)
+#     print(df)
+#     group_by_region = df.groupby('Region')['Name'].count()
+#     group_by_region = group_by_region.sort_values(['Region'], ascending=False)['Name']
+#     print(group_by_region) 
+
+
+    df = df.groupby('Operating_System')['Account'].count() \
+                             .reset_index(name='count') \
+                             .sort_values(['count'], ascending=False)
+    df['sumsystems'] = df['count'].sum()
+    df['%'] =(df['count'] * 100)/df['sumsystems']
+#     df['%'] = df['%'].map('{:,.1f}'.format)    
+#     df['%'] = (df['%'].astype(float)) 
+#     df['%'] = df['%'].round(2)
+    df['%'] = np.round(df['%'], decimals = 2)
+    df.loc['Total', 'count']= df['count'].sum()
+    df.loc['Total', '%']= df['%'].sum()
+    df = df.fillna("")
+    print(df)
+    dictsOS = df.to_dict(orient='records')
+    print(dictsOS)
+    return dictsOS
+  
+  
+  #Access  Summary  
+@anvil.server.callable
+def Access_summary():
+# Get an iterable object with all the rows in my_table
+    all_records = app_tables.suppported_products.search(InUseStatus='Live')
+    # For each row, pull out only the data we want to put into pandas
+    dicts = [{'Remote_Access_Available': r['Remote_Access_Available'], 'Account': r['Account']}
+            for r in all_records]
+    
+    df = pd.DataFrame.from_dict(dicts)
+#     print(df)
+#     group_by_region = df.groupby('Region')['Name'].count()
+#     group_by_region = group_by_region.sort_values(['Region'], ascending=False)['Name']
+#     print(group_by_region) 
+
+
+    df = df.groupby('Remote_Access_Available')['Account'].count() \
+                             .reset_index(name='count') \
+                             .sort_values(['count'], ascending=False)
+    df['sumsystems'] = df['count'].sum()
+    df['%'] =(df['count'] * 100)/df['sumsystems']
+#     df['%'] = df['%'].map('{:,.1f}'.format)    
+#     df['%'] = (df['%'].astype(float)) 
+#     df['%'] = df['%'].round(2)
+    df['%'] = np.round(df['%'], decimals = 2)
+    df.loc['Total', 'count']= df['count'].sum()
+    df.loc['Total', '%']= df['%'].sum()
+    df = df.fillna("")
+    print(df)
+    dictsAccess = df.to_dict(orient='records')
+    print(dictsAccess)
+    return dictsAccess

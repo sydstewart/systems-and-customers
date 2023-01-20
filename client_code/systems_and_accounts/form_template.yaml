@@ -388,15 +388,15 @@ components:
         columns:
         - {id: FIODTJ, title: Name, data_key: Name}
         - {id: OXBYRP, title: Account, data_key: Account}
+        - {id: GDXPEO, title: App Areas, data_key: appareas}
         - {id: DKGHIQ, title: In Use Status, data_key: InUseStatus}
         - {id: QTWEHW, title: Live Version, data_key: Live_version_no}
+        - {id: VUWWSP, title: Interfaces, data_key: Interfaces, width: 164, expand: false}
         - {id: VJXZJX, title: Region, data_key: Location_c}
         - {id: WTDHBE, title: Customer Type, data_key: Customer_Type}
         - {id: HYQUGK, title: DB, data_key: Database_Version}
         - {id: SICCCZ, title: OS, data_key: Operating_System}
         - {id: HJIRPA, title: Access, data_key: Remote_Access_Available}
-        - {id: GDXPEO, title: App Areas, data_key: appareas}
-        - {id: VUWWSP, title: Interfaces, data_key: Interfaces, width: '150', expand: false}
         auto_header: true
         tooltip: ''
         border: ''
@@ -411,7 +411,7 @@ components:
       name: data_grid_1
       layout_properties:
         col_widths: {}
-        grid_position: POAIWC,QIUXGX
+        grid_position: IMAVCI,GIEYEX
         full_width_row: true
       components:
       - type: RepeatingPanel
@@ -508,6 +508,22 @@ components:
     name: database_version_summary_button
     layout_properties: {grid_position: 'YLZXNO,FSVJUD'}
     event_bindings: {click: database_version_summary_button_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: OS Summary, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: OS_Summary_Button
+    layout_properties: {grid_position: 'LMOIPG,AMDQBQ'}
+    event_bindings: {click: OS_Summary_Button_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Access Summary, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: access_summary_button
+    layout_properties: {grid_position: 'JFGGUE,QBCFOM'}
+    event_bindings: {click: access_summary_button_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: Go To Map, font_size: null, font: '', spacing_above: small,

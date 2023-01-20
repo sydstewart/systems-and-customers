@@ -10,23 +10,23 @@ components:
   components:
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Database Version Summary (Live), font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: true, underline: false, icon: ''}
+      visible: true, text: OS Summary (Live), font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+      underline: false, icon: ''}
     name: label_1
-    layout_properties: {grid_position: 'SEAQOO,KCZCID'}
+    layout_properties: {grid_position: 'AFMNXL,SZKNDN'}
   - type: ColumnPanel
     properties: {role: card, col_widths: '{}'}
-    name: card_1
-    layout_properties: {grid_position: 'IBQCZZ,TXAICS'}
+    name: card_2
+    layout_properties: {grid_position: 'YILHZI,IOHSAJ'}
     components:
     - type: DataGrid
       properties:
         role: null
         columns:
-        - {id: BUHEHS, title: Database Type, data_key: Database_Version}
-        - {id: EPPQNR, title: Count, data_key: count}
-        - {id: SHLWQW, title: '%', data_key: '%', width: ''}
+        - {id: BQFATP, title: Operating System, data_key: Operating_System}
+        - {id: TJMFXA, title: Count, data_key: count}
+        - {id: STRMNH, title: '%', data_key: '%'}
         auto_header: true
         tooltip: ''
         border: ''
@@ -39,16 +39,16 @@ components:
         spacing_below: small
         background: ''
       name: data_grid_1
-      layout_properties: {grid_position: 'OGETHT,MSAGHG'}
+      layout_properties: {grid_position: 'HNWSYC,FSQYPK'}
       components:
       - type: RepeatingPanel
-        properties: {spacing_above: none, spacing_below: none, item_template: Stats_Tables.Database_Version_Summary.RowTemplate19}
+        properties: {spacing_above: none, spacing_below: none, item_template: Stats_Tables.OS_Summary.RowTemplate20}
         name: repeating_panel_1
         layout_properties: {}
   - type: ColumnPanel
     properties: {col_widths: '{}'}
     name: column_panel_1
-    layout_properties: {grid_position: 'MARALH,IZZJQT'}
+    layout_properties: {grid_position: 'VBRFJY,EDCFAX'}
     components: []
 - type: FlowPanel
   properties: {}
@@ -57,7 +57,7 @@ components:
   components:
   - type: Button
     properties: {role: primary-color, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Go to Lists, font_size: null, font: '',
+      foreground: '', visible: true, text: Go To Lists, font_size: null, font: '',
       spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '', bold: false, underline: false, icon: ''}
     name: button_1

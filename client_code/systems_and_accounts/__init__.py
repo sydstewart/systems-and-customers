@@ -217,6 +217,16 @@ class systems_and_accounts(systems_and_accountsTemplate):
     """This method is called when the button is clicked"""
     open_form('Stats_Tables.Database_Version_Summary')
     pass
+# OS Summary
+  def OS_Summary_Button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Stats_Tables.OS_Summary')
+    pass
+#Access Summary
+  def access_summary_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Stats_Tables.Access_Summary')
+    pass
 
 # Logout
   def logout_button_click(self, **event_args):
@@ -255,6 +265,11 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.hits_textbox.text = len(results)
     pass
     
+
+
+
+
+
 
 
 
