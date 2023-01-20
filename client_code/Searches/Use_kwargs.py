@@ -13,7 +13,7 @@ def search_using_kwargs(self):
 #     search2 = self.text_search_box.text
     search3 = self.interfaces_drop_down.selected_value
     search4 = self.apparea_drop_down.selected_value
-    search5 = self.version_level_dropdown.selected_value
+    search5 = self.version_level_dropdown.selected_value 
     search6 = self.NOT_interface_chkbox.checked
     search7 = self.app_multi_select_drop_down.selected
     search8 = self.region_dropdown.selected_value
