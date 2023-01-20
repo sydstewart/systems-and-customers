@@ -22,7 +22,7 @@ def search_using_kwargs(self):
     search11 = self.database_version_dropdown.selected_value
     search12 = self.operating_system_dropdown.selected_value
     search13 = self.access_dropdown.selected_value
-     
+    search14 = self.account_dropdown.selected
 
 # Handle Interacting Fields
     if search4:
@@ -90,6 +90,12 @@ def search_using_kwargs(self):
 #Remote_Access_Available
     if search13:
         kwargs['Remote_Access_Available'] = search13
+    
+    print(kwargs)
+    results = app_tables.suppported_products.search(**kwargs)
+# Account
+    if search14:
+        kwargs['Account'] =  q.any_of(*search14)
     
     print(kwargs)
     results = app_tables.suppported_products.search(**kwargs)

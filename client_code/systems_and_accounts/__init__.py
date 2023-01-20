@@ -42,6 +42,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     DB_version = list({(r['Database_Version']) for r in app_tables.suppported_products.search(tables.order_by('Database_Version'))})
     os_version = list({(r['Operating_System']) for r in app_tables.suppported_products.search(tables.order_by('Operating_System'))})
     remote_access = list({(r['Remote_Access_Available']) for r in app_tables.suppported_products.search(tables.order_by('Remote_Access_Available'))})
+    accounts = list({(r['Account']) for r in app_tables.suppported_products.search(tables.order_by('Account'))})
     
     self.apparea_drop_down.items =  [(str(row['application_area']), row) for row in app_tables.application_area.search(tables.order_by('application_area'))]
     self.in_use_drop_down.items = inusestatus
@@ -54,6 +55,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.database_version_dropdown.items = DB_version
     self.operating_system_dropdown.items = os_version
     self.access_dropdown.items = remote_access
+    self.account_dropdown.items= accounts
     
     
 #Initial Search             
@@ -132,6 +134,11 @@ class systems_and_accounts(systems_and_accountsTemplate):
     pass
 # Access
   def access_dropdown_change(self, **event_args):
+    """This method is called when an item is selected"""
+    search_using_kwargs(self)
+    pass
+# Account
+  def account_dropdown_change(self, **event_args):
     """This method is called when an item is selected"""
     search_using_kwargs(self)
     pass
@@ -256,6 +263,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.database_version_dropdown.selected_value = None
     self.operating_system_dropdown.selected_value = None
     self.access_dropdown.selected_value = None
+    self.account_dropdown.selected = None
     
     #Initial Search             
     results = app_tables.suppported_products.search()
@@ -265,6 +273,9 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.hits_textbox.text = len(results)
     pass
     
+
+
+
 
 
 
