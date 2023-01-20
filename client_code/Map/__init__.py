@@ -8,8 +8,8 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-# from ..Searches.apparea_search import apparea_search 
-# from ..Searches.multi_search import multi_search 
+from ..Searches.apparea_search import apparea_search 
+from ..Searches.multi_search import multi_search 
 
 class Map(MapTemplate):
   def __init__(self, **properties):
@@ -57,7 +57,7 @@ class Map(MapTemplate):
     selecttedinusestatus = self.In_Use_Status_dropdown.selected_value
 #     print(selectedapparea['application_area'])
 #     selectedapparea  = ('%' + selectedapparea['application_area'] + '%')
-#     apparea_search(self, selectedapparea,selecttedinusestatus)
+    apparea_search(self, selectedapparea,selecttedinusestatus)
       
       
   def In_Use_Status_dropdown_change(self, **event_args):

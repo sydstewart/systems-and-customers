@@ -110,7 +110,7 @@ db_schema:
       admin_ui: {width: 200}
       type: string
     - name: Interfaces
-      admin_ui: {width: 200}
+      admin_ui: {width: 574.181818}
       type: string
     - name: Inbound_INR
       admin_ui: {width: 200}
