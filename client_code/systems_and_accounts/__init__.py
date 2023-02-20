@@ -110,7 +110,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     """This method is called when this checkbox is checked or unchecked"""
     search_using_kwargs(self)
     pass
-
+ 
 #Regions
   def region_dropdown_change(self, **event_args):
     """This method is called when an item is selected"""
