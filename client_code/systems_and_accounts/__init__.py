@@ -24,6 +24,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     anvil.users.login_with_form()
     loggedinuser =  anvil.users.get_user()['email']
 #     self.loggedinuser.text = loggedinuser
+    
     user_type = anvil.users.get_user()['user_type']
 
 #Last Refresh of Data   
