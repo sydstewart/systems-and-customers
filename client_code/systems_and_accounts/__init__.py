@@ -143,6 +143,14 @@ class systems_and_accounts(systems_and_accountsTemplate):
     """This method is called when an item is selected"""
     search_using_kwargs(self)
     pass
+
+
+# SMS exists
+    
+  def SMS_exist_dropdown_change(self, **event_args):
+    """This method is called when an item is selected"""
+    search_using_kwargs(self)
+    pass
 #-------------------------------------------------------------------------  
 # Navigation side bar and top bar
 #---------------------------------------------------------------------------
@@ -273,6 +281,11 @@ class systems_and_accounts(systems_and_accountsTemplate):
     #Hits
     self.hits_textbox.text = len(results)
     pass
+
+
+ 
+
+
     
 
 

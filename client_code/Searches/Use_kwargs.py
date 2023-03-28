@@ -23,7 +23,7 @@ def search_using_kwargs(self):
     search12 = self.operating_system_dropdown.selected_value
     search13 = self.access_dropdown.selected_value
     search14 = self.account_dropdown.selected
-
+    search15 = self.SMS_exist_dropdown.selected_value
 # Handle Interacting Fields
     if search4:
        self.app_multi_select_drop_down.selected =None
@@ -96,7 +96,11 @@ def search_using_kwargs(self):
 # Account
     if search14:
         kwargs['Account'] =  q.any_of(*search14)
-    
+#SMS exists
+    if search15 == 'yes':
+       kwargs['TextSMS_Setup_Done'] = 'yes'
+    elif search15 =='no':
+       kwargs['TextSMS_Setup_Done'] = 'no'
     print(kwargs)
     results = app_tables.suppported_products.search(**kwargs)
 

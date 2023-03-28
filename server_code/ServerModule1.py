@@ -75,7 +75,8 @@ def listsystems():
        `account._cstm`.customertype_c, \
        _cstm.Operating_System As Operating_System , \
        _cstm.Database_Version As  Database_Version, \
-       _cstm.Remote_Access_Available As Remote_Access_Available \
+       _cstm.Remote_Access_Available As Remote_Access_Available, \
+       _cstm.TextSMS_Setup_Done \
      From assets t0 Left Join \
       accounts account On account.id = t0.account_id And account.deleted = 0 \
       Left Join \
@@ -98,7 +99,7 @@ def listsystems():
                'Outbound_Dosing' : r['Interface_Outbound_Dosing'], 'Outbound_PDF' : r['Interface_Outbound_PDF'],
                'Outbound_Query' : r['Interface_Outbound_Query'], 'Inbound_TestResults' : r['Interface_Inbound_TestResults'],
                'Bidirectional_Telehealth' :r['Interface_Birectional_Telehealth'],  'Operating_System' : r['Operating_System'],
-                'Database_Version': r['Database_Version'], 'Remote_Access_Available'  : r['Remote_Access_Available']}]
+                'Database_Version': r['Database_Version'], 'Remote_Access_Available'  : r['Remote_Access_Available'], 'TextSMS_Setup_Done': r['TextSMS_Setup_Done']}]
       for d in dicts:
 
             fullstring = d['Live_version_no']
