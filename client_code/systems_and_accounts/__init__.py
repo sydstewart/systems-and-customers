@@ -72,17 +72,27 @@ class systems_and_accounts(systems_and_accountsTemplate):
 #-------------------------------------------------------------------
 
 #Application Areas      
-  def apparea_drop_down_change(self, **event_args):
-    """This method is called when an item is selected"""
-    self.app_multi_select_drop_down.selected = None
+  # def apparea_drop_down_change(self, **event_args):
+  #   """This method is called when an item is selected"""
+  #   self.app_comb_multi_select_drop_down = None
+  #   search_using_kwargs(self)
+  #   pass
+  
+  # def app_multi_select_drop_down_change(self, **event_args):
+  #   """This method is called when the selected values change"""
+  #   self.apparea_drop_down.selected_value = None
+  #   search_using_kwargs(self)
+  #   pass
+  def app_comb_multi_select_drop_down_change(self, **event_args):
+    """This method is called when the selected values change"""
+    self.app_multi_select_drop_down = None
     search_using_kwargs(self)
     pass
-  
+
   def app_multi_select_drop_down_change(self, **event_args):
     """This method is called when the selected values change"""
-    self.apparea_drop_down.selected_value = None
+    self.comb_multi_select_drop_down = None
     search_using_kwargs(self)
-    pass
   
 # In Use Status
   def in_use_drop_down_change(self, **event_args):
@@ -265,7 +275,7 @@ class systems_and_accounts(systems_and_accountsTemplate):
     self.apparea_drop_down.selected_value = None
     self.version_level_dropdown.selected_value= None
     self.NOT_interface_chkbox.checked = None
-    self.app_multi_select_drop_down.selected = None
+    self.app_comb_multi_select_drop_down = None
     self.region_dropdown.selected_value = None
     self.customer_type_dropdown.selected_value = None
     self.live_version_dropdown.selected = None
@@ -281,6 +291,16 @@ class systems_and_accounts(systems_and_accountsTemplate):
     #Hits
     self.hits_textbox.text = len(results)
     pass
+
+  def app_multi_select_drop_down_1_change(self, **event_args):
+    """This method is called when the selected values change"""
+    pass
+
+
+
+  
+
+
 
 
  

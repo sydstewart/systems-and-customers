@@ -10,7 +10,7 @@ components:
   components:
   - type: ColumnPanel
     properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
-      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"VXFOTY":7,"XLPJFD":12,"PTHUKK":4,"CZDCDV":7,"XKCPRI":6,"BAWGDD":10,"RDAAKT":5,"CUYMQH":4,"ADUYDY":7,"ULYWJA":7,"VVFBSX":7,"VJINAO":7,"TPOHHA":4,"VXIXFL":10,"DREXNO":4,"MBKPRQ":8,"OJPILG":6,"ITUIBB":7,"SIRXNF":12,"VDSEQX":6,"OHABOT":8,"AFEATT":4,"XLMYID":10,"ILSPFK":3,"QLJGUU":14,"KBUECD":24,"JQMCUQ":6,"VRZIQN":8,"KOMZEN":5}',
+      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"VXFOTY":7,"XLPJFD":12,"PTHUKK":4,"CZDCDV":7,"XKCPRI":6,"BAWGDD":10,"RDAAKT":5,"CUYMQH":4,"ADUYDY":8,"VVFBSX":7,"VJINAO":7,"TPOHHA":4,"VXIXFL":10,"DREXNO":4,"MBKPRQ":8,"OJPILG":6,"ITUIBB":7,"SIRXNF":12,"VDSEQX":6,"OHABOT":8,"AFEATT":4,"XLMYID":10,"ILSPFK":3,"QLJGUU":14,"KBUECD":24,"JQMCUQ":6,"VRZIQN":8,"KOMZEN":5,"RDHMNO":6}',
       spacing_below: small, background: ''}
     name: version_level_drop_down
     layout_properties:
@@ -18,13 +18,6 @@ components:
       grid_position: INZHMD,XVAJDW
       full_width_row: true
     components:
-    - type: Label
-      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-        visible: true, text: Application Area, font_size: null, font: '', spacing_above: small,
-        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-        underline: false, icon: ''}
-      name: label_2_copy
-      layout_properties: {grid_position: 'JREDGI,ADUYDY', full_width_row: true}
     - type: DropDown
       properties:
         role: null
@@ -46,8 +39,20 @@ components:
         underline: false
         include_placeholder: true
       name: apparea_drop_down
-      layout_properties: {grid_position: 'JREDGI,ULYWJA', full_width_row: true}
+      layout_properties: {grid_position: 'QDHCIT,FFBHYC', full_width_row: true}
       event_bindings: {change: apparea_drop_down_change}
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Application Area, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_2_copy
+      layout_properties: {grid_position: 'JREDGI,ADUYDY', full_width_row: true}
+    - type: form:C6ZZPAPN4YYF5NVJ:MultiSelectDropDown
+      properties: {}
+      name: app_multi_select_drop_down
+      layout_properties: {grid_position: 'JREDGI,RDHMNO', full_width_row: true}
+      event_bindings: {change: app_multi_select_drop_down_change}
     - type: Label
       properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
         visible: true, text: In Use Status, font_size: null, font: '', spacing_above: small,
@@ -141,9 +146,9 @@ components:
       properties: {width: '', align: left, enable_filtering: true, placeholder: None Selected,
         enabled: true, enable_select_all: true, items: null, visible: true, spacing_above: small,
         spacing_below: small, multiple: true}
-      name: app_multi_select_drop_down
+      name: app_comb_multi_select_drop_down
       layout_properties: {grid_position: 'LFOYAW,XLPJFD', full_width_row: true}
-      event_bindings: {change: app_multi_select_drop_down_change}
+      event_bindings: {change: app_comb_multi_select_drop_down_change}
     - type: Label
       properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
         visible: true, text: Region, font_size: null, font: '', spacing_above: small,

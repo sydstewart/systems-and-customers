@@ -12,7 +12,7 @@ def search_using_kwargs(self):
     search1 = self.in_use_drop_down.selected_value
 #     search2 = self.text_search_box.text
     search3 = self.interfaces_drop_down.selected_value
-    search4 = self.apparea_drop_down.selected_value
+    search4 = self.app_multi_select_drop_down.selected
     search5 = self.version_level_dropdown.selected_value 
     search6 = self.NOT_interface_chkbox.checked
     search7 = self.app_multi_select_drop_down.selected
@@ -26,9 +26,9 @@ def search_using_kwargs(self):
     search15 = self.SMS_exist_dropdown.selected_value
 # Handle Interacting Fields
     if search4:
-       self.app_multi_select_drop_down.selected =None
+       self.app_comb_select_drop_down.selected =None
     if search7:
-       self.apparea_drop_down.selected_value = None
+       self.app_multi_select_drop_down.selected = None
     if search5:
        self.live_version_dropdown.selected  = None 
     if search10:
