@@ -202,7 +202,7 @@ db_schema:
       type: string
   location:
     title: Location
-    client: none
+    client: full
     server: full
     columns:
     - name: location_name

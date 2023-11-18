@@ -159,6 +159,14 @@ class systems_and_accounts(systems_and_accountsTemplate):
     csv_file = self.repeating_panel_1.items.to_csv()
     anvil.media.download(csv_file)
     pass
+    # link  to  url
+  def Webpage_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    search_using_kwargs(self)
+    csv_file = self.repeating_panel_1.items.to_csv()
+    # anvil.media.download(csv_file)
+    self.Webpage.url = self.repeating_panel_1.items.to_csv().url
+  
 #-------------------------------------------------------------------------  
 # Navigation side bar and top bar
 #---------------------------------------------------------------------------
@@ -289,6 +297,8 @@ class systems_and_accounts(systems_and_accountsTemplate):
     #Hits
     self.hits_textbox.text = len(results)
     pass
+
+
 
 
 
