@@ -8,6 +8,7 @@ import anvil.users
 import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
+import anvil.media
 from datetime import datetime, time , date , timedelta
 # from ..Searches.four_way_search import four_way_search
 from ..Stats_Tables.Application_Areas import Application_Areas
@@ -151,6 +152,13 @@ class systems_and_accounts(systems_and_accountsTemplate):
     """This method is called when an item is selected"""
     search_using_kwargs(self)
     pass
+# def csv output
+  def check_box_1_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    search_using_kwargs(self)
+    csv_file = self.repeating_panel_1.items.to_csv()
+    anvil.media.download(csv_file)
+    pass
 #-------------------------------------------------------------------------  
 # Navigation side bar and top bar
 #---------------------------------------------------------------------------
@@ -281,6 +289,8 @@ class systems_and_accounts(systems_and_accountsTemplate):
     #Hits
     self.hits_textbox.text = len(results)
     pass
+
+
 
 
  
