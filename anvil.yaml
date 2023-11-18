@@ -22,7 +22,7 @@ package_name: Systems_and_Customers
 allow_embedding: false
 name: 'Dev Systems and Customers '
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
-metadata: {title: Dev Systems and Customers}
+metadata: {title: Systems and Customers}
 native_deps: {head_html: ''}
 db_schema:
   users:
