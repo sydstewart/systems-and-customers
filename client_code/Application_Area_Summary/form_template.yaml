@@ -1,0 +1,213 @@
+is_package: true
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - type: ColumnPanel
+    properties: {role: card, col_widths: '{}'}
+    name: card_1
+    layout_properties: {grid_position: 'ZBMJVO,FEOSEX'}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Regional Breakdown (Live), font_size: null, font: '',
+        spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '', bold: true, underline: false, icon: ''}
+      name: label_1
+      layout_properties: {grid_position: 'ZEIZYG,YOHTWN'}
+    - type: DataGrid
+      properties:
+        role: null
+        columns:
+        - {id: AWYBNW, title: Region, data_key: Region, width: 179, expand: false}
+        - {id: RSGAWZ, title: Count, data_key: count, width: 67, expand: false}
+        - {id: HNJGVJ, title: '%', data_key: '%', width: '40'}
+        auto_header: true
+        tooltip: ''
+        border: ''
+        foreground: ''
+        rows_per_page: 20
+        visible: true
+        wrap_on: never
+        show_page_controls: false
+        spacing_above: small
+        spacing_below: small
+        background: ''
+      name: data_grid_1
+      layout_properties: {grid_position: 'BGFNZK,BYJQAF', full_width_row: true}
+      components:
+      - type: RepeatingPanel
+        properties: {spacing_above: none, spacing_below: none, item_template: Application_Area_Summary.RowTemplate3}
+        name: repeating_panel_1
+        layout_properties: {}
+  - type: ColumnPanel
+    properties: {role: card, col_widths: '{}'}
+    name: card_2
+    layout_properties: {grid_position: 'ZBMJVO,AOQGWA'}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: In Use Status Breakdown, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+        underline: false, icon: ''}
+      name: label_2
+      layout_properties: {grid_position: 'CNXDNZ,AZASAY'}
+    - type: DataGrid
+      properties:
+        role: null
+        columns:
+        - {id: PXBKDR, title: In Use Status, data_key: InUse, width: 206, expand: false}
+        - {id: YJUWED, title: Count, data_key: count, width: 64, expand: false}
+        - {id: QJVUZK, title: '%', data_key: '%', width: 41, expand: false}
+        auto_header: true
+        tooltip: ''
+        border: ''
+        foreground: ''
+        rows_per_page: 20
+        visible: true
+        wrap_on: never
+        show_page_controls: false
+        spacing_above: small
+        spacing_below: small
+        background: ''
+      name: data_grid_2
+      layout_properties: {grid_position: 'TCUJTA,HPERQI'}
+      components:
+      - type: RepeatingPanel
+        properties: {spacing_above: none, spacing_below: none, item_template: Application_Area_Summary.RowTemplate5}
+        name: repeating_panel_2
+        layout_properties: {}
+  - type: ColumnPanel
+    properties: {role: card, col_widths: '{}'}
+    name: card_3
+    layout_properties: {grid_position: 'IAKUTX,TLDLGI'}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Application Breakdown (Live), font_size: null, font: '',
+        spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '', bold: true, underline: false, icon: ''}
+      name: label_3
+      layout_properties: {grid_position: 'VDPOXA,QQJBVX'}
+    - type: DataGrid
+      properties:
+        role: null
+        columns:
+        - {id: OGTAGF, title: Aplication Area, data_key: Application_Area, width: 178,
+          expand: false}
+        - {id: VWJYSY, title: Count, data_key: Count, width: 70, expand: false}
+        - {id: YMJZXB, title: '%', data_key: '%'}
+        auto_header: true
+        tooltip: ''
+        border: ''
+        foreground: ''
+        rows_per_page: 20
+        visible: true
+        wrap_on: never
+        show_page_controls: false
+        spacing_above: small
+        spacing_below: small
+        background: ''
+      name: data_grid_3
+      layout_properties: {grid_position: 'YQIRMA,BILGNF'}
+      components:
+      - type: RepeatingPanel
+        properties: {spacing_above: none, spacing_below: none, item_template: Application_Area_Summary.RowTemplate6}
+        name: repeating_panel_3
+        layout_properties: {}
+  - type: ColumnPanel
+    properties: {role: card, col_widths: '{}'}
+    name: card_4
+    layout_properties: {grid_position: 'IAKUTX,OHUSCE'}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: App Group Breakdown (Live), font_size: null, font: '',
+        spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '', bold: true, underline: false, icon: ''}
+      name: label_4
+      layout_properties: {grid_position: 'KVZEGP,GCGLSS'}
+    - type: DataGrid
+      properties:
+        role: null
+        columns:
+        - {id: RGHZJC, title: App Group, data_key: App_Group}
+        - {id: MTVVQC, title: Count, data_key: Count}
+        - {id: EIVQGP, title: '%', data_key: '%'}
+        auto_header: true
+        tooltip: ''
+        border: ''
+        foreground: ''
+        rows_per_page: 20
+        visible: true
+        wrap_on: never
+        show_page_controls: false
+        spacing_above: small
+        spacing_below: small
+        background: ''
+      name: data_grid_4
+      layout_properties: {grid_position: 'RRUUDF,EKGDNT'}
+      components:
+      - type: RepeatingPanel
+        properties: {spacing_above: none, spacing_below: none, item_template: Application_Area_Summary.RowTemplate7}
+        name: repeating_panel_4
+        layout_properties: {}
+  - type: ColumnPanel
+    properties: {role: card, col_widths: '{}'}
+    name: card_5
+    layout_properties: {grid_position: 'DSMGZX,CUOXYJ'}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Version Status, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+        underline: false, icon: ''}
+      name: label_5
+      layout_properties: {grid_position: 'OXEDLC,MSGFCV'}
+  - type: DataGrid
+    properties:
+      role: null
+      columns:
+      - {id: GOBNWC, title: Version, data_key: Version}
+      - {id: UHOEHW, title: Count, data_key: count}
+      - {id: EGFIYL, title: '%', data_key: '%'}
+      auto_header: true
+      tooltip: ''
+      border: ''
+      foreground: ''
+      rows_per_page: 20
+      visible: true
+      wrap_on: never
+      show_page_controls: true
+      spacing_above: small
+      spacing_below: small
+      background: ''
+    name: data_grid_5
+    layout_properties: {grid_position: 'VPCOIU,EDPZYW'}
+    components:
+    - type: RepeatingPanel
+      properties: {spacing_above: none, spacing_below: none, item_template: Application_Area_Summary.RowTemplate9}
+      name: repeating_panel_5
+      layout_properties: {}
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: column_panel_1
+  layout_properties: {slot: left-nav}
+  components:
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Return to Search, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: return_to_search_button
+    layout_properties: {grid_position: 'ZYSHDG,CCQYPR'}
+    event_bindings: {click: return_to_search_button_click}

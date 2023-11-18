@@ -1,0 +1,249 @@
+correct_dependency_ids: {C6ZZPAPN4YYF5NVJ: C6ZZPAPN4YYF5NVJ}
+dependencies:
+- app_id: C6ZZPAPN4YYF5NVJ
+  version: {dev: true}
+services:
+- source: /runtime/services/anvil/secrets.yml
+  client_config: {}
+  server_config: {}
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {}
+- source: /runtime/services/google.yml
+  client_config: {api_key: AIzaSyCdOui-6dVdehOtABUzyQc84yEfb8JqNKM}
+  server_config: {}
+- source: /runtime/services/anvil/users.yml
+  client_config: {mfa_timeout_days: 0, email_from_address: syd@4s-dawn.com, require_secure_passwords: true,
+    share_login_status: true, use_email: true, allow_remember_me: true, allow_signup: false,
+    enable_automatically: true, confirm_email: true, require_mfa: true, remember_me_days: 30}
+  server_config: {user_table: users}
+startup: {type: form, module: systems_and_accounts}
+package_name: Systems_and_Customers
+allow_embedding: false
+name: Clone of Systems and Customers (2)
+runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+metadata: {}
+native_deps: {head_html: ''}
+db_schema:
+  users:
+    title: Users
+    client: none
+    server: full
+    columns:
+    - name: email
+      admin_ui: {width: 200}
+      type: string
+    - name: firstname
+      admin_ui: {width: 200}
+      type: string
+    - name: user_type
+      admin_ui: {width: 200}
+      type: string
+    - name: enabled
+      admin_ui: {width: 100}
+      type: bool
+    - name: last_login
+      admin_ui: {width: 200}
+      type: datetime
+    - name: password_hash
+      admin_ui: {width: 200}
+      type: string
+    - name: confirmed_email
+      admin_ui: {width: 200}
+      type: bool
+    - name: n_password_failures
+      admin_ui: {width: 200}
+      type: number
+    - name: mfa
+      admin_ui: {width: 200}
+      type: simpleObject
+    - name: remembered_logins
+      admin_ui: {width: 200}
+      type: simpleObject
+    - name: signed_up
+      admin_ui: {width: 200}
+      type: datetime
+    - name: email_confirmation_key
+      admin_ui: {width: 200}
+      type: string
+  suppported_products:
+    title: suppported_products
+    client: full
+    server: full
+    columns:
+    - name: Name
+      admin_ui: {width: 200}
+      type: string
+    - name: Account
+      admin_ui: {width: 200}
+      type: string
+    - name: 4S_Country
+      admin_ui: {width: 200}
+      type: string
+    - name: CFApplicationArea
+      admin_ui: {width: 200}
+      type: string
+    - name: InUseStatus
+      admin_ui: {width: 200}
+      type: string
+    - name: Shipping_Address_Country
+      admin_ui: {width: 200}
+      type: string
+    - name: Location_c
+      admin_ui: {width: 200}
+      type: string
+    - name: longitude
+      admin_ui: {width: 200}
+      type: number
+    - name: latitude
+      admin_ui: {width: 200}
+      type: number
+    - name: Account_id
+      admin_ui: {width: 200}
+      type: string
+    - name: System_id
+      admin_ui: {width: 200}
+      type: string
+    - name: Live_version_no
+      admin_ui: {width: 200}
+      type: string
+    - name: Version_Level
+      admin_ui: {width: 200}
+      type: string
+    - name: Customer_Type
+      admin_ui: {width: 200}
+      type: string
+    - name: Interfaces
+      admin_ui: {width: 574.181818}
+      type: string
+    - name: Inbound_INR
+      admin_ui: {width: 200}
+      type: string
+    - name: Bidirectional_SystmOne
+      admin_ui: {width: 200}
+      type: string
+    - name: Inbound_ADT
+      admin_ui: {width: 200}
+      type: string
+    - name: Inbound_Demographics
+      admin_ui: {width: 200}
+      type: string
+    - name: Inbound_Medications
+      admin_ui: {width: 200}
+      type: string
+    - name: Outbound_Billing
+      admin_ui: {width: 200}
+      type: string
+    - name: Outbound_Dosing
+      admin_ui: {width: 200}
+      type: string
+    - name: Outbound_PDF
+      admin_ui: {width: 200}
+      type: string
+    - name: Outbound_Query
+      admin_ui: {width: 200}
+      type: string
+    - name: Inbound_TestResults
+      admin_ui: {width: 200}
+      type: string
+    - name: Bidirectional_Telehealth
+      admin_ui: {width: 200}
+      type: string
+    - name: AC_Non_AC
+      admin_ui: {width: 200}
+      type: string
+    - name: Operating_System
+      admin_ui: {width: 200}
+      type: string
+    - name: Database_Version
+      admin_ui: {width: 250.01136400000001}
+      type: string
+    - name: Remote_Access_Available
+      admin_ui: {width: 200}
+      type: string
+    - name: appareas
+      admin_ui: {width: 200}
+      type: string
+    - name: TextSMS_Setup_Done
+      admin_ui: {order: 31, width: 200}
+      type: string
+  last_date_refreshed:
+    title: Last_Date_Refreshed
+    client: full
+    server: full
+    columns:
+    - name: last_date_refreshed
+      admin_ui: {width: 200}
+      type: string
+    - name: dateid
+      admin_ui: {width: 200}
+      type: number
+  application_area:
+    title: application_area
+    client: full
+    server: full
+    columns:
+    - name: application_area
+      admin_ui: {width: 200}
+      type: string
+    - name: app_group
+      admin_ui: {width: 200}
+      type: string
+  geography:
+    title: Geography
+    client: full
+    server: full
+    columns:
+    - name: placename
+      admin_ui: {width: 200}
+      type: string
+    - name: coordinates
+      admin_ui: {width: 386.011364}
+      type: string
+  location:
+    title: Location
+    client: none
+    server: full
+    columns:
+    - name: location_name
+      admin_ui: {width: 338}
+      type: string
+    - name: latitude
+      admin_ui: {width: 200}
+      type: number
+    - name: longitude
+      admin_ui: {width: 200}
+      type: number
+  interface_types:
+    title: Interface_Types
+    client: full
+    server: full
+    columns:
+    - name: Interface_Type
+      admin_ui: {width: 200}
+      type: string
+  test:
+    title: test
+    client: full
+    server: full
+    columns:
+    - name: name
+      admin_ui: {width: 200}
+      type: string
+    - name: employed
+      admin_ui: {width: 200}
+      type: string
+    - name: age
+      admin_ui: {width: 200}
+      type: string
+secrets:
+  crm pass:
+    value: {? '' : AtST9syC4yNvFXDbvAIW/E194h6TVazhOazfNxwlHqshwf86X3qz4v/r2FMiU0FmvNknYXGz6G5zKZbcGW6ArBUgguvf1593pWYqgS0fpZNatj2awgyk5bdRwykMTHRr2odl4mUPS+G0LQ==}
+    type: secret
+  ? results = app_tables.suppported_products.search(CFApplicationArea = q.like(V ),Location_c = X,Version_Level= Y, Customer_Type = Z, InUseStatus= 'Live')
+  : value: {? '' : ULpDddYc6YyV0tVyplQZYNyHplhyDSC0ZJSji46nPrSocfzv3W5w7CN+ASvGVopc1+QPjGD1lytF1FL+1jp3zQdwYWj0tCx2+//vXQ3FDEgnsyLY5JfLBEBZ9Vm4rPqxYvTbMn7JFzRk+yycUJ5ttuFJbyrGicI=}
+    type: key
+  new_secret:
+    value: {? '' : Yhj3MG2icwSSyhHc8Otck4iBxWLLsXLu4W8F9mgsRDWmlALQvvbboCBAsABB097fBjFvFjoajQKwSDJrZZMDbXmAtYlhsZTV3Dq5j8zr2XRBXmQT+AmvdcLzLjvTuBsK7bDslfzNr8vpdjc1EKFmhorNA+lJoc9OZM1LIznGF8PQwd2sFkc2np+EzVASaBRC0TGxdi61/4SeRoBbtdvqXOHXKg5ECFlxzqwQ/Mj0C1c6tpBeraE9CGWEQXGOUG+J8WMn/h69uSWohIRC14iiGMCNJSdeg5AQzd8mV904pUeiSnsiYNkB7YphioF9GMfCds0zPWAF}
+    type: secret
+renamed: true

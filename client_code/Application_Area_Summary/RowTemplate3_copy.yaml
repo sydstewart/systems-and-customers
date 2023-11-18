@@ -1,0 +1,35 @@
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: column_panel_1
+  layout_properties: {}
+  components:
+  - type: DataGrid
+    properties:
+      role: null
+      columns:
+      - {id: SVWYRN, title: Name, data_key: Name}
+      - {id: WDDGHZ, title: Account, data_key: Account}
+      - {id: NJJCQB, title: CFApplicationArea, data_key: CFApplicationArea}
+      - {id: GIFBAR, title: InUseStatus, data_key: InUseStatus}
+      auto_header: true
+      tooltip: ''
+      border: ''
+      foreground: ''
+      rows_per_page: 20
+      visible: true
+      wrap_on: never
+      show_page_controls: true
+      spacing_above: small
+      spacing_below: small
+      background: ''
+    name: data_grid_1
+    layout_properties: {grid_position: 'LDMJTJ,ZWNEVM'}
+    components:
+    - type: RepeatingPanel
+      properties: {spacing_above: none, spacing_below: none, item_template: RowTemplate4}
+      name: repeating_panel_1
+      layout_properties: {}
+container:
+  type: DataRowPanel
+  data_bindings: []
