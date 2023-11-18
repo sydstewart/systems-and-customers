@@ -20,9 +20,9 @@ services:
 startup: {type: form, module: systems_and_accounts}
 package_name: Systems_and_Customers
 allow_embedding: false
-name: Clone of Systems and Customers (2)
+name: 'Dev Systems and Customers '
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
-metadata: {}
+metadata: {title: Dev Systems and Customers}
 native_deps: {head_html: ''}
 db_schema:
   users:
